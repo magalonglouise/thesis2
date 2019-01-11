@@ -1,7 +1,7 @@
 <?php require 'process/require/auth.php';?>
 <?php require "process/require/dataconf.php";?>
 <?php
-    $pdo = new PDO('mysql:host=localhost;dbname=thesis', 'eas', '');
+    $pdo = new PDO('mysql:host=localhost;dbname=thesis', 'root', '');
 $sql = "SELECT chargeinvoice.id as id, vehicles.plateNumber as platenumber, vehicles.make as make, vehicles.series as series, personalInfo.firstName,personalInfo.lastName, chargeinvoice.scopeId as scopeWork, chargeinvoice.sparepartsId as spareParts, chargeinvoice.date, chargeinvoice.totalPrice FROM chargeinvoice join vehicles on chargeinvoice.vehicleId = vehicles.id join personalInfo on chargeinvoice.personalId = personalInfo.personalId;";
 $stmt = $pdo->prepare($sql); 
 $stmt->execute(); 
@@ -66,9 +66,6 @@ $ci = $stmt->fetchAll();
                 <li class="nav-item">
                   <a class="nav-link" href="reschedule.php" style="font-size:14px;">Overdue</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
-                </li>
               </ul>
             </div>
           </li>
@@ -80,17 +77,11 @@ $ci = $stmt->fetchAll();
             </a>
           </li>
             
-          <li class="nav-item">
-            <a class="nav-link"  href="dailytaskform.php">
-              <i class="menu-icon mdi mdi-file"></i>
-              <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
-            </a>
-          </li>
 
           <li class="nav-item">
             <a class="nav-link"  href="chargeinvoice.php">
               <i class="menu-icon mdi mdi-receipt"></i>
-              <span class="menu-title" style="font-size:14px;">Charge Invoice</span>
+              <span class="menu-title" style="font-size:14px;">Sales Invoice</span>
             </a>
           </li>
             
@@ -121,7 +112,7 @@ $ci = $stmt->fetchAll();
 
                     <div class="row">
                         <div class="col-11">
-                            <p class="card-title" style="font-size:20px;">Charge Invoice</p>
+                            <p class="card-title" style="font-size:20px;">Sales Invoice</p>
                             <br>
                         </div>
                         <div class="col-1">

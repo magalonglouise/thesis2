@@ -51,9 +51,6 @@
                     <li class="nav-item">
                       <a class="nav-link" href="overdue.php" style="font-size:14px;">Overdue</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
-                    </li>
                   </ul>
                 </div>
               </li>
@@ -71,13 +68,6 @@
                   <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
                 </a>
               </li>
-
-            <li class="nav-item">
-              <a class="nav-link"  href="chargeinvoice.php">
-                <i class="menu-icon mdi mdi-receipt"></i>
-                <span class="menu-title" style="font-size:14px;">Charge Invoice</span>
-              </a>
-            </li>
 
               <li class="nav-item">
                 <a class="nav-link" href="accountmanagement.php">

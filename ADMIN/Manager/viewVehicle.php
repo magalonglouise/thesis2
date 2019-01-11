@@ -75,9 +75,6 @@
                 <li class="nav-item">
                   <a class="nav-link" href="reschedule.php" style="font-size:14px;">Overdue</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
-                </li>
               </ul>
             </div>
           </li>
@@ -95,22 +92,15 @@
               <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link"  href="chargeinvoice.php">
-              <i class="menu-icon mdi mdi-receipt"></i>
-              <span class="menu-title" style="font-size:14px;">Charge Invoice</span>
-            </a>
-          </li>
             
-          <li class="nav-item active">
+          <li class="nav-item ">
             <a class="nav-link " href="accountmanagement.php">
               <i class="menu-icon mdi mdi-account-multiple"></i>
               <span class="menu-title" style="font-size:14px;">Account Management</span>
             </a>
           </li>
             
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="vehicle.php">
               <i class="menu-icon mdi mdi-car-side"></i>
               <span class="menu-title" style="font-size:14px;">Vehicle</span>
@@ -128,7 +118,7 @@
               <div class="card">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="accountmanagement.php" style="font-size:18px;">Account Management</a></li>
+                    <li class="breadcrumb-item"><a href="vehicle.php" style="font-size:18px;">Vehicles</a></li>
                     <li class="breadcrumb-item active" aria-current="page" style="font-size:18px;"><?php echo $plate ?></li>
                   </ol>
                 </nav>
