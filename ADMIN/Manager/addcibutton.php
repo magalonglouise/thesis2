@@ -61,7 +61,7 @@ $spareparts = $stmt2->fetchAll();
     <!-- partial:partials/_sidebar.html -->
         
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav" style="position:fixed;">
+        <ul class="nav" style="position:fixed; width:16.8%;">
         <hr class="style2">
             
           <li class="nav-item">
@@ -74,19 +74,16 @@ $spareparts = $stmt2->fetchAll();
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-inbox"></i>
-              <span class="menu-title" style="font-size:14px;">Request</span>
+              <span class="menu-title" style="font-size:14px;">Appointment</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointments</a>
+                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Request</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="overdue.php" style="font-size:14px;">Overdue</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
                 </li>
               </ul>
             </div>
@@ -98,27 +95,22 @@ $spareparts = $stmt2->fetchAll();
               <span class="menu-title" style="font-size:14px;">Calendar</span>
             </a>
           </li>
-            
+
           <li class="nav-item">
             <a class="nav-link" href="dailytaskform.php">
-              <i class="menu-icon mdi mdi-file"></i>
+              <i class="menu-icon mdi mdi-account-multiple"></i>
               <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link"  href="chargeinvoice.php">
-              <i class="menu-icon mdi mdi-receipt"></i>
-              <span class="menu-title" style="font-size:14px;">Charge Invoice</span>
-            </a>
-          </li>
             
+<!--
           <li class="nav-item">
             <a class="nav-link" href="accountmanagement.php">
               <i class="menu-icon mdi mdi-account-multiple"></i>
               <span class="menu-title" style="font-size:14px;">Account Management</span>
             </a>
           </li>
+-->
             
           <li class="nav-item">
             <a class="nav-link" href="vehicle.php">
