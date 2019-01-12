@@ -188,7 +188,7 @@
                     </div>
                     <div class="row">
                       <div class="col-md-2"><p>Status</p></div>
-                      <div class="col-md-4"><h5 style="margin-top: -1%">: <?php echo $row['stat'] ?></h5></div>
+                      <div class="col-md-4"><h5 style="margin-top: -1%">: <?php $progress_status = $row['stat'];echo $row['stat'] ?></h5></div>
                       <div class="col-md-2"><p> </p></div>
                         <div class="col-md-4"><h5 style="margin-top: -1%"></h5></div>
                     </div>
@@ -517,8 +517,8 @@
                     ?>
                     
                     <?php   
-                    if($progress==100){
-                      if($row['stat']=="In-progress"){
+                    if($progress==100){ echo $row['stat'];
+                      if($progress_status =="In-progress"){
                         echo '
                         <form action="process/server.php" method="POST">
                           <input type="hidden" name="app" value="'.$id.'">
@@ -528,7 +528,12 @@
                         </form>
                         ';
                       }else{
-                       
+                       echo'<form action="process/server.php" method="POST">
+                              <input type="hidden" name="app" value="'.$id.'">
+                              <button type="submit" disabled name="finishrecord" class="btn btn-primary" style="padding-button: 10px; float: right;
+                                width: 140px;" data-toggle="modal" data-target="#exampleModalCenter"><i class="menu-icon mdi mdi-clipboard-text">
+                                </i>Done</button>
+                            </form>';
                       }
                     }else{
                       echo '
