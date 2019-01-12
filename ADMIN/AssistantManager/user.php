@@ -66,19 +66,16 @@ if(!isset($_GET['id'])){
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-inbox"></i>
-              <span class="menu-title" style="font-size:14px;">Request</span>
+              <span class="menu-title" style="font-size:14px;">Appointment</span>
               <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointments</a>
+                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Request</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="reschedule.php" style="font-size:14px;">Overdue</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
                 </li>
               </ul>
             </div>
