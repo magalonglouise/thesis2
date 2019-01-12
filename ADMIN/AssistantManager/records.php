@@ -64,7 +64,7 @@
     <!-- partial:partials/_sidebar.html -->
         
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav" style="position:fixed;">
+        <ul class="nav" style="position:fixed; width:16.8%;">
         <hr class="style2">
             
           <li class="nav-item">
@@ -98,27 +98,22 @@
               <span class="menu-title" style="font-size:14px;">Calendar</span>
             </a>
           </li>
-            
+
           <li class="nav-item">
             <a class="nav-link" href="dailytaskform.php">
-              <i class="menu-icon mdi mdi-file"></i>
+              <i class="menu-icon mdi mdi-account-multiple"></i>
               <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link"  href="chargeinvoice.php">
-              <i class="menu-icon mdi mdi-receipt"></i>
-              <span class="menu-title" style="font-size:14px;">Charge Invoice</span>
-            </a>
-          </li>
             
+<!--
           <li class="nav-item">
             <a class="nav-link" href="accountmanagement.php">
               <i class="menu-icon mdi mdi-account-multiple"></i>
               <span class="menu-title" style="font-size:14px;">Account Management</span>
             </a>
           </li>
+-->
             
           <li class="nav-item">
             <a class="nav-link" href="vehicle.php">
@@ -515,7 +510,7 @@
                     
                     <?php   
                     if($progress==100){ echo $row['stat'];
-                      if($progress_status =="In-progress"){
+                      if($progress_status =="In-progress" || $progress_status =="Accepted"){
                         echo '
                         <form action="process/server.php" method="POST">
                           <input type="hidden" name="app" value="'.$id.'">
