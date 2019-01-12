@@ -42,7 +42,13 @@ class database{
 	}
 	
 	
-
+	public function homedash(){
+		$query=$this->conn->query("SELECT appointments.id, vehicles.plateNumber, vehicles.make, vehicles.series, appointments.date, appointments.status, appointments.targetEndDate, appointments.serviceId FROM appointments INNER JOIN vehicles ON appointments.vehicleId = vehicles.id WHERE appointments.status = 'Accepted' AND  appointments.personalId = '".$_SESSION['personalId']."'");
+		while($row=$query->fetch_array(MYSQLI_ASSOC)){
+			$this->homedash[]=$row;
+		}
+		return $this->homedash;
+	}
 	
 	
 	public function mechanical_service(){
@@ -135,9 +141,6 @@ class database{
 
 
 }
-
-
-
     //Personal Info
     $query = "SELECT * from personalinfo where user_id = '".$_SESSION['id']."'";
     $res = mysqli_query($db,$query);
@@ -146,6 +149,15 @@ class database{
     $query1 = "SELECT * from vehicles where personalId = '$personalId' ORDER BY created DESC";
     $vehicleinforesult   = mysqli_query($db,$query1);
     $vehicleinforesultCheck = mysqli_num_rows($vehicleinforesult);
+
+     //Appointment Info
+    $query2 = "SELECT * from personalinfo where user_id = '".$_SESSION['id']."'";
+    $res1 = mysqli_query($db,$query2);
+    $row1 = mysqli_fetch_assoc($res1);
+    $personalId = $row1['personalId'];
+    $query3 = "SELECT concat(vehicles.make, ' ', vehicles.series, ' ', vehicles.yearModel) as car, appointments.id, vehicles.plateNumber, vehicles.series, appointments.date, appointments.status, appointments.targetEndDate, appointments.serviceId FROM appointments INNER JOIN vehicles ON appointments.vehicleId = vehicles.id WHERE appointments.status = 'Accepted' AND  appointments.personalId = '".$_SESSION['personalId']."'";
+    $appointmentinforesult   = mysqli_query($db,$query3);
+    $appointmentinforesultCheck = mysqli_num_rows($appointmentinforesult);
 
     //Pending Requests
     $querypendingRequests = "SELECT appointments.id as id, appointments.serviceId as services, appointments.personalId as personalId, appointments.otherService as otherServices, appointments.date as desiredDate, appointments.status AS status, appointments.created as created, appointments.additionalMessage as reason, appointments.adminDate as adminDate, vehicles.plateNumber as plateNumber, vehicles.make AS make, vehicles.series AS series, vehicles.yearModel AS yearModel, vehicles.color AS color FROM appointments JOIN vehicles ON appointments.vehicleId = vehicles.id JOIN personalinfo on appointments.personalId = personalinfo.personalId WHERE appointments.personalId = '$personalId' AND appointments.status = 'Rescheduled' OR appointments.status = 'Pending' ORDER BY `appointments`.`created` DESC";

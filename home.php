@@ -6,8 +6,6 @@
     $username=$_SESSION['username'];
     $profile =new database;
     $profile->user_profile($username);
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,13 +137,89 @@
     <?php endif ?>
       </div>
 
+ <div class="vinfo">
+    <p class="aptmt"> You have the following appointments </p>
+    <ul class ="aptmtlist"style="list-style-type:disc">
+    <!-- MAIN VIEW VEHICLES -->
+  
+     <?php
+
+         if ($appointmentinforesultCheck > 0) {
+          while ($homedash = mysqli_fetch_assoc($appointmentinforesult)) {
+      ?>
+      <li class="acntnt">
+        <a data-toggle="modal" data-target="#viewAppointment<?php echo $homedash['id']; ?>"><?php echo $homedash['date']; ?></a>
+      </li>
+      
+        You have <?php
+                    date_default_timezone_set('Asia/Manila');      
+                    $now = time();
+                    $your_date = strtotime($homedash['date']);
+                    $datediff = $now - $your_date;
+                    $days_remaining = floor($datediff/(60*60*24));
+                    echo $days_remaining;
+                            ?>
+        Remaining days until your next appointment
+    </ul> 
+  </div>
+       <!--MODAL VIEWINFO VEHICLES-->
+
+        
+        <div class="modal fade" id="viewAppointment<?php echo $homedash['id']; ?>" role="dialog">
+          <div class="modal-dialog">
+          
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header" style="background-color:#337AB7; color: #ffffff;"><?php echo $homedash['date']; ?>
+              </div>
+              <div class="modal-body">
+              <div class="row">
+                <div class="col-md-6 col-sm-6">
+                  <div class="form-group">
+                  <label for="plateNumber">Plate Number</label>
+                  <p><?php echo $homedash['plateNumber']; ?></p>
+                </div>
+                <div class="form-group">
+                  <label for="plateNumber">Car</label>
+                  <p><?php echo $homedash['car']; ?></p>
+                </div>
+                <div class="form-group">
+                  <label for="date">Target Finish Date</label>
+                  <p><?php echo $homedash['targetEndDate']; ?></p>
+                </div>
+                <div class="form-group">
+                  <label for="services">Services</label>
+                  <p><?php echo $homedash['serviceId']; ?></p>
+                </div>
+                </div>
+
+                </div> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" style="color: white;"><i class="fas fa-times-circle"></i> Close</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <?php 
+         }
+        }else{
+          echo '<td colspan="7"><nav aria-label="breadcrumb" align="center">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item active" aria-current="page">You have no appointments</li>
+                  </ol>
+                </nav></td>';
+        }
+        ?>
       <div class="container">
       <div class="jumbotron">
         <h1>Hi! Welcome to EAS Customs. </h1>
           <p>This is where you can make an appointment, view request, track your vehicles, manage personal information. <br>
       </div>
+    </div>
 
-
+        <p></p>
 
      
 
