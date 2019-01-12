@@ -196,15 +196,7 @@
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
-   
-    <script>
-      var table = $('#doctables').DataTable({
-        // PAGELENGTH OPTIONS
-        "lengthMenu": [[ 5, 10, 25, 50, 100, -1], [ 5, 10, 25, 50, 100, "All"]]
-
-    });
-    </script>
-    
+       
 </body>
 
 </html>
