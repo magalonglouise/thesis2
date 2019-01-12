@@ -122,6 +122,13 @@
               <span class="menu-title" style="font-size:14px;">Vehicle</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="CM.php">
+              <i class="menu-icon mdi mdi-car-side"></i>
+              <span class="menu-title" style="font-size:14px;">Content Management</span>
+            </a>
+          </li>
             
         </ul>
       </nav>
