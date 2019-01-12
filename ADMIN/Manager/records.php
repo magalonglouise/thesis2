@@ -510,7 +510,7 @@
                     
                     <?php   
                     if($progress==100){ echo $row['stat'];
-                      if($progress_status =="In-progress"){
+                      if($progress_status =="In-progress" || $progress_status =="Accepted"){
                         echo '
                         <form action="process/server.php" method="POST">
                           <input type="hidden" name="app" value="'.$id.'">
