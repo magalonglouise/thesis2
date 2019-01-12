@@ -5,7 +5,7 @@ date_default_timezone_set("Asia/Calcutta");
 ?>
 
 <?php
-$conn=new PDO('mysql:host=localhost; dbname=upload', 'root', '') or die(mysql_error());
+$conn=new PDO('mysql:host=localhost; dbname=thesis', 'root', '') or die(mysql_error());
 if(isset($_POST['submit'])!=""){
   $name=$_FILES['photo']['name'];
   $size=$_FILES['photo']['size'];

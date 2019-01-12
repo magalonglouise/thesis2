@@ -215,9 +215,13 @@
                             }
   
                             $progress = ($finishedTask / $allTask)*100;
-                            if($progress == '100'){
-                              $checkprogress = $connection->prepare("UPDATE `appointments` SET `status` = 'Done' WHERE `appointments`.`id` = $id;");
-                              $checkprogress->execute();
+                            // if($progress == '100'){
+                            //   $checkprogress = $connection->prepare("UPDATE `appointments` SET `status` = 'Done' WHERE `appointments`.`id` = $id;");
+                            //   $checkprogress->execute();
+                            // }
+                            if($progress<100){
+                              $checkprogress = $connection->prepare("UPDATE `appointments` SET `status` = 'In-progress' WHERE `appointments`.`id` = $id;");
+                               $checkprogress->execute();
                             }
                           }
                           
@@ -512,9 +516,29 @@
                       }
                     ?>
                     
+                    <?php   
+                    if($progress==100){
+                      if($row['stat']=="In-progress"){
+                        echo '
+                        <form action="process/server.php" method="POST">
+                          <input type="hidden" name="app" value="'.$id.'">
+                          <button type="submit" name="finishrecord" class="btn btn-success" style="padding-button: 10px; float: right;
+                            width: 140px;" data-toggle="modal" data-target="#exampleModalCenter"><i class="menu-icon mdi mdi-clipboard-text">
+                            </i>Finish</button>
+                        </form>
+                        ';
+                      }else{
+                       
+                      }
+                    }else{
+                      echo '
+                        <button type="button" disabled class="btn btn-success" style="padding-button: 10px; float: right; width: 140px;" data-toggle="modal" data-target="#exampleModalCenter"><i class="menu-icon mdi mdi-clipboard-text"></i>Finish</button>
+                      ';
+                    }
                     
-
+                    ?>
                     
+                 
                   </div>
                   <!-- END -->
 

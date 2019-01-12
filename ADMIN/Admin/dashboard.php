@@ -74,6 +74,9 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
+                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointment</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="#" style="font-size:14px;">Administrators</a>
                 </li>
                 <li class="nav-item">

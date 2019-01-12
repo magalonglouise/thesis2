@@ -73,15 +73,8 @@
               <span class="menu-title" style="font-size:14px;">Dashboard</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="calendar.php">
-              <i class="menu-icon mdi mdi-calendar"></i>
-              <span class="menu-title" style="font-size:14px;">Calendar</span>
-            </a>
-          </li>
             
-          <!-- <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-inbox"></i>
               <span class="menu-title" style="font-size:14px;">Request</span>
@@ -103,6 +96,13 @@
           </li>
             
           <li class="nav-item">
+            <a class="nav-link" href="calendar.php">
+              <i class="menu-icon mdi mdi-calendar"></i>
+              <span class="menu-title" style="font-size:14px;">Calendar</span>
+            </a>
+          </li>
+            
+          <li class="nav-item">
             <a class="nav-link" href="dailytaskform.php">
               <i class="menu-icon mdi mdi-file"></i>
               <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
@@ -114,7 +114,7 @@
               <i class="menu-icon mdi mdi-receipt"></i>
               <span class="menu-title" style="font-size:14px;">Charge Invoice</span>
             </a>
-          </li> -->
+          </li>
             
           <li class="nav-item">
             <a class="nav-link" href="accountmanagement.php">
@@ -215,9 +215,13 @@
                             }
   
                             $progress = ($finishedTask / $allTask)*100;
-                            if($progress == '100'){
-                              $checkprogress = $connection->prepare("UPDATE `appointments` SET `status` = 'Done' WHERE `appointments`.`id` = $id;");
-                              $checkprogress->execute();
+                            // if($progress == '100'){
+                            //   $checkprogress = $connection->prepare("UPDATE `appointments` SET `status` = 'Done' WHERE `appointments`.`id` = $id;");
+                            //   $checkprogress->execute();
+                            // }
+                            if($progress<100){
+                              $checkprogress = $connection->prepare("UPDATE `appointments` SET `status` = 'In-progress' WHERE `appointments`.`id` = $id;");
+                               $checkprogress->execute();
                             }
                           }
                           
@@ -512,9 +516,29 @@
                       }
                     ?>
                     
+                    <?php   
+                    if($progress==100){
+                      if($row['stat']=="In-progress"){
+                        echo '
+                        <form action="process/server.php" method="POST">
+                          <input type="hidden" name="app" value="'.$id.'">
+                          <button type="submit" name="finishrecord" class="btn btn-success" style="padding-button: 10px; float: right;
+                            width: 140px;" data-toggle="modal" data-target="#exampleModalCenter"><i class="menu-icon mdi mdi-clipboard-text">
+                            </i>Finish</button>
+                        </form>
+                        ';
+                      }else{
+                       
+                      }
+                    }else{
+                      echo '
+                        <button type="button" disabled class="btn btn-success" style="padding-button: 10px; float: right; width: 140px;" data-toggle="modal" data-target="#exampleModalCenter"><i class="menu-icon mdi mdi-clipboard-text"></i>Finish</button>
+                      ';
+                    }
                     
-
+                    ?>
                     
+                 
                   </div>
                   <!-- END -->
 

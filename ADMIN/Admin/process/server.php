@@ -232,6 +232,18 @@ if(isset($_POST["delete-task"])){
 
 }
 
+if(isset($_POST["finishrecord"])){
+  $app_id = $connection->real_escape_string($_POST["app"]);
+  $checkprogress = $connection->prepare("UPDATE `appointments` SET `status` = 'Done' WHERE `appointments`.`id` = $app_id;");
+  if($checkprogress->execute()){
+    header("Location: ../records.php?id=$app_id");
+  }else{
+    header("Location: ../error.php");
+  }
+
+}
+
+
 if(isset($_POST["generate"])){
   $id = $connection->real_escape_string($_POST["personal-id"]);
   $query = $connection->prepare("SELECT * FROM `personalinfo` WHERE `personalId` = $id");
