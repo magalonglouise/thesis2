@@ -52,7 +52,7 @@ if(!isset($_GET['id'])){
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
         
-          <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav" style="position:fixed;">
         <hr class="style2">
             
@@ -69,7 +69,7 @@ if(!isset($_GET['id'])){
               <span class="menu-title" style="font-size:14px;">Calendar</span>
             </a>
           </li>
-
+            
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-inbox"></i>
@@ -78,6 +78,9 @@ if(!isset($_GET['id'])){
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointment</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#" style="font-size:14px;">Administrators</a>
                 </li>
@@ -96,30 +99,8 @@ if(!isset($_GET['id'])){
               </ul>
             </div>
           </li>
-
-          <!--             
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-inbox"></i>
-              <span class="menu-title" style="font-size:14px;">Request</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointments</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="reschedule.php" style="font-size:14px;">Overdue</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-         
-         <li class="nav-item">
+            
+          <!-- <li class="nav-item">
             <a class="nav-link" href="dailytaskform.php">
               <i class="menu-icon mdi mdi-file"></i>
               <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
@@ -133,8 +114,8 @@ if(!isset($_GET['id'])){
             </a>
           </li> -->
             
-          <li class="nav-item active">
-            <a class="nav-link " href="accountmanagement.php">
+          <li class="nav-item">
+            <a class="nav-link" href="accountmanagement.php">
               <i class="menu-icon mdi mdi-account-multiple"></i>
               <span class="menu-title" style="font-size:14px;">Account Management</span>
             </a>
@@ -146,7 +127,14 @@ if(!isset($_GET['id'])){
               <span class="menu-title" style="font-size:14px;">Vehicle</span>
             </a>
           </li>
-    
+
+          <li class="nav-item">
+            <a class="nav-link" href="CM.php">
+              <i class="menu-icon mdi mdi-file-document"></i>
+              <span class="menu-title" style="font-size:14px;">Content Management</span>
+            </a>
+          </li>
+            
         </ul>
       </nav>
       <!-- partial -->

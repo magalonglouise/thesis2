@@ -1,8 +1,18 @@
-<?php require 'process/require/auth.php';?>
+<?php require 'process/require/auth.php';
+require_once('bdd.php');
+require "process/check/dashboardcheck.php"; 
 
+$sql = "SELECT appointments.id, vehicles.plateNumber as title, appointments.date as start, appointments.targetEndDate as end, appointments.color as color FROM appointments INNER JOIN vehicles ON appointments.vehicleId = vehicles.id WHERE appointments.status = 'Accepted' OR  appointments.status = 'In-Progress'";
+
+$req = $bdd->prepare($sql);
+$req->execute();
+$events = $req->fetchAll();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -22,113 +32,114 @@
 <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
 <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
 
+	
+<!-- FullCalendar -->
+<link href='css/fullcalendar.css' rel='stylesheet' />
+
+<!-- Custom CSS -->
+<style>
+
+#calendar {
+    max-width: 2000px;
+}
+.col-centered{whiteoat: none;
+    margin: 0 auto;
+}
+</style>
+    
+</head>
+    
 <body>
     <div class="container-scroller">
         <?php include "includes/navbar.php";?>
         <div class="container-fluid page-body-wrapper">
-          <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav" style="position:fixed;">
-            <hr class="style2">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav" style="position:fixed;">
+        <hr class="style2">
+            
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.php">
+              <i class="menu-icon mdi mdi-view-dashboard"></i>
+              <span class="menu-title" style="font-size:14px;">Dashboard</span>
+            </a>
+          </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">
-                  <i class="menu-icon mdi mdi-view-dashboard"></i>
-                  <span class="menu-title" style="font-size:14px;">Dashboard</span>
-                </a>
-              </li>
+          <li class="nav-item">
+            <a class="nav-link" href="calendar.php">
+              <i class="menu-icon mdi mdi-calendar"></i>
+              <span class="menu-title" style="font-size:14px;">Calendar</span>
+            </a>
+          </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-inbox"></i>
+              <span class="menu-title" style="font-size:14px;">Data Entry</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointment</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style="font-size:14px;">Administrators</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style="font-size:14px;">Make Series</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style="font-size:14px;">Spare Parts</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style="font-size:14px;">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style="font-size:14px;">Scope of Work</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+            
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="dailytaskform.php">
+              <i class="menu-icon mdi mdi-file"></i>
+              <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
+            </a>
+          </li>
 
-              <li class="nav-item">
-                <a class="nav-link" href="calendar.php">
-                  <i class="menu-icon mdi mdi-calendar"></i>
-                  <span class="menu-title" style="font-size:14px;">Calendar</span>
-                </a>
-              </li>
+          <li class="nav-item">
+            <a class="nav-link"  href="chargeinvoice.php">
+              <i class="menu-icon mdi mdi-receipt"></i>
+              <span class="menu-title" style="font-size:14px;">Charge Invoice</span>
+            </a>
+          </li> -->
+            
+          <li class="nav-item">
+            <a class="nav-link" href="accountmanagement.php">
+              <i class="menu-icon mdi mdi-account-multiple"></i>
+              <span class="menu-title" style="font-size:14px;">Account Management</span>
+            </a>
+          </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" href="vehicle.php">
+              <i class="menu-icon mdi mdi-car-side"></i>
+              <span class="menu-title" style="font-size:14px;">Vehicle</span>
+            </a>
+          </li>
 
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                  <i class="menu-icon mdi mdi-inbox"></i>
-                  <span class="menu-title" style="font-size:14px;">Data Entry</span>
-                  <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="ui-basic">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                      <a class="nav-link" href="#" style="font-size:14px;">Administrators</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#" style="font-size:14px;">Make Series</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#" style="font-size:14px;">Spare Parts</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#" style="font-size:14px;">Services</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#" style="font-size:14px;">Scope of Work</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <!-- <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                  <i class="menu-icon mdi mdi-inbox"></i>
-                  <span class="menu-title" style="font-size:14px;">Request</span>
-                  <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="ui-basic">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                      <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointments</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="overdue.php" style="font-size:14px;">Overdue</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="calendar.php">
-                  <i class="menu-icon mdi mdi-calendar"></i>
-                  <span class="menu-title" style="font-size:14px;">Calendar</span>
-                </a>
-              </li>
-             
-              <li class="nav-item">
-                <a class="nav-link" href="dailytaskform.php">
-                  <i class="menu-icon mdi mdi-file"></i>
-                  <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
-                </a>
-              </li>
-
-            <li class="nav-item">
-              <a class="nav-link"  href="chargeinvoice.php">
-                <i class="menu-icon mdi mdi-receipt"></i>
-                <span class="menu-title" style="font-size:14px;">Charge Invoice</span>
-              </a>
-            </li> -->
-
-              <li class="nav-item">
-                <a class="nav-link" href="accountmanagement.php">
-                  <i class="menu-icon mdi mdi-account-multiple"></i>
-                  <span class="menu-title" style="font-size:14px;">Account Management</span>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="vehicle.php">
-                  <i class="menu-icon mdi mdi-car-side"></i>
-                  <span class="menu-title" style="font-size:14px;">Vehicle</span>
-                </a>
-              </li>
-
-            </ul>
-          </nav>
+          <li class="nav-item">
+            <a class="nav-link" href="CM.php">
+              <i class="menu-icon mdi mdi-file-document"></i>
+              <span class="menu-title" style="font-size:14px;">Content Management</span>
+            </a>
+          </li>
+            
+        </ul>
+      </nav>
+        
+        
         
         <!-- partial -->
             <div class="main-panel">
@@ -140,34 +151,25 @@
                           <div class="card">
                               <div class="card-body">    
                               <div class="container">
-                                  
-                                  
-                                  <div class="page-header">
-                                      <h3></h3>
-                                              
-                                            <p class="card-title" style="font-size:20px; float:right;" ><button onclick="location.href='restrictdate.php'" class="btn btn-success" type="submit" name="submit"><i class="menu-icon mdi mdi-calendar-remove"></i> Restrict Date</button></p>
 
-                                      <div class="pull-center form-inline">
-                                          <div class="btn-group">
-                                            <button class="btn btn-primary" data-calendar-nav="prev"><< Prev</button>
-				                            <button class="btn btn-default" data-calendar-nav="today">Today</button>
-				                            <button class="btn btn-primary" data-calendar-nav="next">Next >></button>
-                                          </div>
+                                    <div class="pull-center form-inline">
+                                    </div>
+                                   <p class="card-title" style="font-size:20px; float:right;" ><button onclick="location.href='restrictdate.php'" class="btn btn-success" type="submit" name="submit"><i class="menu-icon mdi mdi-calendar-remove"></i> Restrict Date</button></p>
                                           
-                                          <div class="btn-group">
-                                            <button class="btn btn-warning" data-calendar-view="year">Year</button>
-				                            <button class="btn btn-warning active" data-calendar-view="month">Month</button>
-                                          </div>
-                                      </div>
-                                      
-                                      <div class="col-md-12">
+                                   <div class="col-md-12">
                                       <br>
-                                          <div id="showEventCalendar"></div>
-                                      </div>
-                                      
+                                          <div id="calendar" class="col-centered">
+                                          </div>
+                        
+         
+        <hr>
+        <br>
+                                 
+                                       
+                                       
+                                       
                                   </div>
                               </div>
-                                  
                               </div>
                            </div>
                        </div>   
@@ -213,4 +215,98 @@
   <script src="js/sb-admin-datatables.min.js"></script>
    <script src="js/script.js"></script>   
 
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+	
+	<!-- FullCalendar -->
+	<script src='js/moment.min.js'></script>
+	<script src='js/fullcalendar.min.js'></script>
+	
+	<script>
+
+	$(document).ready(function() {
+		
+		$('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,basicWeek,basicDay'
+			},
+			defaultDate: $('#calendar').fullCalendar('today'),
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			selectable: true,
+			selectHelper: true,
+			select: function(start, end) {
+				
+				$('#ModalAdd #start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
+				$('#ModalAdd #end').val(moment(end).format('YYYY-MM-DD HH:mm:ss'));
+				$('#ModalAdd').modal('show');
+			},
+			eventRender: function(event, element) {
+				element.bind('dblclick', function() {
+                   var record = event.id;
+				   window.location = ('records.php?id='+record); 
+				});
+			},
+			eventDrop: function(event, delta, revertFunc) { // si changement de position
+
+				edit(event);
+
+			},
+			eventResize: function(event,dayDelta,minuteDelta,revertFunc) { // si changement de longueur
+
+				edit(event);
+
+			},
+			events: [
+			<?php foreach($events as $event): 
+			
+				$start = explode(" ", $event['start']);
+				$end = explode(" ", $event['end']);
+				if($start[1] == '00:00:00'){
+					$start = $start[0];
+				}else{
+					$start = $event['start'];
+				}
+				if($end[1] == '00:00:00'){
+					$end = $end[0];
+				}else{
+					$end = $event['end'];
+				}
+			?>
+				{
+					id: '<?php echo $event['id']; ?>',
+					title: '<?php echo $event['title']; ?>',
+					start: '<?php echo $start; ?>',
+					end: '<?php echo $end; ?>',
+					color: '<?php echo $event['color']; ?>',
+				},
+			<?php endforeach; ?>
+			]
+		});
+	});
+
+</script>
+    
+  <script src="js/jquery.dataTables.js"></script>
+  <script src="js/dataTables.bootstrap4.js"></script>
+  <script src="js/sb-admin-datatables.min.js"></script>
+  <script src="js/script.js"></script> 
+    
+<script>
+  var table = $('#doctables').DataTable({
+    // PAGELENGTH OPTIONS
+    "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]]
+
+});
+</script>
+
+</body>
+
+</html>
 

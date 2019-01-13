@@ -34,6 +34,11 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
   <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
+  <style>
+     html{
+   scroll-behavior:smooth; 
+     }
+    </style>
 </head>
 
 <body>
@@ -111,139 +116,109 @@
         </ul>
       </nav>
         
-      <!-- partial -->
+     
+          <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
          
 
         <!--  Start Calendar  -->
-          <div class="row">
-               <div class="col-lg-8 grid-margin stretch-card">
-                  <div class="card">
-                      <div class="card-body">    
-                      <div class="container">
-
-                          <div class="page-header">
-                              <h3></h3>
-
-                              
-
-                              <div class="col-md-12">
-                              <br>
-                                  <div id="showEventCalendar"></div>
-                              </div>
-
-                          </div>
-                      </div>
-
-                      </div>
-                   </div>
-               </div> 
-             
-              <!--  Start  -->
-              <div class="col-lg-4 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-body">
-                 
-                     
-            <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-calendar-clock text-danger icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Appointment Requests for today</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0"><?php echo $box1['count']?></h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth
-                  </p>
-                </div>
-              </div>
-                    <hr>
-                    
-            <div class="card card-statistics">
-                <div class="card-body">
-                  <div class="clearfix">
-                    <div class="float-left">
-                      <i class="mdi mdi-car-side text-warning icon-lg"></i>
-                    </div>
-                    <div class="float-right">
-                      <p class="mb-0 text-right">Vehicles to be repaired today</p>
-                      <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0"><?php echo $box2['count']?></h3>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth
-                  </p>
-                </div>
-              </div>
-                    <hr>
-                    
-                    
-                    <div class="card card-statistics">
+         <div class="row">
+         
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi mdi-wrench text-success icon-lg"></i>
                     </div>
+                       <a href="#In-Progress" class="smoothScroll" style="color:black;"> 
                     <div class="float-right">
-                      <p class="mb-0 text-right">Vehicles in progress</p>
+                      <p class="mb-0 text-right">Appointment<br>In-Progress</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0"><?php echo $box3['count']?></h3>
+                        <h3 class="font-weight-medium text-right mb-0"><?php echo $box4['count']?></h3>
                       </div>
                     </div>
+                   </a>
                   </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth
-                  </p>
+                </div>
+              </div>       
+            </div>
+            
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                      <i class="mdi mdi-calendar-clock text-danger icon-lg"></i>
+                    </div>
+                    <a href="#UpcomingAppointment" class="smoothScroll" style="color:black;">
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Upcoming<br> Appointment</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0"><?php echo $box1['count']?></h3>
+                      </div>
+                    </div>
+                    </a>
+                  </div>
                 </div>
               </div>
-                    <hr>
-                    <div class="card card-statistics">
+            </div>
+             
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
                 <div class="card-body">
                   <div class="clearfix">
                     <div class="float-left">
                       <i class="mdi mdi-check-circle text-info icon-lg"></i>
                     </div>
+                    <a href="#UpcomingAppointment" class="smoothScroll" style="color:black;">
                     <div class="float-right">
-                      <p class="mb-0 text-right">Vehicles Successfully Repaired</p>
+                      <p class="mb-0 text-right">Vehicles<br>Repaired</p>
                       <div class="fluid-container">
-                        <h3 class="font-weight-medium text-right mb-0"><?php echo $box4['count']?></h3>
+                        <h3 class="font-weight-medium text-right mb-0"><?php echo $box3['count']?></h3>
                       </div>
                     </div>
+                      </a>
                   </div>
-                  <p class="text-muted mt-3 mb-0">
-                    <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> 65% lower growth
-                  </p>
                 </div>
               </div>
-                    
+            </div>
+             
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+              <div class="card card-statistics">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <div class="float-left">
+                     <i class="mdi mdi-car-side text-warning icon-lg"></i>
+                    </div>
+                    <a href="appointments.php" style="color:black;">
+                    <div class="float-right">
+                      <p class="mb-0 text-right">Pending<br>Request</p>
+                      <div class="fluid-container">
+                        <h3 class="font-weight-medium text-right mb-0"><?php echo $box2['count']?></h3>
+                      </div>
+                    </div>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>     
+            </div>
           </div>
-          <br>
+          
+           
+        
             
-            
+            <section id ="In-Progress">
           <div class="row">
             <div class="col-lg-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Appointments in progress</h4>
+                  <br><br><h1 class="card-title">Appointment in progress</h1>
                   <div class="table-responsive">
                     <table class="table table-bordered" id="doctables" style="background-color: #212529; color:white; border-color:#212529;">
                       <thead>
                         <tr>
-                          <th>
-                            #
-                          </th>
                           <th>
                             Full Name
                           </th>
@@ -259,18 +234,18 @@
                           <th>
                             Target End Date
                           </th>
+                          <th>
+                            Days Remaining
+                          </th>
                         </tr>
                       </thead>
                       <tbody style="background-color:white; color:#212529;">
-                         <?php $query = $connection->prepare("SELECT CONCAT(personalinfo.firstName,' ', personalinfo.middleName, ' ', personalinfo.lastName) AS FullName, appointments.date, appointments.targetEndDate, appointments.id, vehicles.plateNumber FROM personalinfo JOIN appointments ON appointments.personalId = personalinfo.personalId JOIN vehicles ON appointments.vehicleId = vehicles.id WHERE appointments.status = 'In-progress'"); 
+                         <?php $query = $connection->prepare("SELECT CONCAT(personalinfo.firstName,' ', personalinfo.middleName, ' ', personalinfo.lastName) AS FullName, appointments.date, appointments.targetEndDate, appointments.id, vehicles.plateNumber FROM personalinfo JOIN appointments ON appointments.personalId = personalinfo.personalId JOIN vehicles ON appointments.vehicleId = vehicles.id WHERE appointments.status = 'In-progress' ORDER BY appointments.date ASC"); 
                             if ($query->execute()){
                                 $result=$query->get_result();
                                 while($appinprogress = $result->fetch_assoc()){
                                ?> 
                         <tr>
-                          <td class="font-weight-medium">
-                            <?php echo $appinprogress['id']?>
-                          </td>
                           <td>
                            <?php echo $appinprogress['FullName']?>
                           </td>
@@ -279,6 +254,138 @@
                               <div class="progress-bar bg-success progress-bar-striped" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0"
                                 aria-valuemax="100"></div>
                             </div>
+                          </td>
+                          <td>
+                           <?php echo $appinprogress['plateNumber']?>
+                          </td>
+                          <td class="text-success"> <?php echo  date('F j, Y',strtotime($appinprogress['date']))?>
+                          </td>
+                          <td class="text-danger">
+                            <?php echo  date('F j, Y',strtotime($appinprogress['targetEndDate']))?>
+                          </td>
+                           <td class="text-danger">  
+                            <?php
+                            date_default_timezone_set('Asia/Manila');
+                                    
+                            $now = time();
+                            $cnt = 1;
+                            $your_date = strtotime($appinprogress['targetEndDate']);
+                            $datediff = $your_date - $now;
+                            $days_remaining = floor($datediff/(60*60*24));
+                            $daysremaining = $days_remaining + $cnt;
+                            echo $daysremaining;
+                            ?>
+                        </td>
+                        </tr>
+                           <?php }
+                            }
+                          ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+       
+        <section id ="UpcomingAppointment">
+           <div class="row">
+            <div class="col-lg-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <br><br><h1 class="card-title">Upcoming Appointment</h1>
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="doctables2" style="background-color: #212529; color:white; border-color:#212529;">
+                      <thead>
+                        <tr>
+                          <th>
+                            Full Name
+                          </th>
+                          <th>
+                            Plate Number
+                          </th>
+                          <th>
+                            Start Date
+                          </th>
+                          <th>
+                            Days Remaining
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody style="background-color:white; color:#212529;">
+                         <?php $query = $connection->prepare("SELECT CONCAT(personalinfo.firstName,' ', personalinfo.middleName, ' ', personalinfo.lastName) AS FullName, appointments.date, appointments.targetEndDate, appointments.id, vehicles.plateNumber FROM personalinfo JOIN appointments ON appointments.personalId = personalinfo.personalId JOIN vehicles ON appointments.vehicleId = vehicles.id WHERE appointments.status = 'Accepted' ORDER BY appointments.date ASC"); 
+                            if ($query->execute()){
+                                $result=$query->get_result();
+                                while($appinprogress = $result->fetch_assoc()){
+                               ?> 
+                        <tr>
+                          <td>
+                           <?php echo $appinprogress['FullName']?>
+                          </td>
+                          <td>
+                           <?php echo $appinprogress['plateNumber']?>
+                          </td>
+                          <td class="text-success"> <?php echo  date('F j, Y',strtotime($appinprogress['date']))?>
+                          </td>
+                          <td class="text-danger">  
+                            <?php
+                            date_default_timezone_set('Asia/Manila');    
+                            $now = time();
+                            $cnt = 1;
+                            $your_date = strtotime($appinprogress['date']);
+                            $datediff = $your_date - $now; 
+                            $days_remaining = floor($datediff/(60*60*24));
+                            $daysremaining = $days_remaining + $cnt;
+                            echo $daysremaining;
+                            ?>
+                        </td>
+                        </tr>
+                           <?php }
+                            }
+                          ?>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+         <section id ="VehiclesRepaired">
+          <div class="row">
+            <div class="col-lg-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <br><br><h1 class="card-title">Vehicles Repaired</h1>
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="doctables3" style="background-color: #212529; color:white; border-color:#212529;">
+                      <thead>
+                        <tr>
+                          <th>
+                            Full Name
+                          </th>
+                          <th>
+                            Plate Number
+                          </th>
+                          <th>
+                            Start Date
+                          </th>
+                          <th>
+                            End Date
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody style="background-color:white; color:#212529;">
+                         <?php $query = $connection->prepare("SELECT CONCAT(personalinfo.firstName,' ', personalinfo.middleName, ' ', personalinfo.lastName) AS FullName, appointments.date, appointments.targetEndDate, appointments.id, vehicles.plateNumber FROM personalinfo JOIN appointments ON appointments.personalId = personalinfo.personalId JOIN vehicles ON appointments.vehicleId = vehicles.id WHERE appointments.status = 'Done' ORDER BY appointments.date DESC"); 
+                            if ($query->execute()){
+                                $result=$query->get_result();
+                                while($appinprogress = $result->fetch_assoc()){
+                               ?> 
+                        <tr>
+                          <td>
+                           <?php echo $appinprogress['FullName']?>
                           </td>
                           <td>
                            <?php echo $appinprogress['plateNumber']?>
@@ -299,7 +406,10 @@
               </div>
             </div>
           </div>
-          <div class="row">
+        </section>
+    
+    
+            <div class="row">
             <div class="col-12 grid-margin">
               <div class="card">
                 <div class="card-body">
@@ -307,6 +417,7 @@
                   <?php $feedback = $connection->prepare("SELECT * FROM feedback ORDER BY date DESC"); 
                         if($feedback->execute()){
                         $result=$feedback->get_result();
+                        if (!empty($result)){
                         while($feed = $result->fetch_assoc()){?>
                     
                     <div class="fluid-container">
@@ -339,7 +450,14 @@
                      
                     </div>
                   </div>
-                    <?php }}?>
+                    <?php 
+                                }
+                          
+                            } else{
+                                'No feedback available';
+                            }
+                        }
+                    ?>
                 </div>
               </div>
             </div>
@@ -385,6 +503,24 @@
 });
 </script>
     
+     <script>
+  var table = $('#doctables2').DataTable({
+    // PAGELENGTH OPTIONS
+    "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]]
+
+});
+</script>
+ 
+    <script>
+  var table = $('#doctables3').DataTable({
+    // PAGELENGTH OPTIONS
+    "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]]
+
+});
+</script>
+ 
+
+    
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 <script type="text/javascript" src="js/calendar.js"></script>
 <script type="text/javascript" src="js/events.js"></script>    
@@ -392,3 +528,5 @@
 
 
 </html>
+        
+     

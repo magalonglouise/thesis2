@@ -81,4 +81,64 @@
   	}
   }
 
+    // input make and series
+    if (isset($_POST['add_makeseries'])) {
+    $make = $_POST['make'];
+    $series = $_POST['series'];
+    $query = "INSERT INTO make_series (make, series) 
+            VALUES ('$make','$series')";
+    $result1 = mysqli_query($db, $query);
+    header('location: makeseriesmanagement.php?success=done');
+    exit(); 
+    }
+
+  
+  //edit make and series
+  if(isset($_POST["update-makeseries"])){
+  $make = $connection->real_escape_string($_POST["make"]);
+  $series = $connection->real_escape_string($_POST["series"]);
+  $id = $connection->real_escape_string($_POST["id"]);
+
+  $update = $connection->prepare("UPDATE `make_series` SET `make`= ?,`series`= ? WHERE `id`  = ?");
+
+  $update->bind_param("ssi",$make,$series,$id);
+  if($update->execute()){ 
+    header("Location: makeseriesmanagement.php?id=$id");
+    echo "Gumana";
+  }else{  
+    header("Location: ../error.php");
+    exit();
+  }
+}
+
+
+    //add spare parts
+    if (isset($_POST['add_spareparts'])) {
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+    $query = "INSERT INTO spareparts (name, price) 
+            VALUES ('$name','$price')";
+    $result = mysqli_query($db, $query);
+    header('location: sparepartsmanagement.php?success=done');
+    exit(); 
+    }
+
+      //edit spare parts
+  if(isset($_POST["update-spareparts"])){
+  $name = $connection->real_escape_string($_POST["name"]);
+  $price = $connection->real_escape_string($_POST["price"]);
+  $id = $connection->real_escape_string($_POST["id"]);
+  $modified = date('now');
+  $update = $connection->prepare("UPDATE `spareparts` SET `name`= ?,`price`= ?, `modified` = ? WHERE `id`  = ?");
+
+  $update->bind_param("ssis",$name,$price,$id,$modified);
+  if($update->execute()){ 
+    header("Location: sparepartsmanagement.php?id=$id");
+    echo "Gumana";
+  }else{  
+    header("Location: ../error.php");
+    exit();
+  }
+}
 ?>
+

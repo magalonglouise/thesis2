@@ -1,7 +1,6 @@
 <?php require 'process/require/auth.php';?>
 <?php require "process/require/dataconf.php";?>
 <?php require 'process/process.php'; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Account Management</title>
+  <title>Spare Parts Management</title>
   <link rel="icon" href="images/Logo.png">
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
@@ -34,12 +33,13 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
     <!-- partial:partials/_sidebar.html -->
+        
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav" style="position:fixed;">
         <hr class="style2">
             
           <li class="nav-item">
-            <a class="nav-link" href="dashboard.php">
+            <a class="nav-link" id="active" href="dashboard.php">
               <i class="menu-icon mdi mdi-view-dashboard"></i>
               <span class="menu-title" style="font-size:14px;">Dashboard</span>
             </a>
@@ -51,9 +51,9 @@
               <span class="menu-title" style="font-size:14px;">Calendar</span>
             </a>
           </li>
-            
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+
+          <li class="nav-item active">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="true" aria-controls="ui-basic">
               <i class="menu-icon mdi mdi-inbox"></i>
               <span class="menu-title" style="font-size:14px;">Data Entry</span>
               <i class="menu-arrow"></i>
@@ -61,15 +61,12 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointment</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link" href="#" style="font-size:14px;">Administrators</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="makeseriesmanagement.php" style="font-size:14px;">Make Series</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active">
                   <a class="nav-link" href="sparepartsmanagement.php" style="font-size:14px;">Spare Parts</a>
                 </li>
                 <li class="nav-item">
@@ -83,6 +80,27 @@
           </li>
             
           <!-- <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-inbox"></i>
+              <span class="menu-title" style="font-size:14px;">Request</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointments</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="overdue.php" style="font-size:14px;">Overdue</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+            
+         <li class="nav-item">
             <a class="nav-link" href="dailytaskform.php">
               <i class="menu-icon mdi mdi-file"></i>
               <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
@@ -109,13 +127,6 @@
               <span class="menu-title" style="font-size:14px;">Vehicle</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="CM.php">
-              <i class="menu-icon mdi mdi-file-document"></i>
-              <span class="menu-title" style="font-size:14px;">Content Management</span>
-            </a>
-          </li>
             
         </ul>
       </nav>
@@ -129,7 +140,7 @@
               <div class="card">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="accountmanagement.php" style="font-size:18px;">Account Management</a></li>
+                    <li class="breadcrumb-item"><a href="accountmanagement.php" style="font-size:18px;">Spare Parts Management</a></li>
                   </ol>
                 </nav>
               </div>
@@ -144,15 +155,44 @@
 
                     <div class="row">
                         <div class="col-11">
-                            <p class="card-title" style="font-size:20px;">Users</p>
+                            <p class="card-title" style="font-size:20px;">Spare Parts</p>
                             <p class="card-description">
-                                List of Users with registered vehicles
                             </p>
                         </div>
                         <div class="col-1">
-                            <a href ="adduser.php"><button type="button" class="btn btn-darkred" style="padding-button: 10px; float: right; width: 145px;" data-toggle="modal" data-target="#addUser"><i class="menu-icon mdi mdi-account-multiple-plus"></i>
-                                Add User
-                            </button></a>
+                            <button type="button" class="btn btn-darkred" style="padding-button: 10px; float: right; width: 145px;" data-toggle="modal" data-target="#addSpareParts"><i class="menu-icon mdi mdi-account-multiple-plus"></i>
+                                Add Spare Parts
+                            </button>
+                              <!--MODAL-->
+                            <div class="modal fade" id="addSpareParts" role="dialog">
+                              <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                  <div class="modal-header" style="background-color:#B80011; color: #ffffff;">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h5 class="modal-title"><i class="fa fa-car" aria-hidden="true"></i> Add Spare Parts</h5>
+                                  </div>
+                                  <div class="modal-body">
+                                  <form action="makeseriesmanagement.php" method="post">
+                                  <small id="reminder" class="form-text text-muted">Please fill out the required fields.</small>
+                                  <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control input-xs" id="name"  placeholder="name" name="name"
+                                    required="">
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="Price">Price</label>
+                                    <input type="text" class="form-control input-xs" id="price"  placeholder="price" name="price"
+                                    required="">
+                                  </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="submit" class="btn btn-sm " name="add_spareparts" style="background-color: #B80011;color: white"><i class="fa fa-motorcycle" aria-hidden="true"></i> Add </button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="color:black;"><i class="fas fa-times-circle"></i> Cancel</button>
+                                  </div>
+      </div>
+      </form>
+      </div>
                         </div>
                     </div>
                     
@@ -163,16 +203,10 @@
                       <thead>
                         <tr class="grid">
                           <th style="font-size:15px;">
-                            ID
+                            Make
                           </th>
                           <th style="font-size:15px;">
-                            Name
-                          </th>
-                          <th style="font-size:15px;">
-                            Address
-                          </th>
-                          <th style="font-size:15px;">
-                            Mobile Number
+                            Series
                           </th>
                           <th style="font-size:15px;">
                             Action
@@ -181,72 +215,72 @@
                       </thead>
                       <tbody class="table-primary" style="color:black;">
                         <?php
-                            $data = $connection->prepare("SELECT * FROM `personalinfo` join `vehicles` WHERE personalinfo.personalId 
-                            = vehicles.personalId GROUP BY 1");
+                            $data = $connection->prepare("SELECT * FROM `spareparts` ");
                             if($data->execute()){
                                 $values = $data->get_result();
                                 while($row = $values->fetch_assoc()) {
-                                echo '
-                                    <tr>
-                                        <td>'.$row['personalId'].'</td>
-                                        <td>'.$row['firstName'].' '.$row['middleName'].' '.$row['lastName'].'</td>
-                                        <td>'.$row['address'].'</td>
-                                        <td style="text-align: right;">'.$row['mobileNumber'].'</td>
-                                        <td class="text-center">
-                                          <a href="user.php?id='.$row['personalId'].'"><button class="btn btn-primary"><i class="menu-icon mdi mdi-eye-outline"></i> View</button></a>
-                      
-                                          <button type="button" class="btn btn-darkblue" data-toggle="modal" data-target="#exampleModal'.$row['personalId'].'"><i class="menu-icon mdi mdi-email-outline"></i> Send SMS</button>
-                                        </td>
-                                    </tr>
-
-                                    <!-- Modal -->
-                                    <div class="modal modal-lg fade" id="exampleModal'.$row['personalId'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                      <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                          <div class="modal-header" style="background-color: #000099; color: white; border: 3px solid #000099;">
-                                            <h5 class="modal-title" id="exampleModalLabel">Send SMS</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">&times;</span>
-                                            </button>
-                                          </div>
-                                          <div class="modal-body">
-                                          <form action="process/sms.php" method="POST">
-                                            <div class="form-group row">
-                                              <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Phone Number</label>
-                                              <div class="col-sm-9">
-                                                <input type="text" class="form-control" name="phone" id="exampleInputEmail2"  value="'.$row['mobileNumber'].'">
-                                              </div>
-                                            </div>
-
-                                            <div class="form-group row">
-                                              <label for="exampleInputEmail3" class="col-sm-3 col-form-label">Message</label>
-                                              <div class="col-sm-9">
-                                                <textarea type="text" class="form-control" name="message" id="exampleInputEmail3"></textarea>
-                                              </div>
-                                            </div>
-                                            
-                                    
-                                          </div>
-                                          <div class="modal-footer">
-                                          
-                                            <button type="submit" name="send-sms" class="btn btn-darkblue"><i class="menu-icon mdi mdi-send"></i>Send</button>
-                                            
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="menu-icon mdi mdi-close"></i>Close</button>
-                                          </div>
-                                          </form>
-                                        </div>
-                                      </div>
-                                    </div>
+                            echo '<tr>
+                                        <td>'.$row['name'].'</td>
+                                        <td>'.$row['price'].'</td>
+                           <td>
+                                          <button type="submit" class="btn btn-success"  data-toggle="modal"  data-target="#updateSpareParts'.$row['id'].'"><i class="menu-icon mdi mdi-eye-outline"></i>Edit</button>
+                                           <a href="deleteSpareParts.php?id='.$row['id'].'"><button class="btn btn-primary"><i class="menu-icon mdi mdi-eye-outline"></i>Delete</button></a>
+                                          </td>
+                              </tr>
 
 
-                                ';
-                                }
+
+                        <div div class="modal fade" id="updateSpareParts'.$row['id'].'" role="dialog">
+                          <div class="modal-dialog modal-dialog" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header" style="background-color: #4caf50; color: white; border: 3px solid #4caf50;">
+                              <h5 class="modal-title" id="exampleModalLabel">Update Spare Parts</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                            <!-- start -->
+                            <form action="sparepartsmanagement.php" method="POST">
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="bmd-label-floating">Name</label>
+                                    <input type="text" class="form-control" name="name" value="'.$row['name'].'" placeholder="'.$row['name'].'">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                    <label class="bmd-label-floating">Price</label>
+                                    <input type="text" class="form-control" name="price" value="'.$row['price'].'" placeholder="'.$row['price'].'">
+                                    <input type="hidden" class="form-control" name="id" value="'.$row['id'].'" placeholder="'.$row['id'].'">
+                                  </div>
+                              </div>
+                            </div>
+                              <!-- end -->
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="submit" class="btn btn-success" name="update-spareparts" style="float:right"><i class="menu-icon mdi mdi-account-convert"></i> Update</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="menu-icon mdi mdi-close"></i> Cancel</button>
+                                <div class="clearfix"></div>
+                              </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                              ';  
+                            }
                             }else{
                                 echo "<tr>
                                         <td colspan='7'>No Available Data</td>
                                     </tr>";
-                            }
+                            } 
                         ?>
+
+
                       </tbody>
                     </table>
                   </div>
@@ -330,4 +364,6 @@ $(document).ready(function(){
 
 });
 </script>
+
+<script></script>
 </html>
