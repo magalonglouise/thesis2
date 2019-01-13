@@ -1,7 +1,6 @@
 <?php require 'process/require/auth.php';?>
 <?php require "process/require/dataconf.php";?>
-<?php require "process/check/appointmentcheck.php";?>
-<?php require "process/info.php";?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,9 +8,8 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Appointment Request</title>
+  <title>Vehicle</title>
   <link rel="icon" href="images/Logo.png">
-    
   <!-- plugins:css -->
   <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
@@ -25,10 +23,6 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
   <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
-  <script src="js/jquery.js"></script>s
-  <script src="js/script.js"></script>
-  <script src="js/makeseries.js"></script>
-
 </head>
 
 <body>
@@ -37,8 +31,8 @@
     <?php include "includes/navbar.php";?>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-    <!-- partial:partials/_sidebar.html -->
-    
+      <!-- partial:partials/_sidebar.html -->
+        
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav" style="position:fixed;">
         <hr class="style2">
@@ -69,7 +63,7 @@
                   <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointment</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" style="font-size:14px;">Administrators</a>
+                  <a class="nav-link" href="administratormanagement.php" style="font-size:14px;">Administrators</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="makeseriesmanagement.php" style="font-size:14px;">Make Series</a>
@@ -78,10 +72,10 @@
                   <a class="nav-link" href="sparepartsmanagement.php" style="font-size:14px;">Spare Parts</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" style="font-size:14px;">Services</a>
+                  <a class="nav-link" href="servicesmanagement.php" style="font-size:14px;">Services</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" style="font-size:14px;">Scope of Work</a>
+                  <a class="nav-link" href="scopeofworkmanagement.php" style="font-size:14px;">Scope of Work</a>
                 </li>
               </ul>
             </div>
@@ -128,13 +122,29 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+
           <div class="row">
-            
-            <div class="col-lg-12 stretch-card">
+            <div class="col-lg-12 grid-margin  stretch-card">
+              <div class="card">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="dashboard.php" style="font-size:18px;">Date Entry</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" style="font-size:18px;">Appointments</li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">   
+              <div class="col-lg-12 stretch-card">
               <div class="card">
                 <div class="card-body">
+                    
                   <p class="card-title" style="font-size:20px;">Appointments</p>
                   Create appointment
+                  <br>
+                 <br>
                   <div class="form-group">
                  <select name="make" id="make" class="form-control action" onclick="myFunction()">
                   <option value="">Select Make</option>
@@ -162,40 +172,49 @@
   </div>
   <!-- container-scroller -->
 
+  <!-- plugins:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <script src="vendors/js/vendor.bundle.addons.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page-->
+  <!-- End plugin js for this page-->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/misc.js"></script>
+  <!-- endinject -->
+  <!-- Custom js for this page-->
+  <script src="js/dashboard.js"></script>
+  <!-- End custom js for this page-->
+
+  <script src="js/jquery.dataTables.js"></script>
+  <script src="js/dataTables.bootstrap4.js"></script>
+  <script src="js/sb-admin-datatables.min.js"></script>
 
   
+     
 </body>
 
 </html>
 
-
-<!-- <script>
-$('form.ajax').on('submit', function(){
-    var that = $(this),
-        url = that.attr('action'),
-        type = that.attr('method'),
-        data = {};
-
-    that.find('[name]').each(function(index, value){
-        var that = $(this),
-            name = that.attr('name'),
-            value = that.val();
-
-        data[name] = value;
-    });
-
-    $.ajax({
-        url: url,
-        type: type,
-        data: data,
-        success: function(response){
-            console.log(response);
-        }
-
-    });
-
-    return false;
+<script>
+  var table = $('#doctables').DataTable({
+    // PAGELENGTH OPTIONS
+    "lengthMenu": [[ 10, 25, 50, 100, -1], [ 10, 25, 50, 100, "All"]]
 
 });
-<<<<<<< HEAD
-</script> -->
+</script>
+
+<script>
+  var check = function() {
+  if (document.getElementById('password').value ==
+    document.getElementById('confirm_password').value) {
+    document.getElementById('message').style.color = 'green';
+    document.getElementById('message').innerHTML = 'matching';
+    $('#Submit').prop('disabled',false);
+  } else {
+    document.getElementById('message').style.color = 'red';
+    document.getElementById('message').innerHTML = 'not matching';
+    $('#Submit').prop('disabled',true);
+    }
+  }
+</script>

@@ -66,7 +66,7 @@ $Name = $_SESSION['Name'];
                   <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointment</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" style="font-size:14px;">Administrators</a>
+                  <a class="nav-link" href="administratormanagement.php" style="font-size:14px;">Administrators</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="makeseriesmanagement.php" style="font-size:14px;">Make Series</a>
@@ -75,10 +75,10 @@ $Name = $_SESSION['Name'];
                   <a class="nav-link" href="sparepartsmanagement.php" style="font-size:14px;">Spare Parts</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" style="font-size:14px;">Services</a>
+                  <a class="nav-link" href="servicesmanagement.php" style="font-size:14px;">Services</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" style="font-size:14px;">Scope of Work</a>
+                  <a class="nav-link" href="scopeofworkmanagement.php" style="font-size:14px;">Scope of Work</a>
                 </li>
               </ul>
             </div>
