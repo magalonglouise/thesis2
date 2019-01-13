@@ -70,7 +70,7 @@
                   <a class="nav-link" href="makeseriesmanagement.php" style="font-size:14px;">Make Series</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" style="font-size:14px;">Spare Parts</a>
+                  <a class="nav-link" href="sparepartsmanagement.php" style="font-size:14px;">Spare Parts</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#" style="font-size:14px;">Services</a>
@@ -149,7 +149,7 @@
                             </p>
                         </div>
                         <div class="col-1">
-                            <button type="button" class="btn btn-darkred" style="padding-button: 10px; float: right; width: 145px;" data-toggle="modal" data-target="#addMakeSeries"><i class="menu-icon mdi mdi-account-multiple-plus"></i>
+                            <button type="button" class="btn btn-darkred" style="padding-button: 10px; float: right; width: 208px;" data-toggle="modal" data-target="#addMakeSeries"><i class="menu-icon mdi mdi-account-multiple-plus"></i>
                                 Add Make and Series
                             </button>
                               <!--MODAL-->
@@ -191,13 +191,13 @@
                   <table class="table table-bordered table-dark" id="doctables">
                       <thead>
                         <tr class="grid">
-                          <th style="font-size:15px;">
+                          <th style="font-size:18px;">
                             Make
                           </th>
-                          <th style="font-size:15px;">
+                          <th style="font-size:18px;">
                             Series
                           </th>
-                          <th style="font-size:15px;">
+                          <th style="font-size:18px;">
                             Action
                           </th>
                         </tr>
@@ -211,9 +211,10 @@
                             echo '<tr>
                                         <td>'.$row['make'].'</td>
                                         <td>'.$row['series'].'</td>
-                           <td>
-                                          <button type="submit" class="btn btn-success"  data-toggle="modal"  data-target="#updateMakeSeries'.$row['id'].'"><i class="menu-icon mdi mdi-eye-outline"></i>Edit</button>
-                                           <a href="deleteMakeSeries.php?id='.$row['id'].'"><button class="btn btn-primary"><i class="menu-icon mdi mdi-eye-outline"></i>Delete</button></a>
+                                        <td class="text-center">
+                                          <button type="submit" class="btn btn-success"  data-toggle="modal"  data-target="#updateMakeSeries'.$row['id'].'"><i class="menu-icon mdi mdi-account-edit"></i>  Edit</button>
+                                          
+                                           <a href="deleteMakeSeries.php?id='.$row['id'].'"><button class="btn btn-danger"><i class="menu-icon mdi mdi-delete"></i> Delete</button></a>
                                           </td>
                               </tr>
 
@@ -229,6 +230,7 @@
                               </button>
                             </div>
                             <div class="modal-body">
+                            
                             <!-- start -->
                             <form action="makeseriesmanagement.php" method="POST">
                               <div class="row">
@@ -239,6 +241,7 @@
                                   </div>
                                 </div>
                               </div>
+                              
                               <div class="row">
                                 <div class="col-md-6">
                                   <div class="form-group">
@@ -248,7 +251,8 @@
                                   </div>
                               </div>
                             </div>
-                              <!-- end -->
+                            <!-- end -->
+                              
                               </div>
                               <div class="modal-footer">
                                   <button type="submit" class="btn btn-success" name="update-makeseries" style="float:right"><i class="menu-icon mdi mdi-account-convert"></i> Update</button>

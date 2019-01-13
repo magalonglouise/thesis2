@@ -89,7 +89,7 @@
                   <a class="nav-link" href="makeseriesmanagement.php" style="font-size:14px;">Make Series</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#" style="font-size:14px;">Spare Parts</a>
+                  <a class="nav-link" href="sparepartsmanagement.php" style="font-size:14px;">Spare Parts</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#" style="font-size:14px;">Services</a>
