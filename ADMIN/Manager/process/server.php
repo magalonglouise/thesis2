@@ -9,9 +9,15 @@ if(isset($_POST['command1'])){
   }else{
     $message = "";
   }
+if(isset($_POST['color'])){
+    $color = $connection->real_escape_string($_POST["color"]);
+  }else{
+    $color = "";
+  }
+
 
   if($action=='accept'){
-    $actions_command = $connection->prepare("UPDATE `appointments` SET `status` = 'Accepted', `modified` = now() WHERE `appointments`.`id` = $id;");
+   $actions_command = $connection->prepare("UPDATE `appointments` SET `status` = 'Accepted', `modified` = now(), `color` = '$color' WHERE `appointments`.`id` = $id;");
   }else{
     if($action=='deny'){
       $actions_command = $connection->prepare("UPDATE `appointments` SET `status` = 'Reschedule', `modified` = now() WHERE `appointments`.`id` =  $id");

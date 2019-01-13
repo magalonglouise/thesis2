@@ -128,14 +128,15 @@
                             <th style="font-size:15px;">Customer Name</th>
                             <th style="font-size:15px;">Plate Number</th>
                             <th style="font-size:15px;">Status</th>
-                            <th style="font-size:15px;">Date</th>
+                            <th style="font-size:15px;">Date Sent</th>
+                            <th>Date of Appointment Request</th>
                             <th style="font-size:15px;" class="text-center">Action</th>
                         </tr>
                       </thead>
                       <tbody class="table-primary" style="color:black;">
                       <?php
                         $data = $connection->prepare("SELECT appointments.id as 'ID',concat(firstName,' ',middleName,' ',lastName) as 'Name',make,series,
-                        yearModel,plateNumber,appointments.status,date, appointments.additionalMessage as 'message', appointments.serviceId as 'service' from appointments join personalinfo on appointments.personalId
+                        yearModel,plateNumber,appointments.status,date, appointments.created as 'created', appointments.additionalMessage as 'message', appointments.serviceId as 'service' from appointments join personalinfo on appointments.personalId
                         = personalinfo.personalId join vehicles on appointments.vehicleId = vehicles.id where appointments.status = 'Overdue'");
                         if($data->execute()){
                             $values = $data->get_result();
@@ -143,12 +144,17 @@
                             $dateTime = $row['date'];
                             $dateTimeSplit = explode(" ",$dateTime);
                             $date = $dateTimeSplit[0];
+                                
+                             $dateTime2 = $row['created'];
+                            $dateTimeSplit2 = explode(" ",$dateTime2);
+                            $date2 = $dateTimeSplit2[0];
                             echo '
                                 <tr>
                                 <td>'.$row['Name'].'</td>
-                                <td>'.$row['plateNumber'].'</td>
+                               <td><a href ="viewvehicle.php?plate='.$row['plateNumber'].'" style="color:black">'.$row['plateNumber'].'</a></td>
                                 <td>'.$row['status'].'</td>
-                                <td>'; echo date('M d, Y',strtotime($date)); echo '</td>
+                                  <td>'; echo date('M d, Y',strtotime($date2)); echo '</td>
+                                 <td><a href = "basis2.php?date='.$row['date'].'" style="color:black;">'; echo date('M d, Y',strtotime($date)); echo '</a></td>
                                 <td class="text-center">
                                 
                                   <div class="row">

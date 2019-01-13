@@ -36,7 +36,7 @@
     <!-- partial:partials/_sidebar.html -->
     
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav" style="position:fixed;">
+        <ul class="nav">
         <hr class="style2">
             
           <li class="nav-item">
@@ -48,7 +48,7 @@
             
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-inbox"></i>
+              <i class="menu-icon mdi mdi-content-copy"></i>
               <span class="menu-title" style="font-size:14px;">Appointment</span>
               <i class="menu-arrow"></i>
             </a>
@@ -60,6 +60,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="overdue.php" style="font-size:14px;">Overdue</a>
                 </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
+                </li> -->
               </ul>
             </div>
           </li>
@@ -99,13 +102,6 @@
             </a>
           </li>
             
-          <li class="nav-item">
-            <a class="nav-link" href="sparepartsmanagement.php">
-              <i class="menu-icon mdi mdi-wrench"></i>
-              <span class="menu-title" style="font-size:14px;">Spare Parts</span>
-            </a>
-          </li>
-            
         </ul>
       </nav>
 
@@ -119,7 +115,7 @@
                 <div class="card-body">
                   <p class="card-title" style="font-size:20px;">Appointments</p>
                   <p class="card-description">
-                    List of Appointment Request
+                   
                   </p>
                     
                   <div class="table-responsive">
@@ -129,8 +125,8 @@
                             <th>Name</th>
                             <th>Plate Number</th>
                             <th>Status</th>
-                            <th>Date of Request</th>
-                            <th>Date of Appointment</th>
+                            <th>Date Sent</th>
+                            <th>Date of Appointment Request</th>
                             <th style="font-size:15px;" class="text-center">Action</th>
                         </tr>
                       </thead>
@@ -151,13 +147,15 @@
                             $dateTime2 = $row['created'];
                             $dateTimeSplit2 = explode(" ",$dateTime2);
                             $date2 = $dateTimeSplit2[0];
+                                
+                            
                             echo '
                                 <tr>
                                 <td>'.$row['Name'].'</td>
-                                <td>'.$row['plateNumber'].'</td>
+                                <td><a href ="viewvehicle.php?plate='.$row['plateNumber'].'" style="color:black">'.$row['plateNumber'].'</a></td>
                                 <td>'.$row['status'].'</td>
                                 <td>'; echo date('M d, Y',strtotime($date2)); echo '</td>
-                                <td>'; echo date('M d, Y',strtotime($date)); echo '</td>
+                                <td><a href = "basis2.php?date='.$row['date'].'" style="color:black;">'; echo date('M d, Y',strtotime($date)); echo '</a></td>
                                 <td class="text-center">
                                 
                                   <div class="row">';
@@ -217,7 +215,9 @@
                                           <div class="col-6">
                                             <h4 class="card-title">'.$row['Name'].'</h4>
                                           </div>
+                                          
                                         </div>
+                                        
                                         <div class="row">
                                           <div class="col-6">
                                             <h4 class="card-title">Plate Number:</h4>                                            
@@ -234,6 +234,8 @@
                                             <h4 class="card-title">'.$row['status'].'</h4>
                                           </div>
                                         </div>
+                                        
+                                        
                                         <div class="row">
                                           <div class="col-6">
                                             <h4 class="card-title">Services:</h4>                                            
@@ -247,11 +249,33 @@
                                             echo'
                                             </h4>
                                           </div>
+                                          
                                         </div>
+                                        <form action="process/server.php" method="post">
+                                         <div class="row">
+                                          <div class="col-6">
+                                            <h4 class="card-title">Color:</h4>                      
+                                          </div>
+                                          <div class="col-6">     
+                                              <select name="color" class="form-control" id="color">
+                                                  <option value="">Choose</option>
+                                                  <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
+                                                  <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
+                                                  <option style="color:#008000;" value="#008000">&#9724; Green</option>						  
+                                                  <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
+                                                  <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
+                                                  <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
+                                                  <option style="color:#000;" value="#000">&#9724; Black</option>
+                                                </select>
+                                              </div>
+                                        </div>
+                                        
                                        
-                                          <div class="form-group row">
-                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Date</label>
-                                            <div class="col-sm-9">
+                                          <div class="row">
+                                            <div class="col-6">
+                                            <h4 class="card-title">Date:</h4>                      
+                                          </div>
+                                            <div class="col-sm-6">
                                               <input type="text" class="form-control" id="exampleInputEmail2" disabled value="'; echo date('M d, Y',strtotime($date)); echo ' ">
                                             </div>
                                           </div>
@@ -259,7 +283,7 @@
                                       </div>
 
                                       <div class="modal-footer" >
-                                        <form action="process/server.php" method="post">
+                                        
                                             <input type="hidden" name="command1" value="accept">
                                             <input type="hidden" name="id1" value="'.$row['ID'].'">
                                           <button class="btn btn-success" type="submit" name="commands1" style="margin-top: 5px; width: 145px; color:white;"><i class="menu-icon mdi mdi-checkbox-marked-outline"></i>
