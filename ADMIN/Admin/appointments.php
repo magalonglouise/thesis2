@@ -39,7 +39,7 @@
     <div class="container-fluid page-body-wrapper">
     <!-- partial:partials/_sidebar.html -->
     
-    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav" style="position:fixed;">
         <hr class="style2">
             
@@ -87,6 +87,20 @@
             </div>
           </li>
             
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="dailytaskform.php">
+              <i class="menu-icon mdi mdi-file"></i>
+              <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link"  href="chargeinvoice.php">
+              <i class="menu-icon mdi mdi-receipt"></i>
+              <span class="menu-title" style="font-size:14px;">Charge Invoice</span>
+            </a>
+          </li> -->
+            
           <li class="nav-item">
             <a class="nav-link" href="accountmanagement.php">
               <i class="menu-icon mdi mdi-account-multiple"></i>
@@ -98,6 +112,13 @@
             <a class="nav-link" href="vehicle.php">
               <i class="menu-icon mdi mdi-car-side"></i>
               <span class="menu-title" style="font-size:14px;">Vehicle</span>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="CM.php">
+              <i class="menu-icon mdi mdi-file-document"></i>
+              <span class="menu-title" style="font-size:14px;">Content Management</span>
             </a>
           </li>
             

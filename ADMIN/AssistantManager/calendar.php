@@ -1,4 +1,4 @@
-9<?php require 'process/require/auth.php';
+<?php require 'process/require/auth.php';
 require_once('bdd.php');
 require "process/check/dashboardcheck.php"; 
 
@@ -12,7 +12,6 @@ $events = $req->fetchAll();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -26,101 +25,97 @@ $events = $req->fetchAll();
 <title>Calendar</title>
 <link rel="icon" href="images/Logo.png">
 
+<link rel="stylesheet" href="css/calendar.css">
 <link rel="stylesheet" href="css/style.css">
-    
 <link rel="shortcut icon" href="images/favicon.png" />
 <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
 <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
 
 	
-<!-- FullCalendar -->
-<link href='css/fullcalendar.css' rel='stylesheet' />
+	<!-- FullCalendar -->
+	<link href='css/fullcalendar.css' rel='stylesheet' />
 
-<!-- Custom CSS -->
-<style>
-
-#calendar {
-    max-width: 2000px;
-}
-.col-centered{whiteoat: none;
-    margin: 0 auto;
-}
-</style>
-    
-</head>
+    <!-- Custom CSS -->
+    <style>
+   
+	#calendar {
+		max-width: 2000px;
+	}
+	.col-centered{whiteoat: none;
+		margin: 0 auto;
+	}
+    </style>
+    </head>
 <body>
     <div class="container-scroller">
         <?php include "includes/navbar.php";?>
         <div class="container-fluid page-body-wrapper">
-         <nav class="sidebar sidebar-offcanvas" id="sidebar">
-            <ul class="nav" style="position:fixed;">
-            <hr class="style2">
+       <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav" style="position:fixed;">
+        <hr class="style2">
+            
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard.php">
+              <i class="menu-icon mdi mdi-view-dashboard"></i>
+              <span class="menu-title" style="font-size:14px;">Dashboard</span>
+            </a>
+          </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+              <i class="menu-icon mdi mdi-inbox"></i>
+              <span class="menu-title" style="font-size:14px;">Appointment</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="appointments.php" style="font-size:14px;">Request</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="overdue.php" style="font-size:14px;">Overdue</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" href="calendar.php">
+              <i class="menu-icon mdi mdi-calendar"></i>
+              <span class="menu-title" style="font-size:14px;">Calendar</span>
+            </a>
+          </li>
+            
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="dailytaskform.php">
+              <i class="menu-icon mdi mdi-file"></i>
+              <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
+            </a>
+          </li> -->
 
-              <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">
-                  <i class="menu-icon mdi mdi-view-dashboard"></i>
-                  <span class="menu-title" style="font-size:14px;">Dashboard</span>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                  <i class="menu-icon mdi mdi-inbox"></i>
-                  <span class="menu-title" style="font-size:14px;">Request</span>
-                  <i class="menu-arrow"></i>
-                </a>
-                <div class="collapse" id="ui-basic">
-                  <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                      <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointments</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="overdue.php" style="font-size:14px;">Overdue</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                      <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
-                    </li> -->
-                  </ul>
-                </div>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="calendar.php">
-                  <i class="menu-icon mdi mdi-calendar"></i>
-                  <span class="menu-title" style="font-size:14px;">Calendar</span>
-                </a>
-              </li>
-             
-              <!-- <li class="nav-item">
-                <a class="nav-link" href="dailytaskform.php">
-                  <i class="menu-icon mdi mdi-file"></i>
-                  <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
-                </a>
-              </li> -->
-
-            <li class="nav-item">
-              <a class="nav-link"  href="chargeinvoice.php">
-                <i class="menu-icon mdi mdi-receipt"></i>
-                <span class="menu-title" style="font-size:14px;">Sales Invoice</span>
-              </a>
-            </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="accountmanagement.php">
-                  <i class="menu-icon mdi mdi-account-multiple"></i>
-                  <span class="menu-title" style="font-size:14px;">Account Management</span>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="vehicle.php">
-                  <i class="menu-icon mdi mdi-car-side"></i>
-                  <span class="menu-title" style="font-size:14px;">Vehicle</span>
-                </a>
-              </li>
-
-            </ul>
-          </nav>
+          <li class="nav-item">
+            <a class="nav-link"  href="chargeinvoice.php">
+              <i class="menu-icon mdi mdi-receipt"></i>
+              <span class="menu-title" style="font-size:14px;">Sales Invoice</span>
+            </a>
+          </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" href="accountmanagement.php">
+              <i class="menu-icon mdi mdi-account-multiple"></i>
+              <span class="menu-title" style="font-size:14px;">Account Management</span>
+            </a>
+          </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" href="vehicle.php">
+              <i class="menu-icon mdi mdi-car-side"></i>
+              <span class="menu-title" style="font-size:14px;">Vehicle</span>
+            </a>
+          </li>
+            
+        </ul>
+      </nav>
         
         
         <!-- partial -->

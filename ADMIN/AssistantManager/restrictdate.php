@@ -202,18 +202,17 @@
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
     
-  <script src="js/jquery.dataTables.js"></script>
-  <script src="js/dataTables.bootstrap4.js"></script>
-  <script src="js/sb-admin-datatables.min.js"></script>
-   <script src="js/script.js"></script>
-    
 <script>
   var table = $('#doctables').DataTable({
     // PAGELENGTH OPTIONS
-    "lengthMenu": [[ 5, 10, 25, 50, -1], [ 5, 10, 25, 50, "All"]]
+    "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]]
 
 });
 </script>
+    
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script type="text/javascript" src="js/calendar.js"></script>
+<script type="text/javascript" src="js/events.js"></script>  
     
        
 </body>

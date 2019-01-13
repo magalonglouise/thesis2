@@ -149,7 +149,7 @@
                 <div class="card-body">
                   <p class="card-title" style="font-size:20px; float:left;"><?php echo date('F j, Y',strtotime($row['date'])); ?></p>
                     <?php
-                        if ($row['targetEndDate'] == null){
+                        if ($row['targetEndDate'] == $row['date']){
                     ?>
                     <form method = "post" action="addenddate.php?id=<?php echo $id;?>">      
                         <p class="card-title" style="font-size:20px; float:right;" >Target End Date : <input type ="date" name="enddate" style="border-style: groove; border-radius: 5px; border-color:#f2f2f2"> <button class="btn btn-primary" type="submit" name="submit"><i class="menu-icon mdi mdi-checkbox-multiple-marked-circle-outline"></i> Submit</button></p></form>

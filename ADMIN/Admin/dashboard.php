@@ -125,7 +125,7 @@
 
           <li class="nav-item">
             <a class="nav-link" href="CM.php">
-              <i class="menu-icon mdi mdi-car-side"></i>
+              <i class="menu-icon mdi mdi-file-document"></i>
               <span class="menu-title" style="font-size:14px;">Content Management</span>
             </a>
           </li>
@@ -399,7 +399,7 @@
   <script src="js/sb-admin-datatables.min.js"></script>
   <script src="js/script.js"></script> 
     
-    <script>
+<script>
   var table = $('#doctables').DataTable({
     // PAGELENGTH OPTIONS
     "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]]
