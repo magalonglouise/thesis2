@@ -301,7 +301,7 @@ if(!isset($_GET['id'])){
                               <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                   <div class="modal-content">
-                                    <div class="modal-header">
+                                    <div class="modal-header" style="background-color: #308ee0; color: white; border: 3px solid #308ee0;">
                                       <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -322,8 +322,11 @@ if(!isset($_GET['id'])){
                                     <div class="modal-footer">
                                       <input type="hidden" value="'.$id.'" name="per-id">
                                       <input type="hidden" value="'.$user.'" name="user-id">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                      <button type="submit" name="changePass" class="btn btn-primary">Save changes</button>
+                                      
+                                      <button type="submit" name="changePass" class="btn btn-primary"><i class="menu-icon mdi mdi-lock-reset"></i>Save changes</button>
+                                      
+                                      <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="menu-icon mdi mdi-close"></i>Close</button>
+                                      
                                     </div>
                                     </form>
                                   </div>
