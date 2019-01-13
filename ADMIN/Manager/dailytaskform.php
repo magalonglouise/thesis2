@@ -35,7 +35,7 @@
     <!-- partial:partials/_sidebar.html -->
         
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav" style="position:fixed; width:16.8%;">
+        <ul class="nav" style="position:fixed; width:256px;">
         <hr class="style2">
             
           <li class="nav-item">
@@ -92,6 +92,16 @@
               <span class="menu-title" style="font-size:14px;">Vehicle</span>
             </a>
           </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" href="servicesmanagement.php">
+              <i class="menu-icon mdi mdi-wrench"></i>
+              <span class="menu-title" style="font-size:14px;">Services</span>
+            </a>
+          </li>
+            
+            
+            
             
         </ul>
       </nav>

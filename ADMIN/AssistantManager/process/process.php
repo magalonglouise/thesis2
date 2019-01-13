@@ -81,4 +81,33 @@
   	}
   }
 
+    //add spare parts
+    if (isset($_POST['add_spareparts'])) {
+    $name = $_POST['name'];
+    $price = $_POST['price'];
+    $query = "INSERT INTO spareparts (name, price) 
+            VALUES ('$name','$price')";
+    $result = mysqli_query($db, $query);
+    header('location: sparepartsmanagement.php?success=done');
+    exit(); 
+    }
+
+      //edit spare parts
+  if(isset($_POST["update-spareparts"])){
+  $name = $connection->real_escape_string($_POST["name"]);
+  $price = $connection->real_escape_string($_POST["price"]);
+  $id = $connection->real_escape_string($_POST["id"]);
+  $modified = date('now');
+  $update = $connection->prepare("UPDATE `spareparts` SET `name`= ?,`price`= ?, `modified` = ? WHERE `id`  = ?");
+
+  $update->bind_param("ssis",$name,$price,$id,$modified);
+  if($update->execute()){ 
+    header("Location: sparepartsmanagement.php?id=$id");
+    echo "Gumana";
+  }else{  
+    header("Location: ../error.php");
+    exit();
+  }
+}
+
 ?>

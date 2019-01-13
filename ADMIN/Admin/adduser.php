@@ -177,12 +177,6 @@
                                               <input type="text" class="form-control" name="last" required>
                                             </div>
                                           </div>
-                                          <div class="col-md-6">
-                                            <div class="form-group">
-                                              <label class="bmd-label-floating">Suffix</label>
-                                              <input type="text" class="form-control" name="suffix">
-                                            </div>
-                                          </div>
                                         </div>
                                         <div class="row">
                                           <div class="col-md-12">

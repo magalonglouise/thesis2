@@ -95,6 +95,13 @@ $spareparts = $stmt2->fetchAll();
               <span class="menu-title" style="font-size:14px;">Calendar</span>
             </a>
           </li>
+            
+          <!-- <li class="nav-item">
+            <a class="nav-link" href="dailytaskform.php">
+              <i class="menu-icon mdi mdi-file"></i>
+              <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
+            </a>
+          </li> -->
 
           <li class="nav-item">
             <a class="nav-link"  href="chargeinvoice.php">
@@ -114,6 +121,13 @@ $spareparts = $stmt2->fetchAll();
             <a class="nav-link" href="vehicle.php">
               <i class="menu-icon mdi mdi-car-side"></i>
               <span class="menu-title" style="font-size:14px;">Vehicle</span>
+            </a>
+          </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" href="sparepartsmanagement.php">
+              <i class="menu-icon mdi mdi-wrench"></i>
+              <span class="menu-title" style="font-size:14px;">Spare Parts</span>
             </a>
           </li>
             

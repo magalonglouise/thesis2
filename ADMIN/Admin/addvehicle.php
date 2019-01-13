@@ -135,7 +135,7 @@
                                               <div class="col-md-6">
                                                 <div class="form-group">
                                                   <label class="bmd-label-floating">Plate Number</label>
-                                                  <input type="text" class="form-control" name="plateNumber" pattern="[A-Z]{3}-[0-9]{3}" required>
+                                                  <input type="text" class="form-control" name="plateNumber" required>
                                                 </div>
                                               </div>
                                               <div class="col-md-6">

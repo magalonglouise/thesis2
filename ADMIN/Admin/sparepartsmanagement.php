@@ -128,7 +128,8 @@
               <div class="card">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="accountmanagement.php" style="font-size:18px;">Spare Parts Management</a></li>
+                  <li class="breadcrumb-item"><a href="dashboard.php" style="font-size:18px;">Date Entry</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" style="font-size:18px;">Spare Parts</li>
                   </ol>
                 </nav>
               </div>
@@ -136,58 +137,60 @@
           </div>
 
           <div class="row">
-            
             <div class="col-lg-12 stretch-card">
               <div class="card">
                 <div class="card-body">
 
                     <div class="row">
-                        <div class="col-11">
+                        <div class="col-9">
                             <p class="card-title" style="font-size:20px;">Spare Parts</p>
                             <p class="card-description">
                             </p>
                         </div>
-                        <div class="col-1">
-                            <button type="button" class="btn btn-darkred" style="padding-button: 10px; float: right; width: 205px;" data-toggle="modal" data-target="#addSpareParts"><i class="menu-icon mdi mdi-account-multiple-plus"></i>
-                                Add Spare Parts
-                            </button>
-                              <!--MODAL-->
-                            <div class="modal fade" id="addSpareParts" role="dialog">
-                              <div class="modal-dialog">
-                                <!-- Modal content-->
-                                <div class="modal-content">
-                                  <div class="modal-header" style="background-color:#B80011; color: #ffffff;">
-                                      
-                                    <h5 class="modal-title"><i class="fa fa-car" aria-hidden="true"></i> Add Spare Parts</h5>
-                                      
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                      
-                                  </div>
-                                  <div class="modal-body">
-                                  <form action="makeseriesmanagement.php" method="post">
-                                  <small id="reminder" class="form-text text-muted">Please fill out the required fields.</small>
-                                 <br>
-                                  <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" class="form-control input-xs" id="name"  placeholder="name" name="name"
-                                    required="">
-                                  </div>
-                                  <div class="form-group">
-                                    <label for="Price">Price</label>
-                                    <input type="text" class="form-control input-xs" id="price"  placeholder="price" name="price"
-                                    required="">
-                                  </div>
-                                  </div>
-                                  <div class="modal-footer">
-                                      
-                                    <button type="submit" class="btn btn-sm " name="add_spareparts" style="background-color: #B80011;color: white"><i class="menu-icon mdi mdi-account-multiple-plus"></i> Add </button>
-                                      
-                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="color:black;"><i class="menu-icon mdi mdi-close"></i> Cancel</button>
-                                  </div>
-      </div>
-      </form>
-      </div>
-                        </div>
+                        <div class="col-3">
+                            
+                                <button type="button" class="btn btn-darkred" style="padding-button: 10px; float: right; width: 205px;" data-toggle="modal" data-target="#addSpareParts"><i class="menu-icon mdi mdi-account-multiple-plus"></i>
+                                    Add Spare Parts
+                                </button>
+
+                                  <!--MODAL-->
+                                <div class="modal fade" id="addSpareParts" role="dialog">
+                                  <div class="modal-dialog">
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        
+                                      <div class="modal-header" style="background-color:#B80011; color: #ffffff;">
+                                        <h5 class="modal-title"><i class="fa fa-car" aria-hidden="true"></i> Add Spare Parts</h5>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      </div>
+                                        
+                                      <div class="modal-body">
+                                        <form action="makeseriesmanagement.php" method="post">
+                                              <small id="reminder" class="form-text text-muted">Please fill out the required fields.</small>
+                                             <br>
+                                              <div class="form-group">
+                                                <label for="name">Name</label>
+                                                <input type="text" class="form-control input-xs" id="name"  placeholder="name" name="name"
+                                                required="">
+                                              </div>
+                                              <div class="form-group">
+                                                <label for="Price">Price</label>
+                                                <input type="text" class="form-control input-xs" id="price"  placeholder="price" name="price"
+                                                required="">
+                                              </div>
+                                        </form>
+                                      </div>
+                                        
+                                      <div class="modal-footer">
+
+                                        <button type="submit" class="btn btn-sm " name="add_spareparts" style="background-color: #B80011;color: white"><i class="menu-icon mdi mdi-account-multiple-plus"></i> Add </button>
+
+                                        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="color:black;"><i class="menu-icon mdi mdi-close"></i> Cancel</button>
+                                      </div>
+                              </div>
+                              
+                              </div>
+                            </div>
                     </div>
                     
                   
@@ -294,9 +297,6 @@
     </div>
     <!-- page-body-wrapper ends -->
   </div>
-
-  <!-- Modal -->
-  
   <!-- container-scroller -->
 
   <!-- plugins:js -->
@@ -318,6 +318,9 @@
   <script src="js/sb-admin-datatables.min.js"></script>
    <script src="js/script.js"></script>
   <!-- AJAX Link -->
+ </body>
+</html>     
+      
  <script>
 $(document).ready(function(){
   $("#submit").click(function(){
@@ -347,7 +350,7 @@ $(document).ready(function(){
   }); 
 });
 </script>
-</body>
+      
 
 
 
@@ -361,4 +364,3 @@ $(document).ready(function(){
 </script>
 
 <script></script>
-</html>

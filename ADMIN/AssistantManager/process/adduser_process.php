@@ -8,23 +8,22 @@ if(isset($_POST["submit-user"])){
   $first = $connection->real_escape_string($_POST["first"]);
   $middle = $connection->real_escape_string($_POST["middle"]);
   $last = $connection->real_escape_string($_POST["last"]);
-  $suffix = $connection->real_escape_string($_POST["suffix"]);
   $address = $connection->real_escape_string($_POST["address"]);
   $email = $connection->real_escape_string($_POST["email"]);
   $mobile = $connection->real_escape_string($_POST["mobile"]);
   $telephone = $connection->real_escape_string($_POST["telephone"]);
 
-  // echo $first,", ", $middle,", ", $last, ", ",$suffix,", ", $address,", ", $email,", ", $mobile,", ", $telephone;
+   echo $first,", ", $middle,", ", $last, ", ", $address,", ", $email,", ", $mobile,", ", $telephone;
 
-  $adduser = $connection->prepare("INSERT INTO `personalinfo`(`firstName`, `lastName`, `middleName`, `suffix`, `address`, 
-  `mobileNumber`, `telephoneNumber`, `email`) VALUES (?,?,?,?,?,?,?,?);");
-  
-
-  $adduser->bind_param("ssssssss", $first, $last, $middle, $suffix, $address, $mobile, $telephone, $email);
+  $adduser = $connection->prepare("INSERT INTO `personalinfo`( `firstName`, `lastName`, `middleName`, `address`, 
+  `mobileNumber`, `telephoneNumber`, `email`) VALUES (?,?,?,?,?,?,?);");
+  $adduser->bind_param("sssssss", $first, $last, $middle, $address, $mobile, $telephone, $email);
   if($adduser->execute()){ 
+    echo "gumana";
     $_SESSION['user_id'] = $adduser->insert_id;
     header("Location: ../addvehicle.php");
   }else{
+    echo "mali";
     header("Location: ../error.php");
     exit();
   }

@@ -70,17 +70,17 @@
             </a>
           </li>
             
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="dailytaskform.php">
               <i class="menu-icon mdi mdi-file"></i>
               <span class="menu-title" style="font-size:14px;">Daily Task Form</span>
             </a>
-          </li>
+          </li> -->
 
           <li class="nav-item">
             <a class="nav-link"  href="chargeinvoice.php">
               <i class="menu-icon mdi mdi-receipt"></i>
-              <span class="menu-title" style="font-size:14px;">Charge Invoice</span>
+              <span class="menu-title" style="font-size:14px;">Sales Invoice</span>
             </a>
           </li>
             
@@ -95,6 +95,13 @@
             <a class="nav-link" href="vehicle.php">
               <i class="menu-icon mdi mdi-car-side"></i>
               <span class="menu-title" style="font-size:14px;">Vehicle</span>
+            </a>
+          </li>
+            
+          <li class="nav-item">
+            <a class="nav-link" href="sparepartsmanagement.php">
+              <i class="menu-icon mdi mdi-wrench"></i>
+              <span class="menu-title" style="font-size:14px;">Spare Parts</span>
             </a>
           </li>
             
@@ -116,7 +123,7 @@
                                               <div class="col-md-6">
                                                 <div class="form-group">
                                                   <label class="bmd-label-floating">Plate Number</label>
-                                                  <input type="text" class="form-control" name="plateNumber" pattern="[A-Z]{3}-[0-9]{3}" required>
+                                                  <input type="text" class="form-control" name="plateNumber" required>
                                                 </div>
                                               </div>
                                               <div class="col-md-6">

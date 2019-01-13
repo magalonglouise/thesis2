@@ -98,6 +98,13 @@
             </a>
           </li>
             
+          <li class="nav-item">
+            <a class="nav-link" href="sparepartsmanagement.php">
+              <i class="menu-icon mdi mdi-wrench"></i>
+              <span class="menu-title" style="font-size:14px;">Spare Parts</span>
+            </a>
+          </li>
+            
         </ul>
       </nav>
       

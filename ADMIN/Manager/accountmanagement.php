@@ -94,6 +94,16 @@
             </a>
           </li>
             
+          <li class="nav-item">
+            <a class="nav-link" href="servicesmanagement.php">
+              <i class="menu-icon mdi mdi-wrench"></i>
+              <span class="menu-title" style="font-size:14px;">Services</span>
+            </a>
+          </li>
+            
+            
+            
+            
         </ul>
       </nav>
         

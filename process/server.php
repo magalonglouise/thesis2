@@ -113,7 +113,7 @@ if (isset($_POST['login_user'])) {
     </div>';
     $error++;
   }
-    // start here
+
     if(count($errors)== 0){
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $password = mysqli_real_escape_string($db, $_POST['password']);
@@ -171,7 +171,9 @@ if (isset($_POST['login_user'])) {
 
          }
         }
-    }//end here
+    }
+
+  }
 
 
 if (isset($_POST['account_edit'])) { 
