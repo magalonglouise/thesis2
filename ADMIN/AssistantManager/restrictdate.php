@@ -201,6 +201,20 @@
   <!-- Custom js for this page-->
   <script src="js/dashboard.js"></script>
   <!-- End custom js for this page-->
+    
+  <script src="js/jquery.dataTables.js"></script>
+  <script src="js/dataTables.bootstrap4.js"></script>
+  <script src="js/sb-admin-datatables.min.js"></script>
+   <script src="js/script.js"></script>
+    
+<script>
+  var table = $('#doctables').DataTable({
+    // PAGELENGTH OPTIONS
+    "lengthMenu": [[ 5, 10, 25, 50, -1], [ 5, 10, 25, 50, "All"]]
+
+});
+</script>
+    
        
 </body>
 

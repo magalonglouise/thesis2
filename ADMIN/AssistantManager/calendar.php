@@ -1,4 +1,4 @@
-<?php require 'process/require/auth.php';
+9<?php require 'process/require/auth.php';
 require_once('bdd.php');
 require "process/check/dashboardcheck.php"; 
 
@@ -12,6 +12,7 @@ $events = $req->fetchAll();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -26,6 +27,7 @@ $events = $req->fetchAll();
 <link rel="icon" href="images/Logo.png">
 
 <link rel="stylesheet" href="css/style.css">
+    
 <link rel="shortcut icon" href="images/favicon.png" />
 <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
 <link rel="stylesheet" href="vendors/iconfonts/mdi/css/materialdesignicons.min.css">
@@ -38,7 +40,7 @@ $events = $req->fetchAll();
 <style>
 
 #calendar {
-    max-width: 800px;
+    max-width: 2000px;
 }
 .col-centered{whiteoat: none;
     margin: 0 auto;
