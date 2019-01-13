@@ -172,12 +172,14 @@
                     <div class="float-left">
                       <i class="mdi mdi-check-circle text-info icon-lg"></i>
                     </div>
+                    <a href="#UpcomingAppointment" class="smoothScroll" style="color:black;">
                     <div class="float-right">
                       <p class="mb-0 text-right">Vehicles<br>Repaired</p>
                       <div class="fluid-container">
                         <h3 class="font-weight-medium text-right mb-0"><?php echo $box3['count']?></h3>
                       </div>
                     </div>
+                      </a>
                   </div>
                 </div>
               </div>
