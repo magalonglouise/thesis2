@@ -150,6 +150,19 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+            
+        <div class="row">
+            <div class="col-lg-12 grid-margin  stretch-card">
+              <div class="card">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="dashboard.php" style="font-size:18px;">Content Management</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" style="font-size:18px;">Latest Cars</li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
           <?php
           date_default_timezone_set("Asia/Calcutta");
           //echo date_default_timezone_get();
@@ -176,12 +189,6 @@
             }
           ?>
 
-        <div class="col-md-12 col-sm-12">
-          <!-- SECTION TITLE -->
-            <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
-              <h2>Latest Cars</h2>
-            </div>
-          </div>
          <!-- start -->
         <div class="col-lg-6 grid-margin stretch-card">
           <div class="card">
@@ -201,10 +208,10 @@
                 </div>
               </div>
             </div>
-          
-          </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
           </form>
+          </div>
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit"><i class="menu-icon mdi mdi-checkbox-multiple-marked-circle-outline"></i> Submit</button> 
+          
           </div>
 
         </div>
@@ -228,10 +235,10 @@
                 </div>
               </div>
             </div>
-         
+          </form>
           </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-           </form>
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit"><i class="menu-icon mdi mdi-checkbox-multiple-marked-circle-outline"></i> Submit</button> 
+          
           </div>
         </div>
         <!-- end -->
@@ -256,10 +263,10 @@
                 </div>
               </div>
             </div>
-       
+        </form>
           </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-             </form>
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit"><i class="menu-icon mdi mdi-checkbox-multiple-marked-circle-outline"></i> Submit</button> 
+            
           </div>
         </div>
         <!-- end -->

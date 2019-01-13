@@ -291,7 +291,6 @@
         </div>
         <!-- content-wrapper ends -->
         <!-- partial:partials/_footer.html -->
-        <?php include "includes/footer.php";?>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->

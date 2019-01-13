@@ -153,6 +153,21 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
+            
+        <div class="row">
+            <div class="col-lg-12 grid-margin  stretch-card">
+              <div class="card">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="dashboard.php" style="font-size:18px;">Content Management</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" style="font-size:18px;">Services</li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+            
+            
           <?php
           date_default_timezone_set("Asia/Calcutta");
           //echo date_default_timezone_get();
@@ -179,12 +194,7 @@
             }
           ?>
 
-        <div class="col-md-12 col-sm-12">
-          <!-- SECTION TITLE -->
-            <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
-              <h2>Services</h2>
-            </div>
-          </div>
+
          <!-- start -->
         <div class="col-lg-6 grid-margin stretch-card">
           <div class="card">
@@ -197,19 +207,19 @@
                  <img src="images/wassup1.jpg" class="img-responsive" alt="">
                 </a>
                 <div class="news-info">
-                 <h3><a href="#">Body Repair</a></h3>
+                 <h3><a href="#">Body Paint</a></h3>
                   <input type="file" name="photo" id="photo"  required="required">
-
+                    
                   <p>Cars need make-overs too. Our shop offers painting of your cars <br>
                     <br></p>
                 </div>
               </div>
             </div>
-          
+             </form>
           </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit"><i class="menu-icon mdi mdi-checkbox-multiple-marked-circle-outline"></i> Submit</button> 
           </div>
-          </form>
+       
         </div>
 
         <!-- start -->
@@ -231,10 +241,10 @@
                 </div>
               </div>
             </div>
-          
+              </form>
           </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-          </form>
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit"><i class="menu-icon mdi mdi-checkbox-multiple-marked-circle-outline"></i> Submit</button> 
+      
           </div>
         </div>
         <!-- end -->
@@ -259,10 +269,10 @@
                 </div>
               </div>
             </div>
-          
-          </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
           </form>
+          </div>
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit"><i class="menu-icon mdi mdi-checkbox-multiple-marked-circle-outline"></i> Submit</button> 
+          
           </div>
         </div>
         <!-- end -->
@@ -286,10 +296,10 @@
                 </div>
               </div>
             </div>
-         
+         </form>
           </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-           </form>
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit"><i class="menu-icon mdi mdi-checkbox-multiple-marked-circle-outline"></i> Submit</button> 
+           
           </div>
         </div>
         <!-- end -->
@@ -313,9 +323,10 @@
                 </div>
               </div>
             </div>
+              </form>
           </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-           </form>
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit"><i class="menu-icon mdi mdi-checkbox-multiple-marked-circle-outline"></i> Submit</button> 
+           
           </div>
         </div>
         <!-- end -->
@@ -339,16 +350,13 @@
                 </div>
               </div>
             </div>
-          
+           </form>
           </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-          </form>
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit"><i class="menu-icon mdi mdi-checkbox-multiple-marked-circle-outline"></i> Submit</button>  
+         
           </div>
         </div>
         <!-- end -->
-
-
-
 
 
 
@@ -376,29 +384,6 @@
   <script src="js/sb-admin-datatables.min.js"></script>
   <script src="js/script.js"></script> 
     
-    <script>
-  var table = $('#doctables').DataTable({
-    // PAGELENGTH OPTIONS
-    "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]]
-
-});
-</script>
-    
-     <script>
-  var table = $('#doctables2').DataTable({
-    // PAGELENGTH OPTIONS
-    "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]]
-
-});
-</script>
- 
-    <script>
-  var table = $('#doctables3').DataTable({
-    // PAGELENGTH OPTIONS
-    "lengthMenu": [[5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"]]
-
-});
-</script>
  
 
     
