@@ -14,9 +14,15 @@ if(isset($_POST['color'])){
   }else{
     $color = "";
   }
+ if(!isset($_POST["date1"])){
+    $date = $connection->real_escape_string($_POST["date"]);
+  }else{
+    $date = $connection->real_escape_string($_POST["date1"]);
+  }
+$dates = $date." 00:00:00";
 
   if($action=='accept'){
-    $actions_command = $connection->prepare("UPDATE `appointments` SET `status` = 'Accepted', `modified` = now(), `color` = '$color' WHERE `appointments`.`id` = $id;");
+    $actions_command = $connection->prepare("UPDATE `appointments` SET `status` = 'Accepted', `modified` = now(), `color` = '$color', `date` = '$dates' WHERE `appointments`.`id` = $id;");
   }else{
     if($action=='deny'){
       $actions_command = $connection->prepare("UPDATE `appointments` SET `status` = 'Reschedule', `modified` = now() WHERE `appointments`.`id` =  $id");
@@ -35,13 +41,36 @@ if(isset($_POST['color'])){
   }
 
 }
-
 if(isset($_POST['resubmit'])){
-  $update = $connection->real_escape_string($_POST["update"]);
+  $date1 = $connection->real_escape_string($_POST["date1"]);
+  if(isset($_POST["date2"])){
+    $date2 = $connection->real_escape_string($_POST["date2"]);
+  }else{
+    $date2 = "";
+  }
+  if(isset($_POST["date3"])){
+    $date3 = $connection->real_escape_string($_POST["date3"]);
+  }else{
+    $date3 = "";
+  }
+
+  if($date2=="" && $date3==""){
+    $update = $date1;
+  }
+  if($date2=="" && $date3 !=""){
+    $update = $date1."|".$date3;
+  }
+  if($date2!="" && $date3 ==""){
+    $update = $date1."|".$date2;
+  }
+  if($date2!="" && $date3 !=""){
+    $update = $date1."|".$date2."|".$date3;
+  }
+  echo $update;
   $id = $connection->real_escape_string($_POST["id"]);
   $message = $connection->real_escape_string($_POST["message"]);
   $location = $connection->real_escape_string($_POST["location"]);
-  $actions_command = $connection->prepare("UPDATE `appointments` SET `date` = '$update' , `status`= 'Rescheduled', `additionalMessage` = '$message', `adminDate` = 'admin', `notification` = 0 WHERE `appointments`.`id` = $id;");
+  $actions_command = $connection->prepare("UPDATE `appointments` SET `rescheduledate` = '$update' , `status`= 'Rescheduled', `additionalMessage` = '$message', `adminDate` = 'admin', `notification` = 0 WHERE `appointments`.`id` = $id;");
   if($actions_command ->execute()){
     if($location == 'appointment'){
       $MSG = "succesully approved appointment";
@@ -337,4 +366,6 @@ if(isset($_POST["changePass"])){
   }
 
 }
+
+
 ?>

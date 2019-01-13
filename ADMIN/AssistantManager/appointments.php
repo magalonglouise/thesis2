@@ -36,7 +36,7 @@
     <!-- partial:partials/_sidebar.html -->
     
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
+        <ul class="nav" style="position:fixed;">
         <hr class="style2">
             
           <li class="nav-item">
@@ -48,7 +48,7 @@
             
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <i class="menu-icon mdi mdi-content-copy"></i>
+              <i class="menu-icon mdi mdi-inbox"></i>
               <span class="menu-title" style="font-size:14px;">Appointment</span>
               <i class="menu-arrow"></i>
             </a>
@@ -60,9 +60,6 @@
                 <li class="nav-item">
                   <a class="nav-link" href="overdue.php" style="font-size:14px;">Overdue</a>
                 </li>
-                <!-- <li class="nav-item">
-                  <a class="nav-link" href="declined.php" style="font-size:14px;">Declined</a>
-                </li> -->
               </ul>
             </div>
           </li>
@@ -102,6 +99,13 @@
             </a>
           </li>
             
+          <li class="nav-item">
+            <a class="nav-link" href="sparepartsmanagement.php">
+              <i class="menu-icon mdi mdi-wrench"></i>
+              <span class="menu-title" style="font-size:14px;">Spare Parts</span>
+            </a>
+          </li>
+            
         </ul>
       </nav>
 
@@ -115,7 +119,7 @@
                 <div class="card-body">
                   <p class="card-title" style="font-size:20px;">Appointments</p>
                   <p class="card-description">
-                   
+                    List of Appointment Request
                   </p>
                     
                   <div class="table-responsive">
@@ -125,8 +129,8 @@
                             <th>Name</th>
                             <th>Plate Number</th>
                             <th>Status</th>
-                            <th>Date Sent</th>
-                            <th>Date of Appointment Request</th>
+                            <th>Date of Request</th>
+                            <th>Date of Appointment</th>
                             <th style="font-size:15px;" class="text-center">Action</th>
                         </tr>
                       </thead>
@@ -134,7 +138,7 @@
                       <?php
                         $data = $connection->prepare("SELECT appointments.id as 'ID',concat(firstName,' ',middleName,' ',lastName) as 
                         'Name',make,series,appointments.created as 'created', appointments.serviceId as 'service', appointments.otherService as 
-                        'others', yearModel,plateNumber,appointments.status,date, appointments.additionalMessage as 'message', adminDate
+                        'others', yearModel,plateNumber,appointments.status,date, appointments.additionalMessage as 'message', adminDate,rescheduledate
                          from appointments join personalinfo on appointments.personalId
                         = personalinfo.personalId join vehicles on appointments.vehicleId = vehicles.id where (appointments.status = 'Pending' OR appointments.status = 'Rescheduled') AND (NOW() = date OR NOW() < date )");
                         if($data->execute()){
@@ -147,22 +151,18 @@
                             $dateTime2 = $row['created'];
                             $dateTimeSplit2 = explode(" ",$dateTime2);
                             $date2 = $dateTimeSplit2[0];
-                                
-                            
                             echo '
                                 <tr>
                                 <td>'.$row['Name'].'</td>
-                                <td><a href ="viewvehicle.php?plate='.$row['plateNumber'].'" style="color:black">'.$row['plateNumber'].'</a></td>
+                                <td>'.$row['plateNumber'].'</td>
                                 <td>'.$row['status'].'</td>
                                 <td>'; echo date('M d, Y',strtotime($date2)); echo '</td>
-                                <td><a href = "basis2.php?date='.$row['date'].'" style="color:black;">'; echo date('M d, Y',strtotime($date)); echo '</a></td>
+                                <td>'; echo date('M d, Y',strtotime($date)); echo '</td>
                                 <td class="text-center">
                                 
                                   <div class="row">';
                                 if($row['adminDate'] != 'admin'){
                                   echo '<div class="col-12">
-                                  <input type="hidden" name="command1" value="accept">
-                                  <input type="hidden" name="id1" value="'.$row['ID'].'">
                                   <button class="btn btn-success" name="commands1" style="margin-top: 5px; width: 145px; color:white;"  data-toggle="modal" data-target="#appointmentModalCenter'.$row['ID'].'"><i class="menu-icon mdi mdi-checkbox-marked-outline"></i>
                                   Accept</button>
                                 </div>';
@@ -186,7 +186,11 @@
                                     if($row['status'] == 'Rescheduled'){
                                       if($row['adminDate'] == 'admin'){
                                         echo '<p style="margin-top: 10px; color: red;">Note: Appointment date is <br> waiting for Client approval</p>';
-                                      }else{
+                                      }
+                                      if($row['adminDate'] == 'reschedclient'){
+                                        echo '<p style="margin-top: 10px; color: red;">Note: The Client sent new <br> dates for the appointment</p>';
+                                      }
+                                      if($row['adminDate'] == 'client'){
                                         echo '<p style="margin-top: 10px; color: red;">Note: Appointment date was <br> approved by the Client</p>';
                                       }
                                     }
@@ -215,9 +219,7 @@
                                           <div class="col-6">
                                             <h4 class="card-title">'.$row['Name'].'</h4>
                                           </div>
-                                          
                                         </div>
-                                        
                                         <div class="row">
                                           <div class="col-6">
                                             <h4 class="card-title">Plate Number:</h4>                                            
@@ -234,8 +236,6 @@
                                             <h4 class="card-title">'.$row['status'].'</h4>
                                           </div>
                                         </div>
-                                        
-                                        
                                         <div class="row">
                                           <div class="col-6">
                                             <h4 class="card-title">Services:</h4>                                            
@@ -249,8 +249,8 @@
                                             echo'
                                             </h4>
                                           </div>
-                                          
                                         </div>
+                                        
                                         <form action="process/server.php" method="post">
                                          <div class="row">
                                           <div class="col-6">
@@ -271,19 +271,37 @@
                                         </div>
                                         
                                        
-                                          <div class="row">
-                                            <div class="col-6">
-                                            <h4 class="card-title">Date:</h4>                      
-                                          </div>
-                                            <div class="col-sm-6">
-                                              <input type="text" class="form-control" id="exampleInputEmail2" disabled value="'; echo date('M d, Y',strtotime($date)); echo ' ">
+                                          <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Date: </label>
+                                            <div class="col-sm-9">
+                                            <form action="process/server.php" method="post">
+                                            ';
+                                            if($row['rescheduledate']==""){
+                                              echo '
+                                              <input type="hidden" value="'.$row['date'].'" name="date1">
+                                              <input type="text" class="form-control" id="exampleInputEmail2" disabled value="'; echo date('M d, Y',strtotime($row['date'])); echo ' ">
+                                              ';
+                                            }else{
+                                              $dates = explode("|", $row['rescheduledate']);
+                                              for ($i = 0; $i < count($dates); $i++) {
+                                                
+                                                echo '
+                                                <input class="form-check-input " type="radio" name="date" id="exampleRadios1" value="'.$dates[$i].'" required>
+                                                <input type="text" class="form-control" id="exampleInputEmail2" disabled value="'; echo date('M d, Y',strtotime($dates[$i])); echo ' ">
+                                                ';
+                                                  
+                                    
+                                              }
+                                            }
+                                          
+                                            echo'
                                             </div>
                                           </div>
+                                          
                                         <!-- end -->
                                       </div>
 
                                       <div class="modal-footer" >
-                                        
                                             <input type="hidden" name="command1" value="accept">
                                             <input type="hidden" name="id1" value="'.$row['ID'].'">
                                           <button class="btn btn-success" type="submit" name="commands1" style="margin-top: 5px; width: 145px; color:white;"><i class="menu-icon mdi mdi-checkbox-marked-outline"></i>
@@ -366,9 +384,21 @@
                                             </div>
                                           </div>
                                           <div class="form-group row">
-                                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label card-title">Date</label>
+                                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label card-title">Date 1:</label>
                                             <div class="col-sm-9">
-                                              <input type="date" class="form-control" id="exampleInputPassword2" name="update" placeholder="" required>
+                                              <input type="date" class="form-control" id="exampleInputPassword2" name="date1" placeholder="" required>
+                                            </div>
+                                          </div>
+                                          <div class="form-group row">
+                                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label card-title">Date 2:</label>
+                                            <div class="col-sm-9">
+                                              <input type="date" class="form-control" id="exampleInputPassword2" name="date2" placeholder="">
+                                            </div>
+                                          </div>
+                                          <div class="form-group row">
+                                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label card-title">Date 3:</label>
+                                            <div class="col-sm-9">
+                                              <input type="date" class="form-control" id="exampleInputPassword2" name="date3" placeholder="">
                                             </div>
                                           </div>
                                           <div class="form-group row">
