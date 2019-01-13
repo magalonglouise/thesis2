@@ -53,7 +53,7 @@ if(!isset($_GET['id'])){
       <!-- partial:partials/_sidebar.html -->
         
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav" style="position:fixed; width:16.8%;">
+        <ul class="nav" style="position:fixed; width:256px;">
         <hr class="style2">
             
           <li class="nav-item">
