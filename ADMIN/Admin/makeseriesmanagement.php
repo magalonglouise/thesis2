@@ -157,13 +157,18 @@
                               <div class="modal-dialog">
                                 <!-- Modal content-->
                                 <div class="modal-content">
+                                    
                                   <div class="modal-header" style="background-color:#B80011; color: #ffffff;">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     <h5 class="modal-title"><i class="fa fa-car" aria-hidden="true"></i> Add Make and Series</h5>
+                                      
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                      
                                   </div>
+                                    
                                   <div class="modal-body">
                                   <form action="makeseriesmanagement.php" method="post">
-                                  <small id="reminder" class="form-text text-muted">Please fill out the required fields.</small>
+                                  <small id="reminder" class="form-text text-muted">Please fill out the required fields.</small><br>
+                                      
                                   <div class="form-group">
                                     <label for="make">Make</label>
                                     <input type="text" class="form-control input-xs" id="make"  placeholder="make" name="make"
@@ -174,14 +179,15 @@
                                     <input type="text" class="form-control input-xs" id="series"  placeholder="series" name="series"
                                     required="">
                                   </div>
+                                      </form>
                                   </div>
+                                      
                                   <div class="modal-footer">
-                                    <button type="submit" class="btn btn-sm " name="add_makeseries" style="background-color: #B80011;color: white"><i class="fa fa-motorcycle" aria-hidden="true"></i> Add </button>
-                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="color:black;"><i class="fas fa-times-circle"></i> Cancel</button>
+                                    <button type="submit" class="btn btn-sm " name="add_makeseries" style="background-color: #B80011;color: white"><i class="menu-icon mdi mdi-account-multiple-plus"></i> Add</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" style="color:black;"><i class="menu-icon mdi mdi-close"></i> Cancel</button>
                                   </div>
-      </div>
-      </form>
-      </div>
+                              </div>
+                              </div>
                         </div>
                     </div>
                     
