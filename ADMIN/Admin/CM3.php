@@ -77,19 +77,19 @@
                   <a class="nav-link" href="appointments.php" style="font-size:14px;">Appointment</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="administratormanagement.php" style="font-size:14px;">Administrators</a>
+                  <a class="nav-link" href="#" style="font-size:14px;">Administrators</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="makeseriesmanagement.php" style="font-size:14px;">Make Series</a>
+                  <a class="nav-link" href="#" style="font-size:14px;">Make Series</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="sparepartsmanagement.php" style="font-size:14px;">Spare Parts</a>
+                  <a class="nav-link" href="#" style="font-size:14px;">Spare Parts</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="servicesmanagement.php" style="font-size:14px;">Services</a>
+                  <a class="nav-link" href="#" style="font-size:14px;">Services</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="scopeofworkmanagement.php" style="font-size:14px;">Scope of Work</a>
+                  <a class="nav-link" href="#" style="font-size:14px;">Scope of Work</a>
                 </li>
               </ul>
             </div>
@@ -179,7 +179,7 @@
         <div class="col-md-12 col-sm-12">
           <!-- SECTION TITLE -->
             <div class="section-title wow fadeInUp" data-wow-delay="0.1s">
-              <h2>Services</h2>
+              <h2>Our Team</h2>
             </div>
           </div>
          <!-- start -->
@@ -193,20 +193,18 @@
                 <a href="news-detail.html">
                  <img src="images/wassup1.jpg" class="img-responsive" alt="">
                 </a>
-                <div class="news-info">
-                 <h3><a href="#">Body Repair</a></h3>
+                <div class="team-info">
                   <input type="file" name="photo" id="photo"  required="required">
-
-                  <p>Cars need make-overs too. Our shop offers painting of your cars <br>
-                    <br></p>
-                </div>
+                                        <h3>Chanealle Audune</h3>
+                                        <p>Assistant Manager</p>
+                                   </div>
               </div>
             </div>
           
           </div>
           <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-          </div>
           </form>
+          </div>
         </div>
 
         <!-- start -->
@@ -220,18 +218,17 @@
                 <a href="news-detail.html">
                  <img src="images/wassup1.jpg" class="img-responsive" alt="">
                 </a>
-                <div class="news-info">
-                 <h3><a href="#">Body Repair</a></h3>
+                <div class="team-info">
                   <input type="file" name="photo" id="photo"  required="required">
-
-                  <p>This is when your car becomes our patient, and we the doctors, fixing your car's sickness</p>
-                </div>
+                                         <h3>Eryl Simeon Thaddeus</h3>
+                                        <p>Manager / Head Mechanic</p>
+                                   </div>
               </div>
             </div>
-          
+       
           </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-          </form>
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button>
+          </form> 
           </div>
         </div>
         <!-- end -->
@@ -248,98 +245,17 @@
                 <a href="news-detail.html">
                  <img src="images/wassup1.jpg" class="img-responsive" alt="">
                 </a>
-                <div class="news-info">
-                 <h3><a href="#">Customize</a></h3>
+                <div class="team-info">
                   <input type="file" name="photo" id="photo"  required="required">
-
-                  <p>Need to spice up your car? We can do that too.</p>
-                </div>
+                                        <h3>N/A</h3>
+                                        <p>Supervisor</p>
+                                   </div>
               </div>
             </div>
           
           </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-          </form>
-          </div>
-        </div>
-        <!-- end -->
-
-        <!-- start -->
-        <div class="col-lg-6 grid-margin stretch-card">
-          <div class="card">
-          <div class="card-body">
-          <form enctype="multipart/form-data"  action="" id="wb_Form1" name="form" method="post">
-            <div class="col-md-4 col-sm-6">
-            <!-- NEWS THUMB -->
-              <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
-                <a href="news-detail.html">
-                 <img src="images/wassup1.jpg" class="img-responsive" alt="">
-                </a>
-                <div class="news-info">
-                 <h3><a href="#">Electrical</a></h3>
-                  <input type="file" name="photo" id="photo"  required="required">
-
-                  <p>This is where yur car's electrical components are managed.</p>
-                </div>
-              </div>
-            </div>
-         
-          </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-           </form>
-          </div>
-        </div>
-        <!-- end -->
-
-        <!-- start -->
-        <div class="col-lg-6 grid-margin stretch-card">
-          <div class="card">
-          <div class="card-body">
-          <form enctype="multipart/form-data"  action="" id="wb_Form1" name="form" method="post">
-            <div class="col-md-4 col-sm-6">
-            <!-- NEWS THUMB -->
-              <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
-                <a href="news-detail.html">
-                 <img src="images/wassup1.jpg" class="img-responsive" alt="">
-                </a>
-                <div class="news-info">
-                 <h3><a href="#">Maintenance</a></h3>
-                  <input type="file" name="photo" id="photo"  required="required">
-
-                  <p>Your cars need to be maintained and stay its best, we can handle that for you.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-           </form>
-          </div>
-        </div>
-        <!-- end -->
-
-        <!-- start -->
-        <div class="col-lg-6 grid-margin stretch-card">
-          <div class="card">
-          <div class="card-body">
-          <form enctype="multipart/form-data"  action="" id="wb_Form1" name="form" method="post">
-            <div class="col-md-4 col-sm-6">
-            <!-- NEWS THUMB -->
-              <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
-                <a href="news-detail.html">
-                 <img src="images/wassup1.jpg" class="img-responsive" alt="">
-                </a>
-                <div class="news-info">
-                 <h3><a href="#">Mechanical</a></h3>
-                  <input type="file" name="photo" id="photo"  required="required">
-
-                  <p style="">We also do mechanical works for your car, because we want what's best for you.</p>
-                </div>
-              </div>
-            </div>
-          
-          </div>
-          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button> 
-          </form>
+          <button type="submit" class="btn btn-success" value="SUBMIT" name="submit">Submit</button>
+          </form> 
           </div>
         </div>
         <!-- end -->
