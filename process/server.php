@@ -126,7 +126,8 @@ if (isset($_POST['login_user'])) {
           header('location: login.php');
           exit();
         }elseif ($hashedPwdCheck == true){
-         if($row['type'] == 'admin'){
+          if($row['status'] == 'Active'){
+            if($row['type'] == 'admin'){
               $_SESSION['id'] = $row['id'];
               $_SESSION['type'] = $row['type'];
               $_SESSION['username'] = $username;
@@ -134,35 +135,40 @@ if (isset($_POST['login_user'])) {
               $_SESSION['Name'] = $row['Name'];
               header("Location: ADMIN/Admin/dashboard.php");
               exit();
-         }else{
-          if($row['type'] == 'manager'){
-            $_SESSION['id'] = $row['id'];
-            $_SESSION['type'] = $row['type'];
-            $_SESSION['username'] = $username;
-            $_SESSION['password'] = $password;
-            $_SESSION['Name'] = $row['Name'];
-            header("Location: ADMIN/Manager/dashboard.php");
-            exit();
+              }else{
+                if($row['type'] == 'manager'){
+                  $_SESSION['id'] = $row['id'];
+                  $_SESSION['type'] = $row['type'];
+                  $_SESSION['username'] = $username;
+                  $_SESSION['password'] = $password;
+                  $_SESSION['Name'] = $row['Name'];
+                  header("Location: ADMIN/Manager/dashboard.php");
+                  exit();
+                }else{
+                  if($row['type'] == 'assistant'){
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['type'] = $row['type'];
+                    $_SESSION['username'] = $username;
+                    $_SESSION['password'] = $password;
+                    $_SESSION['Name'] = $row['Name'];
+                    header("Location: ADMIN/AssistantManager/dashboard.php");
+                    exit();
+                  }else{
+                      //Login the user here
+                      $_SESSION['type'] = $row['type'];
+                      $_SESSION['username'] = $row['username'];
+                      $_SESSION['id'] = $row['id'];
+                      $_SESSION['last_login_timestamp'] = time();  
+                      header('location: vehiclesinfo.php');
+                      exit();
+                    }
+                  }
+                }
           }else{
-            if($row['type'] == 'assistant'){
-              $_SESSION['id'] = $row['id'];
-              $_SESSION['type'] = $row['type'];
-              $_SESSION['username'] = $username;
-              $_SESSION['password'] = $password;
-              $_SESSION['Name'] = $row['Name'];
-              header("Location: ADMIN/AssistantManager/dashboard.php");
-              exit();
-            }else{
-                //Login the user here
-                $_SESSION['type'] = $row['type'];
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['id'] = $row['id'];
-                $_SESSION['last_login_timestamp'] = time();  
-                header('location: vehiclesinfo.php');
-                exit();
-              }
-            }
+            header('location: home.php');
           }
+          
+
          }
         }
     }
