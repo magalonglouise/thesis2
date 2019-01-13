@@ -34,6 +34,11 @@
   <!-- endinject -->
   <link rel="shortcut icon" href="images/favicon.png" />
   <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
+  <style>
+     html{
+   scroll-behavior:smooth; 
+     }
+    </style>
 </head>
 
 <body>
