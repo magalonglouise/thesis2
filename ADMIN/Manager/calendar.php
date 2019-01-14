@@ -1,5 +1,5 @@
 <?php require 'process/require/auth.php';
-require_once('bdd.php');
+require_once('process/require/calendardbase.php');
 require "process/check/dashboardcheck.php"; 
 
 $sql = "SELECT appointments.id, vehicles.plateNumber as title, appointments.date as start, appointments.targetEndDate as end, appointments.color as color FROM appointments INNER JOIN vehicles ON appointments.vehicleId = vehicles.id WHERE appointments.status = 'Accepted' OR  appointments.status = 'In-Progress'";

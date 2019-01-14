@@ -79,7 +79,8 @@
 
 
      <!-- MENU -->
-     <section class="navbar navbar-default navbar-static-top" role="navigation" >
+    
+ <section class="navbar navbar-default navbar-static-top" role="navigation" >
           <div class="container">
 
                <div class="navbar-header">
@@ -98,7 +99,7 @@
 
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
-                     <ul class="nav navbar-nav ">
+                <ul class="nav navbar-nav ">
                      <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php  if (isset($_SESSION['username'])) : ?><p> <i class="fas fa-user-circle"></i></span> Welcome <?php echo $_SESSION['username']; ?> <span class="caret"></span></p>
                 </a>
@@ -110,21 +111,37 @@
                   </li>
                   <?php endif ?>
              </ul>
+                   
                     
                     <ul class="nav navbar-nav navbar-right">
                           
-                        <li><a href="vehicleshistory.php" class="smoothScroll"><i class="fas fa-history"></i>  Vehicle History  <span class="label label-pill label-danger count1" style="border-radius:10px;padding:6px;"></span></a></li>
+                        <li><a href="vehicleshistory.php" class="smoothScroll"><i class="fas fa-history"></i> Vehicle History  <span class="label label-pill label-danger count1" style="border-radius:10px;padding:6px;"></span></a></li>
                         <li><a href="vehiclesinfo.php" class="smoothScroll"><i class="fas fa-car"></i> Your Vehicles</a></li>  
                         <li class="dropdown">
-                        <li><a href="requeststatus.php" class="smoothScroll"><i class="far fa-calendar-check"></i>  Request Status</a></li>  
+                       
+                        
+                        
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" ><i class="far fa-calendar-check"></i> Request Status<span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" id="dropdownaccount">
+                     <li><a  href="acceptedreq.php" style="font-size: 13px;z-index: 9999;">Accepted Request</a></li>
+                    <li><a  href="reschedulereq.php" style="font-size: 13px;z-index: 9999;">Reschedule Request</a>
+                    </li>
+                     <li><a  href="pendingreq" style="font-size: 13px;z-index: 9999;">Pending Request</a>
+                    </li>
+                     <li><a  href="declinedreq" style="font-size: 13px;z-index: 9999;">Declined Request</a>
+                    </li>
+                  </ul>
+                  </li>
+                
+             
+                        
                         <li class="dropdown">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell" aria-hidden="true" style="font-size: 20px;padding: 0;"></i>  <span class="label label-pill label-danger count" style="border-radius:10px;"></span></a>
                          <ul class="dropdown-menu" id="dropdownnotif" aria-labelledby="dropdownMenuDivider"></ul>
                         </li>          
-                        <li class="appointment-btn" ><a href="appointment.php">Make an appointment</a></li>
-
-                          
-                           
+                        <li class="appointment-btn" ><a href="appointment.php">Make an appointment</a></li>       
                     </ul>
                </div>
 
@@ -150,8 +167,11 @@
  <div class="container">
  <div class="row">
  <div class="col-md-12 col-sm-12">
-   <div class="panel panel-default" id="headings">
-  <div class="panel-heading" style="background-color: #b80011;color: white;"><i class="fas fa-user"> </i>  User Profile</div>
+     
+   <div class="panel panel-default" id="headings" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+       
+  <div class="panel-heading" style="background-color: #b80011; background: -webkit-linear-gradient(-135deg, #f06d06, #B80011); background: -o-linear-gradient(-135deg, #f06d06, #B80011); background: -moz-linear-gradient(-135deg, #f06d06, #B80011); background: linear-gradient(-135deg, #f06d06, #B80011);color: white; font-size: 18px;"><i class="fas fa-user"> </i>  User Profile</div>
+       
   <div class="panel-body" id="serviceDisplay" style="overflow-y: auto;height: ;">
  
   <div class="row">
@@ -167,14 +187,14 @@
       <?php echo ucfirst($personalinfo['firstName']).' '.ucfirst($personalinfo['middleName'][0]).'. '.ucfirst($personalinfo['lastName']); ?><hr style="padding: 0px;margin: 0px;">
   <br>
     <div class="pull-right">
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#changepassword"><i class="fas fa-user-shield"></i> Change Password</button>
+      <button type="button" class="btn" style="background-color: #4caf50; color: white;" data-toggle="modal" data-target="#changepassword"><i class="fas fa-user-shield"></i> Change Password</button>
   
 <div id="changepassword" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content" >
-      <div class="modal-header" style="background-color:#337AB7; color: #ffffff;">
+      <div class="modal-header" style="background-color:#4caf50; color: #ffffff;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h5 class="modal-title" style="color: white;"> <i class="fas fa-users-cog"></i> Change Password</h5>
       </div>
@@ -198,8 +218,8 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button" id="changepassbutton" name="changepassword" class="btn btn-primary btn-sm disabled"><i class="fas fa-check-square"></i> Save</button>
-        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
+        <button type="button" style="background-color: #4caf50; color: white;" id="changepassbutton" name="changepassword" class="btn disabled"><i class="fas fa-check-square"></i> Save</button>
+        <button type="button" class="btn" style="color: black;" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
       </form>
       </div>
       </div>
@@ -222,14 +242,7 @@
       <?php echo '+63'.$personalinfo['mobileNumber']; ?><hr style="padding: 0px;margin: 0px;">
       <label for="address">Address:</label>
       <?php echo ucfirst($personalinfo['address']); ?><hr style="padding: 0px;margin: 0px;">
-      <label for="modified">Date Created:</label>
-      <?php echo date("m/d/y h:i A",strtotime($personalinfo['created'])); ?><hr style="padding: 0px;margin: 0px;">
-      <label for="modified">Date Modified:</label>
-      <?php if (isset($personalinfo['modified'])){
-             echo date("m/d/y h:i A",strtotime($personalinfo['modified'])); 
-            }else {
-             echo "-----";
-             }?>
+      
       <hr style="padding: 0px;margin: 0px;">
   </div>
   </div>
@@ -237,8 +250,8 @@
     <br>
   <div class="pull-right">
   <form action="personalinfoedit.php" >
-  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#viewVehicle" style="background-color: #b80011;"><i class="fas fa-car"></i> My Vehicle</button>
-  <button type="submit" class="btn btn-success btn-sm" style="background-color: #4caf50; "><i class="fas fa-user-edit"></i> Edit </button>
+  <button type="button" class="btn" data-toggle="modal" data-target="#viewVehicle" style="background-color: #308ee0; color: white;"><i class="fas fa-car"></i> My Vehicle</button>
+  <button type="submit" class="btn" style="background-color: #000099; color: white;"><i class="fas fa-user-edit"></i> Edit </button>
   </form>
   </div>
 
@@ -248,7 +261,7 @@
 
     <!-- Modal content-->
     <div class="modal-content" >
-      <div class="modal-header" style="background-color: #b80011;">
+      <div class="modal-header" style="background-color: #308ee0">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h5 class="modal-title" style="color: white;"> <i class="fas fa-car"></i> My Vehicles</h5>
       </div>
@@ -264,8 +277,8 @@
 
       </div>
       <div class="modal-footer">
-          <a href="vehiclesinfo.php" class="btn btn-default btn-sm" style="background-color: #b80011;color: white;"><i class="fas fa-info-circle"></i> Vehicles Info</a>
-        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
+          <a href="vehiclesinfo.php" class="btn" style="background-color: #308ee0;color: white;"><i class="fas fa-info-circle"></i> Vehicles Info</a>
+        <button type="button" class="btn" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
         
       </div>
     </div>

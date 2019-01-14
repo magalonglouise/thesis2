@@ -124,7 +124,7 @@ $personalinfo -> personal_info();
                <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav ">
                      <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding: 0;"><?php  if (isset($_SESSION['username'])) : ?><p> <i class="fas fa-user-circle"></i> Welcome <?php echo $_SESSION['username']; ?> <span class="caret"></span></p>
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" ><?php  if (isset($_SESSION['username'])) : ?><p> <i class="fas fa-user-circle"></i> Welcome <?php echo $_SESSION['username']; ?> <span class="caret"></span></p>
                   </a>
                   <ul class="dropdown-menu" id="dropdownaccount">
                      <li><a  href="accountsettings.php" style="font-size: 13px;z-index: 9999;"><i class="fa fa-cogs" aria-hidden="true"></i> Account Settings</a></li>
@@ -144,17 +144,8 @@ $personalinfo -> personal_info();
                         
                         
                 <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" ><i class="far fa-calendar-check"></i> Request Status<span class="caret"></span>
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="requeststatus.php" ><i class="far fa-calendar-check"></i> Request Status
                   </a>
-                  <ul class="dropdown-menu" id="dropdownaccount">
-                     <li><a  href="acceptedreq.php" style="font-size: 13px;z-index: 9999;">Accepted Request</a></li>
-                    <li><a  href="reschedulereq.php" style="font-size: 13px;z-index: 9999;">Reschedule Request</a>
-                    </li>
-                     <li><a  href="pendingreq" style="font-size: 13px;z-index: 9999;">Pending Request</a>
-                    </li>
-                     <li><a  href="declinedreq" style="font-size: 13px;z-index: 9999;">Declined Request</a>
-                    </li>
-                  </ul>
                   </li>
                 
              

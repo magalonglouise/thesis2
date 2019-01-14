@@ -2,7 +2,10 @@
 session_start();
 
 include('process/server.php'); 
-include('process/authhome.php');
+
+if (isset($_SESSION['username'])) {            
+    header('location: home.php');
+          }
 
 ?>
 
@@ -18,7 +21,6 @@ include('process/authhome.php');
      <meta name="author" content="Tooplate">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
      <link rel="icon" href="images/Logo.png">
-     <link rel="stylesheet" href="css/all.css">
      <link rel="stylesheet" href="css/bootstrap.min.css">
      <link rel="stylesheet" href="css/font-awesome.min.css">
      <link rel="stylesheet" href="css/animate.css">
@@ -26,9 +28,19 @@ include('process/authhome.php');
      <link rel="stylesheet" href="css/owl.theme.default.min.css">
      <link rel="stylesheet" href="css/all.css">
 
-
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-style.css">
+    
+     <!-- LOGIN CSS -->
+     <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+     <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+     <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+     <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+     <link rel="stylesheet" type="text/css" href="css/util.css">
+   <link rel="stylesheet" type="text/css" href="css/main.css">
+
 
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
@@ -92,20 +104,24 @@ include('process/authhome.php');
    
    
      <!-- LOGIN PAGE -->
-      <section id="appointment-detail" data-stellar-background-ratio="0">
-          <div class="container">
-               <div class="row">
-                  
-          <div class="col-xs-3 col-sm-3 " align="center">
-          </div>                      
-         <div class="col-xs-3 col-sm-3 " align="center" style="width: auto; padding:5px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            text-align: center; background-color: white; border-radius: 10px">
-
-          <form id="appointment-form" role="form" method="post" action="login.php">
-                        <div class="section-title wow fadeInUp" data-wow-delay="0.2s">
-              <h2>Login</h2>
-                        <?php if (isset($_SESSION['unauthorized_user'])) : ?>
+  <div class="limiter">
+    <div class="container-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+        <span class="login500-form">
+            Fuels Passion Beyong Full Throttle
+        </span>
+                <span class="login700-form">
+            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                    Since 2002
+        </span>
+            </div>
+            
+      <div class="wrap-login100">
+        <form class="login100-form validate-form" id="appointment-form" role="form" method="post" action="login.php">
+          <span class="login100-form-title">
+            Login
+          </span>
+                         <?php if (isset($_SESSION['unauthorized_user'])) : ?>
                          <?php 
                            echo $_SESSION['unauthorized_user']; 
                              unset($_SESSION['unauthorized_user']);
@@ -180,35 +196,46 @@ include('process/authhome.php');
 
                          ?>
 
-                        </div>
-                        
-                            <div class="wow fadeInUp" data-wow-delay="0.4s">
-                                <div class="col-md-12 col-sm-12">
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
-                            <br>
-                            <br>
-                          </div>
-                                <div class="col-md-12 col-sm-12">
-                                    <input type="password" class="form-control" name="password" placeholder="Password">
-                            <br>
-                            <br>
-                                </div>
-                                 <div class="col-md-12 col-sm-12" >
-                                    <button type="submit" class="form-control" id="cf-submit" name="login_user" style="height:15%;">Login </button>
-                                </div>
-                        </div>
-                            
-          </form>
-            <div class="col-md-12 col-sm-12">
-          <br>
-          <a href="register.php"> Don't have an account? Register here. </a>
-          <p> Forgot your password? </p>
+          <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+            <input class="input100" type="text" id="username" name="username" placeholder="Username">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </span>
           </div>
-             
-                </div>
-            </div>
-        </div>
-     </section>
+
+          <div class="wrap-input100 validate-input" data-validate = "Password is required">
+            <input class="input100" type="password" name="password" placeholder="Password">
+            <span class="focus-input100"></span>
+            <span class="symbol-input100">
+              <i class="fa fa-lock" aria-hidden="true"></i>
+            </span>
+          </div>
+          
+          <div class="container-login100-form-btn">
+            <button class="login100-form-btn" name="login_user">
+              Login
+            </button>
+          </div>
+
+          <div class="text-center p-t-12">
+            <a class="txt1" href="register.php">
+              Don't have an account? Register here.
+            </a>
+                        <br>
+            <a class="txt2" href="#">
+              Forgot your password?
+            </a>
+          </div>
+                    
+                    <div class="text-center p-t-15">
+                        
+                    </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
 
      <!-- FOOTER -->
      <footer data-stellar-background-ratio="5">
@@ -220,9 +247,9 @@ include('process/authhome.php');
                               <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact Info</h4>
 
                               <div class="contact-info">
-                                   <p><i class="fas fa-phone"></i> 09257196568 / 09304992021</p>
-                                   <p><i class="far fa-envelope"></i> <a href="#">eascustoms@yahoo.com</a></p>
-                                   <p><i class="fab fa-facebook-square"></i> <a href="#">EAS Customs / @eascustoms75</a>
+                                   <p><i class="fa fa-phone"></i> 09257196568 / 09304992021</p>
+                                   <p><i class="fa fa-envelope-o"></i> <a href="#">eascustoms@yahoo.com</a></p>
+                                   <p><i class="fa fa-facebook-square" aria-hidden="true"></i> <a href="#">EAS Customs / @eascustoms75</a>
                               </div>
                          </div>
                     </div>
@@ -273,6 +300,19 @@ include('process/authhome.php');
      <script src="js/smoothscroll.js"></script>
      <script src="js/owl.carousel.min.js"></script>
      <script src="js/custom.js"></script>
-
+    
+    
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="vendor/bootstrap/js/popper.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="vendor/tilt/tilt.jquery.min.js"></script>
+  <script >
+    $('.js-tilt').tilt({
+      scale: 1.1
+    })
+  </script>
+    <script src="js/main.js"></script>
+    
 </body>
 </html>

@@ -19,7 +19,7 @@ if(isset($_POST["submit-vehicle"])){
   $engineDisplacement = $connection->real_escape_string($_POST["engineDisplacement"]);
   
 
-   echo $personalId;
+  // echo $first,", ", $middle,", ", $last, ", ",$suffix,", ", $address,", ", $email,", ", $mobile,", ", $telephone;
 
   $addvehicle = $connection->prepare("INSERT INTO `vehicles`(`personalId`, `plateNumber`, `bodyType`, `yearModel`, `chasisNumber`, `engineClassification`, `numberOfCylinders`, `typeOfDriveTrain`, `make`, `series`, `color`, `engineNumber`, `typeOfEngine`, `engineDisplacement`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);");
   

@@ -15,39 +15,6 @@ $('document').ready(function(){
  var color_state = false;
 
 
-var i=1;;
-var max=3
-var status = '';
-$('#add_date').click(function(){
-i++;  
-$('#date_body').append('<div id="row'+i+'"><input type="text" id="datepicker'+i+'" name="date[]" class="form-control" readonly><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X '+i+' </button></div>');
-$('#row2').attr('id', 'datepicker2')
-});
-
-$('#add_date').click(function(){
-if (i == max) {
-$('#add_date').removeClass(); 
-  $('#add_date').addClass('btn btn-success disabled').fadeIn();
-  $('#add_date').prop('disabled', true);
-  };
-});
-
-$(document).on('click', '.btn_remove', function(){
-  var button_id = $(this).attr("id"); 
-  $('#row'+button_id+'').remove();
-  $('#add_date').prop('disabled', false);
-  i--;
-});
-
-$(document).on('click', '.btn_remove', function(){
-if (i <= max) {
-$('#add_date').removeClass(); 
-  $('#add_date').addClass('btn btn-success').fadeIn();
-  $('#add_date').prop('disabled', false);
-  };
-});
-
-
 $('#otherMake').change(function(){
 if ($('#otherMake').is(':checked')) {
 $("#others").fadeIn();
@@ -187,14 +154,13 @@ $('input[type="checkbox"]').click(function () { getSelectedCheckBoxes('service[]
       if (response == 'taken' ) {
         username_state = false;
         $('#username').parent().removeClass();
-        $('#username').css("border","1px solid #D83D5A");
+
         $('#username').siblings("span").css("color","#D83D5A");
         $('#username').siblings("span").text('Username already exist');
         return;
       }else if (response == 'not_taken') {
         username_state = true;
         $('#username').parent().removeClass();
-        $('#username').css("border","1px solid green");
         $('#username').siblings("span").css("color","green");
         $('#username').siblings("span").text('Username available');
         return;
@@ -250,14 +216,13 @@ $('#plateNumber').on('blur', function(){
         if (response == 'taken' ) {
           plateNumber_state = false;
           $('#plateNumber').parent().removeClass();
-          $('#plateNumber').css("border","1px solid #D83D5A"); 
           $('#plateNumber').siblings("span").css("color","#D83D5A");
           $('#plateNumber').siblings("span").text('Plate Number already exist').fadeIn();
           return;
         }else if (response == 'not_taken') {
           plateNumber_state = true;
           $('#plateNumber').parent().removeClass();
-          $('#plateNumber').css("border","1px solid green"); 
+     
           $('#plateNumber').siblings("span").css("color","green");
           $('#plateNumber').siblings("span").text('Plate number available').fadeIn();
           return;
@@ -283,14 +248,14 @@ $('#contactNumber').on('blur', function(){
         if (response == 'taken' ) {
           contactNumber_state = false;
           $('#contactNumber').parent().removeClass();
-          $('#contactNumber').css("border","1px solid #D83D5A");
+          //$('#contactNumber').css("border","1px solid #D83D5A");
           $('#contactNumber_msg').hide();
           $('#contactNumber').siblings("span").attr("id, contact").text('Contact Number already exist');
           return;
         }else if (response == 'not_taken') {
           contactNumber_state = true;
           $('#contactNumber').parent().removeClass();
-          $('#contactNumber').css("border","1px solid green");
+          //$('#contactNumber').css("border","1px solid green");
           $('#contactNumber').siblings("span").attr("id, contact").css("color","green");
           $('#contactNumber_msg').hide();
           $('#contactNumber').siblings("span").attr("id, contact").text('Contact number available');
@@ -348,7 +313,6 @@ $('#password, #confirm_password').on('keyup', function () {
 
 $('#firstName').blur(function() {
   if (this.value == '') {
-    $('#firstName').css("border","1px solid #D83D5A"); 
     $('#firstName_msg').fadeIn("slow");
     firstName_state = false;
     return;
@@ -363,7 +327,6 @@ $('#firstName').blur(function() {
 
 $('#middleName').blur(function() {
   if (this.value == '') { 
-    $('#middleName').css("border","1px solid #D83D5A"); 
     $('#middleName_msg').fadeIn("slow");
     middleName_state = false;
     return;
@@ -378,7 +341,7 @@ $('#middleName').blur(function() {
 
 $('#lastName').blur(function() {
   if (this.value == '') {
-    $('#lastName').css("border","1px solid #D83D5A");
+    //$('#lastName').css("border","1px solid #D83D5A");
     $('#lastName_msg').fadeIn("slow");
     lastName_state = false;
     return;
@@ -394,7 +357,7 @@ $('#lastName').blur(function() {
 $('#address').blur(function() {
   if (this.value == '') {
     $('#address_msg').fadeIn("slow");
-    $('#address').css("border","1px solid #D83D5A");
+    //$('#address').css("border","1px solid #D83D5A");
     addressName_state = false;
     return;
     
@@ -409,7 +372,7 @@ $('#address').blur(function() {
 $('#contactNumber').blur(function() {
   if (this.value == '') {
     $('#contactNumber_msg').fadeIn("slow");
-    $('#contactNumber').css("border","1px solid #D83D5A");
+    //$('#contactNumber').css("border","1px solid #D83D5A");
     contactNumber_state = false;
     return;
   }
@@ -424,7 +387,7 @@ $('#email').blur(function() {
   if (this.value == '') {
     $('#email').parent().removeClass();
     $('#email_msg').fadeIn("slow");
-    $('#email').parent().addClass("form_error");
+    //$('#email').parent().addClass("form_error");
     email_state = false;
     return;
   }
@@ -442,14 +405,14 @@ var emailpattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/
 
     if(emailpattern.test($("#email").val())) {
       $('#email').parent().removeClass();
-      $('#email').parent().addClass("form_success");
+     // $('#email').parent().addClass("form_success");
       $('#emailpat_msg').fadeOut("slow");
       $('#email').siblings("span").show();
       email_state = true;
       return;
     } else 
       $('#email').parent().removeClass();
-      $('#email').parent().addClass("form_error");
+      //$('#email').parent().addClass("form_error");
       $('#emailpat_msg').fadeIn("slow");
       $('#email').siblings("span").hide();
       email_state = false;
@@ -466,7 +429,7 @@ var plateNumberpattern = new RegExp(/[A-Za-z]{3,}\s[0-9]{3,}$/i);
       return;
     } else 
       $('#plateNumber').parent().removeClass();
-      $('#plateNumber').parent().addClass("form_error");
+      //$('#plateNumber').parent().addClass("form_error");
       $('#plateNumberpat_msg').fadeIn("slow");
       $('#plateNumber').siblings("span").hide();
       plateNumber_state = false;
@@ -546,7 +509,7 @@ $('#contactNumber').blur(function() {
 $('#plateNumber').blur(function() {
   if (this.value == '') {
     $('#plateNumber_msg').fadeIn("slow");
-    $('#plateNumber').css("border","1px solid #D83D5A");
+    //$('#plateNumber').css("border","1px solid #D83D5A");
     $('#plateNumber').siblings("span").hide();
     plateNumber_state = false;
     return;
@@ -563,7 +526,7 @@ $('#plateNumber').blur(function() {
 $('#make').blur(function() {
   if (this.value == '') {
     $('#make_msg').fadeIn("slow");
-    $('#make').css("border","1px solid #D83D5A");
+    //$('#make').css("border","1px solid #D83D5A");
     $('#make').siblings("span").hide();
     make_state = false;
     return;
@@ -580,7 +543,7 @@ $('#make').blur(function() {
 $('#series').blur(function() {
   if (this.value == '') {
     $('#series_msg').fadeIn("slow");
-    $('#series').css("border","1px solid #D83D5A");
+    //$('#series').css("border","1px solid #D83D5A");
     $('#series').siblings("span").hide();
     series_state = false;
     return;
@@ -597,7 +560,7 @@ $('#series').blur(function() {
 $('#yearModel').blur(function() {
   if (this.value == '') {
     $('#yearModel_msg').fadeIn("slow");
-    $('#yearModel').css("border","1px solid #D83D5A");
+   // $('#yearModel').css("border","1px solid #D83D5A");
     $('#yearModel').siblings("span").hide();
     yearModel_state = false;
     return;
@@ -614,7 +577,7 @@ $('#yearModel').blur(function() {
 $('#color').blur(function() {
   if (this.value == '') {
     $('#color_msg').fadeIn("slow");
-    $('#color').css("border","1px solid #D83D5A");
+    //$('#color').css("border","1px solid #D83D5A");
     $('#color').siblings("span").hide();
     color_state = false;
     return;
@@ -643,7 +606,6 @@ $('#lastName,#firstName,#middleName,#username,#password,#email,#contactNumber,#a
  }
 
  });
-
 
 
  $('#reg_btn').on('click', function(){

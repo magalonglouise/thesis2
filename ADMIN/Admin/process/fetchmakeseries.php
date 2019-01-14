@@ -1,16 +1,16 @@
 <?php
 if(isset($_POST["action"]))
 {
- $connect = mysqli_connect("localhost", "root", "", "thesis");
+ require "require/dataconf.php"; 
  $output = '';
- if($_POST["action"] == "make")
+ if($_POST["action"] == "personalId")
  {
-  $query = "SELECT series FROM make_series WHERE make = '".$_POST["query"]."' GROUP BY series";
-  $result = mysqli_query($connect, $query);
-  $output .= '<option value="">Select Series</option>';
+  $query = "SELECT id, plateNumber, make, series FROM vehicles WHERE personalId = '".$_POST["query"]."'";
+  $result = mysqli_query($connection, $query);
+  $output .= '<option value="">Select Vehicle</option>';
   while($row = mysqli_fetch_array($result))
   {
-   $output .= '<option value="'.$row["series"].'">'.$row["series"].'</option>';
+   $output .= '<option value="'.$row["id"].'">'.$row["plateNumber"].''.$row["make"].''.$row["series"].'</option>';
   }
  }
  echo $output;

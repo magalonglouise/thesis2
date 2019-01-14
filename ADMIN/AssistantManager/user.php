@@ -204,10 +204,7 @@ if(!isset($_GET['id'])){
                   ?>
                 </form>
               <!-- end -->
-                  <button type="submit" class="btn btn-success" style="float:right"  data-toggle="modal"  data-target="#updateprofilemodal">
-                    <i class="menu-icon mdi mdi-account-convert"></i> Update Profile
-                  </button>
-                  
+               
                   <br><br>
 
                   <p class="card-description">
@@ -461,94 +458,7 @@ if(!isset($_GET['id'])){
   </div>
   <!-- container-scroller -->
 
-  <!-- modal start -->
-  <div class="modal fade" id="updateprofilemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog" role="document">
-      <div class="modal-content">
-      <div class="modal-header" style="background-color: #4caf50; color: white; border: 3px solid #4caf50;">
-        <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <!-- start -->
-      <p class="card-title" style="font-size:20px;">Personal Information</p>
-      <form action="process/server.php" method="POST">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="bmd-label-floating">Fist Name</label>
-              <input type="hidden" name="id" value="<?php echo $id; ?>">
-              <input type="text" class="form-control" name="first" value="<?php echo $contentx['firstName'] ?>" placeholder="<?php echo $contentx['firstName'] ?>">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="bmd-label-floating">Middle Name</label>
-              <input type="text" class="form-control" name="middle" value="<?php echo $contentx['middleName'] ?>" placeholder="<?php echo $contentx['middleName'] ?>">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="bmd-label-floating">Last Name</label>
-              <input type="text" class="form-control" name="last" value="<?php echo $contentx['lastName'] ?>" placeholder="<?php echo $contentx['lastName'] ?>">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="bmd-label-floating">Suffix</label>
-              <input type="text" class="form-control" name="suffix" value="<?php echo $contentx['suffix'] ?>" placeholder="<?php echo $contentx['suffix'] ?>">
-              <span style="font-size: 10px">(Ex. II)</span>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label class="bmd-label-floating">Adress</label>
-              <input type="text" class="form-control" name="address" value="<?php echo $contentx['address'] ?>" placeholder="<?php echo $contentx['address'] ?>">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label class="bmd-label-floating">Email Address</label>
-              <input type="text" class="form-control" name="email" value="<?php echo $contentx['email'] ?>" placeholder="<?php echo $contentx['email'] ?>">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="bmd-label-floating">Mobile Number</label>
-              <input type="text" class="form-control" name="mobile" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" value="<?php echo $contentx['mobileNumber'] ?>" placeholder="<?php echo $contentx['mobileNumber'] ?>">
-              <span style="font-size: 10px">(Ex. 09*********)</span>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label class="bmd-label-floating">Telephone Number</label>
-              <input type="text" class="form-control" name="telephone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" value="<?php echo $contentx['telephoneNumber'] ?>" placeholder="<?php echo $contentx['telephoneNumber'] ?>">
-              <span style="font-size: 10px">(Ex. 074 *** ****)</span>
-            </div>
-          </div>
-        </div>
-                    
-        <!-- end -->
-        </div>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-success" name="submit-user" style="float:right"><i class="menu-icon mdi mdi-account-convert"></i> Update Profile</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="menu-icon mdi mdi-close"></i> Close</button>
-          <div class="clearfix"></div>
-        </form>
-        </div>
-      </div>
-    </div>
-  </div>
+  
   <!-- modal end -->
 
   <!-- plugins:js -->

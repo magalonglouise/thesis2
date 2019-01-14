@@ -60,13 +60,6 @@
               <span class="menu-title" style="font-size:14px;">Dashboard</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="calendar.php">
-              <i class="menu-icon mdi mdi-calendar"></i>
-              <span class="menu-title" style="font-size:14px;">Calendar</span>
-            </a>
-          </li>
             
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -381,7 +374,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label class="bmd-label-floating">Year Model</label>
-              <input type="text" class="form-control" name="yearModel" value="<?php echo $roww['yearModel'] ?>" placeholder="<?php echo $roww['yearModel'] ?>">
+              <input type="text" class="form-control" name="yearModel" value="<?php echo $roww['yearModel'] ?>" placeholder="<?php echo $roww['yearModel'] ?>" readonly>
             </div>
           </div>
         </div>
@@ -403,13 +396,13 @@
           <div class="col-md-6">
             <div class="form-group">
               <label class="bmd-label-floating">Make</label>
-              <input type="text" class="form-control" name="make" value="<?php echo $roww['make'] ?>" placeholder="<?php echo $roww['make'] ?>">
+              <input type="text" class="form-control" name="make" value="<?php echo $roww['make'] ?>" placeholder="<?php echo $roww['make'] ?>" readonly>
             </div>
           </div>
           <div class="col-md-6">
             <div class="form-group">
               <label class="bmd-label-floating">Series</label>
-              <input type="text" class="form-control" name="series" value="<?php echo $roww['series'] ?>" placeholder="<?php echo $roww['series'] ?>">
+              <input type="text" class="form-control" name="series" value="<?php echo $roww['series'] ?>" placeholder="<?php echo $roww['series'] ?>" readonly>
             </div>
           </div>
         </div>
@@ -417,7 +410,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label class="bmd-label-floating">Color</label>
-              <input type="text" class="form-control" name="color" value="<?php echo $roww['color'] ?>" placeholder="<?php echo $roww['color'] ?>">
+              <input type="text" class="form-control" name="color" value="<?php echo $roww['color'] ?>" placeholder="<?php echo $roww['color'] ?>" readonly>
             </div>
           </div>
           <div class="col-md-6">

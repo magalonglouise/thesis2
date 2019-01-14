@@ -1,6 +1,9 @@
 <?php
 session_start();
 include 'process/authhome.php';
+include 'sendsms.php';
+include 'threedayssms.php';
+include 'onday.php';
 ?>
 
 <!DOCTYPE html>

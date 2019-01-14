@@ -126,8 +126,7 @@ if (isset($_POST['login_user'])) {
           header('location: login.php');
           exit();
         }elseif ($hashedPwdCheck == true){
-          if($row['status'] == 'Active'){
-            if($row['type'] == 'admin'){
+         if($row['type'] == 'admin'){
               $_SESSION['id'] = $row['id'];
               $_SESSION['type'] = $row['type'];
               $_SESSION['username'] = $username;
@@ -135,40 +134,35 @@ if (isset($_POST['login_user'])) {
               $_SESSION['Name'] = $row['Name'];
               header("Location: ADMIN/Admin/dashboard.php");
               exit();
-              }else{
-                if($row['type'] == 'manager'){
-                  $_SESSION['id'] = $row['id'];
-                  $_SESSION['type'] = $row['type'];
-                  $_SESSION['username'] = $username;
-                  $_SESSION['password'] = $password;
-                  $_SESSION['Name'] = $row['Name'];
-                  header("Location: ADMIN/Manager/dashboard.php");
-                  exit();
-                }else{
-                  if($row['type'] == 'assistant'){
-                    $_SESSION['id'] = $row['id'];
-                    $_SESSION['type'] = $row['type'];
-                    $_SESSION['username'] = $username;
-                    $_SESSION['password'] = $password;
-                    $_SESSION['Name'] = $row['Name'];
-                    header("Location: ADMIN/AssistantManager/dashboard.php");
-                    exit();
-                  }else{
-                      //Login the user here
-                      $_SESSION['type'] = $row['type'];
-                      $_SESSION['username'] = $row['username'];
-                      $_SESSION['id'] = $row['id'];
-                      $_SESSION['last_login_timestamp'] = time();  
-                      header('location: vehiclesinfo.php');
-                      exit();
-                    }
-                  }
-                }
+         }else{
+          if($row['type'] == 'manager'){
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['type'] = $row['type'];
+            $_SESSION['username'] = $username;
+            $_SESSION['password'] = $password;
+            $_SESSION['Name'] = $row['Name'];
+            header("Location: ADMIN/Manager/dashboard.php");
+            exit();
           }else{
-            header('location: home.php');
+            if($row['type'] == 'assistant'){
+              $_SESSION['id'] = $row['id'];
+              $_SESSION['type'] = $row['type'];
+              $_SESSION['username'] = $username;
+              $_SESSION['password'] = $password;
+              $_SESSION['Name'] = $row['Name'];
+              header("Location: ADMIN/AssistantManager/dashboard.php");
+              exit();
+            }else{
+                //Login the user here
+                $_SESSION['type'] = $row['type'];
+                $_SESSION['username'] = $row['username'];
+                $_SESSION['id'] = $row['id'];
+                $_SESSION['last_login_timestamp'] = time();  
+                header('location: home.php');
+                exit();
+              }
+            }
           }
-          
-
          }
         }
     }
@@ -312,35 +306,24 @@ if (isset($_POST['account_edit'])) {
    $make = $_POST['make'];
    $series = $_POST['series'];
    $yearModel = $_POST['yearModel'];
-   $query = "UPDATE appointments SET status= 'Accepted' , created= now()  WHERE id = $appointmentId";
+   $date = $_POST['date'];
+   $query = "UPDATE appointments SET status= 'Accepted' , created= now(), date = '$date'  WHERE id = $appointmentId";
    $_SESSION['appointment_accepted'] = '<div class="alert alert-success fade in" align="center">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
    <i class="fas fa-check"></i> <strong> Notice</strong>' .$plateNumber.' '.$make.' '.$series.' was added successfully </div>';
    mysqli_query($db, $query);
-   header('location: ../requeststatus.php');
+   header('location: requeststatus.php');
    exit();
   }
 
-  if(isset($_POST["appointmentrescheduleRescheduled"]))
-  {
-   $appointmentId = $_POST['appointmentId'];
-   $reason = $_POST['reason'];
-   $date = $_POST['date'];
-   $query = "UPDATE appointments SET status = 'Rescheduled', additionalMessage= '$reason' , date = 'date' , created= now()  WHERE id = $appointmentId";
-   $_SESSION['appointment_reschedule_Rescheduled'] = '<div class="alert alert-success fade in" align="center">
-   <a href="#" class="close" data-dismiss="alert">&times;</a>
-   <i class="fas fa-check"></i> <strong> Notice</strong>' .$plateNumber.' '.$make.' '.$series.' was added successfully </div>';
-   mysqli_query($db, $query);
-   header('location: ../requeststatus.php');
-   exit();
-  }
+
 
   if(isset($_POST["appointmentacceptedRescheduled"]))
   {
    $appointmentId = $_POST['appointmentId'];
    $reason = $_POST['reason'];
    $date = $_POST['date'];
-   $query = "UPDATE appointments SET status = 'Rescheduled', additionalMessage= '$reason' , date = 'date' , created= now()  WHERE id = $appointmentId";
+   $query = "UPDATE appointments SET status = 'Rescheduled', additionalMessage= '$reason' , date = '$ date' , created= now()  WHERE id = $appointmentId";
    $_SESSION['appointment_accepted_Rescheduled'] = '<div class="alert alert-success fade in" align="center">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
    <i class="fas fa-check"></i> <strong> Notice</strong>' .$plateNumber.' '.$make.' '.$series.' was added successfully </div>';
@@ -368,6 +351,70 @@ if (isset($_POST['account_edit'])) {
    $_SESSION['appointment_cancel_Pending'] = '<div class="alert alert-success fade in" align="center">
    <a href="#" class="close" data-dismiss="alert">&times;</a>
    <i class="fas fa-check"></i> <strong> Notice</strong> Your Appointment was Cancelled </div>';
+   mysqli_query($db, $query);
+   header('location: requeststatus.php');
+   exit();
+  }
+
+  if(isset($_POST["appointmentcancelRescheduled"]))
+  {
+   $appointmentId = $_POST['appointmentId'];
+   $query = "DELETE FROM appointments WHERE id = $appointmentId";
+   $_SESSION['appointment_cancel_Pending'] = '<div class="alert alert-success fade in" align="center">
+   <a href="#" class="close" data-dismiss="alert">&times;</a>
+   <i class="fas fa-check"></i> <strong> Notice</strong> Your Appointment was Cancelled </div>';
+   mysqli_query($db, $query);
+   header('location: requeststatus.php');
+   exit();
+  }
+
+  if(isset($_POST["appointmentrescheduleCancel"]))
+  {
+   $appointmentId = $_POST['appointmentId'];
+   $query = "DELETE FROM appointments WHERE id = $appointmentId";
+   $_SESSION['appointment_cancel_Pending'] = '<div class="alert alert-success fade in" align="center">
+   <a href="#" class="close" data-dismiss="alert">&times;</a>
+   <i class="fas fa-check"></i> <strong> Notice</strong> Your Appointment was Cancelled </div>';
+   mysqli_query($db, $query);
+   header('location: requeststatus.php');
+   exit();
+  }
+
+  if(isset($_POST["appointmentcancelAccepted"]))
+  {
+   $appointmentId = $_POST['appointmentId'];
+   $query = "DELETE FROM appointments WHERE id = $appointmentId";
+   $_SESSION['appointment_cancel_Pending'] = '<div class="alert alert-success fade in" align="center">
+   <a href="#" class="close" data-dismiss="alert">&times;</a>
+   <i class="fas fa-check"></i> <strong> Notice</strong> Your Appointment was Cancelled </div>';
+   mysqli_query($db, $query);
+   header('location: requeststatus.php');
+   exit();
+  }
+
+  if(isset($_POST["appointmentrescheduleRescheduled"]))
+  {
+   $appointmentId = $_POST['appointmentId'];
+   $reason = $_POST['reasonStated'];
+   $date = implode('|', $_POST['date']);
+   $query = "UPDATE appointments SET additionalMessage= '$reason' , rescheduledate = '$date',  rescheduledate = '$date' , created= now(), adminDate= 'reschedclient'  WHERE id = '$appointmentId'";
+   $_SESSION['appointment_reschedule_Rescheduled'] = '<div class="alert alert-success fade in" align="center">
+   <a href="#" class="close" data-dismiss="alert">&times;</a>
+   <i class="fas fa-check"></i> <strong> Notice</strong> Rescheduled successfully </div>';
+   mysqli_query($db, $query);
+   header('location: requeststatus.php');
+   exit();
+  }
+
+  if(isset($_POST["appointmentrescheduleAccepted"]))
+  {
+   $appointmentId = $_POST['appointmentId'];
+   $reason = $_POST['reasonStated'];
+   $date = implode('|', $_POST['date']);
+   $query = "UPDATE appointments SET status= 'Rescheduled', additionalMessage= '$reason' , rescheduledate = '$date' , created= now(), adminDate= 'reschedclient', targetEndDate= '$date'  WHERE id = '$appointmentId'";
+   $_SESSION['appointment_reschedule_Rescheduled'] = '<div class="alert alert-success fade in" align="center">
+   <a href="#" class="close" data-dismiss="alert">&times;</a>
+   <i class="fas fa-check"></i> <strong> Notice</strong> Rescheduled successfully </div>';
    mysqli_query($db, $query);
    header('location: requeststatus.php');
    exit();

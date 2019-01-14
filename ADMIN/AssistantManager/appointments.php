@@ -129,8 +129,8 @@
                             <th>Name</th>
                             <th>Plate Number</th>
                             <th>Status</th>
-                            <th>Date of Request</th>
-                            <th>Date of Appointment</th>
+                            <th>Date Sent</th>
+                            <th>Date of Appointment Request</th>
                             <th style="font-size:15px;" class="text-center">Action</th>
                         </tr>
                       </thead>
@@ -140,7 +140,7 @@
                         'Name',make,series,appointments.created as 'created', appointments.serviceId as 'service', appointments.otherService as 
                         'others', yearModel,plateNumber,appointments.status,date, appointments.additionalMessage as 'message', adminDate,rescheduledate
                          from appointments join personalinfo on appointments.personalId
-                        = personalinfo.personalId join vehicles on appointments.vehicleId = vehicles.id where (appointments.status = 'Pending' OR appointments.status = 'Rescheduled') AND (NOW() = date OR NOW() < date )");
+                        = personalinfo.personalId join vehicles on appointments.vehicleId = vehicles.id where (appointments.status = 'Pending' OR appointments.status = 'Rescheduled')");
                         if($data->execute()){
                             $values = $data->get_result();
                             while($row = $values->fetch_assoc()) {
@@ -157,7 +157,7 @@
                                 <td>'.$row['plateNumber'].'</td>
                                 <td>'.$row['status'].'</td>
                                 <td>'; echo date('M d, Y',strtotime($date2)); echo '</td>
-                                <td>'; echo date('M d, Y',strtotime($date)); echo '</td>
+                                 <td><a href = "basis2.php?date='.$row['date'].'" style="color:black;">'; echo date('M d, Y',strtotime($date)); echo '</a></td>
                                 <td class="text-center">
                                 
                                   <div class="row">';

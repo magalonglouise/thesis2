@@ -21,3 +21,16 @@ $('#'+result).html(data);
 });
 });
 
+function myFunction() {
+var x = document.getElementById("others"); 
+var result = $('input[name="otherMake"]');
+$("#make").click(function(){
+if($('#make').val() !== '' ){
+$("#others").fadeOut();
+$("#otherseries").fadeOut();
+return; 
+};
+
+});
+
+}

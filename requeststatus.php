@@ -114,6 +114,7 @@
             $jq171('#datepicker').datepicker({
               dateFormat: 'yy-mm-dd',
               minDate: 0,
+              beforeShowDay: unavailable,
               beforeShowDay: $jq171.datepicker.noWeekends,
               inline: true,
               //nextText: '&rarr;',
@@ -132,6 +133,7 @@
             $jq171('#datepicker2').datepicker({
               dateFormat: 'yy-mm-dd',
               minDate: 0,
+              beforeShowDay: unavailable,
               beforeShowDay: $jq171.datepicker.noWeekends,
               inline: true,
               //nextText: '&rarr;',
@@ -139,12 +141,83 @@
               showOtherMonths: true,
               //dateFormat: 'dd MM yy',
               dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-              beforeShowDay: unavailable, 
               //showOn: "button",
               //buttonImage: "img/calendar-blue.png",
               //buttonImageOnly: true,
             });
           });
+           $jq171(function(){
+            $jq171('#datepicker3').datepicker({
+              dateFormat: 'yy-mm-dd',
+              minDate: 0,
+              beforeShowDay: unavailable,
+              beforeShowDay: $jq171.datepicker.noWeekends,
+              inline: true,
+              //nextText: '&rarr;',
+              //prevText: '&larr;',
+              showOtherMonths: true,
+              //dateFormat: 'dd MM yy',
+              dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+              //showOn: "button",
+              //buttonImage: "img/calendar-blue.png",
+              //buttonImageOnly: true,
+            });
+          });
+
+          $jq171(function(){
+            $jq171('#datepicker4').datepicker({
+              dateFormat: 'yy-mm-dd',
+              minDate: 0,
+              beforeShowDay: unavailable,
+              beforeShowDay: $jq171.datepicker.noWeekends,
+              inline: true,
+              //nextText: '&rarr;',
+              //prevText: '&larr;',
+              showOtherMonths: true,
+              //dateFormat: 'dd MM yy',
+              dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+              //showOn: "button",
+              //buttonImage: "img/calendar-blue.png",
+              //buttonImageOnly: true,
+            });
+          });
+
+          $jq171(function(){
+            $jq171('#datepicker5').datepicker({
+              dateFormat: 'yy-mm-dd',
+              minDate: 0,
+              beforeShowDay: unavailable,
+              beforeShowDay: $jq171.datepicker.noWeekends,
+              inline: true,
+              //nextText: '&rarr;',
+              //prevText: '&larr;',
+              showOtherMonths: true,
+              //dateFormat: 'dd MM yy',
+              dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+              //showOn: "button",
+              //buttonImage: "img/calendar-blue.png",
+              //buttonImageOnly: true,
+            });
+          });
+
+          $jq171(function(){
+            $jq171('#datepicker6').datepicker({
+              dateFormat: 'yy-mm-dd',
+              minDate: 0,
+              beforeShowDay: unavailable,
+              beforeShowDay: $jq171.datepicker.noWeekends,
+              inline: true,
+              //nextText: '&rarr;',
+              //prevText: '&larr;',
+              showOtherMonths: true,
+              //dateFormat: 'dd MM yy',
+              dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+              //showOn: "button",
+              //buttonImage: "img/calendar-blue.png",
+              //buttonImageOnly: true,
+            });
+          });
+
           </script>
 
     <!-- MENU -->
@@ -238,7 +311,7 @@
     <div class="row">
     <div class="col-md-6 col-sm-6">
     <div class="panel panel-default" id="headings">
-      <div class="panel-heading" style="background-color: #ffaf00;color: white;"><i class="fas fa-truck-loading"></i> Pending Requests</div>
+      <div class="panel-heading" style="background-color: #ffaf00;color: white; font-size:18px"><i class="fas fa-truck-loading"></i> Pending Requests</div>
       <div class="panel-body" id="serviceDisplay" style="overflow-y: auto;height: 230px;">
 
 
@@ -267,14 +340,17 @@
       <div class="col-md-6 col-sm-6">
       <br><br><br>
       <div class="pull-right">
-      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelpendingModal<?= $appointmentpending['id']; ?>" style="width: 105px;"><i class="far fa-calendar-times"></i> Cancel </button>
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#pendingModal<?= $appointmentpending['id']; ?>"> More Details...</button>
+      <button type="button" class="btn" style="margin-top: 5px; width: 120px; color:white; background-color:#308ee0" data-toggle="modal" data-target="#pendingModal<?= $appointmentpending['id']; ?>"> More Details</button>
+          
+      <button type="button" class="btn" style="margin-top: 5px; width: 110px; color:black;" data-toggle="modal" data-target="#cancelpendingModal<?= $appointmentpending['id']; ?>" style="width: 105px;"><i class="far fa-calendar-times"></i> Cancel </button>
+          
+
       </div> 
       <div id="pendingModal<?= $appointmentpending['id']; ?>" class="modal fade" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
           <div class="modal-content">
-            <div class="modal-header" style="background-color: #286090;color: white;">
+            <div class="modal-header" style="background-color:#308ee0; color: white;">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h5 class="modal-title"><i class="fas fa-concierge-bell"></i> Service Request</h5>
             </div>
@@ -293,7 +369,7 @@
                </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
+              <button type="button" class="btn" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
             </div>
           </div>
         </div>
@@ -313,12 +389,12 @@
       
             </div>
             <div class="modal-footer">
-              <button type="submit" name="appointmentcancelPending" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Yes</button>
-              <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
+              <button type="submit" name="appointmentcancelPending" class="btn" style="background-color:#4caf50; color:white;"><i class="fas fa-check"></i> Yes</button>
+              <button type="button" class="btn" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
             </div>
           </div>
         </div>
-      </div>
+      </div></form>
       </form>
       </div>
       </div>
@@ -346,23 +422,25 @@
       <br><br><br>
       <div class="pull-right">
       <div class="form-group">
+      <?php if ($appointmentpending['adminDate'] == "admin") : ?>
       <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#approverescheduleModal<?= $appointmentpending['id']; ?>" style="width: 105px;"> <i class="far fa-calendar-check"></i> Approve </button>
+      <?php endif ?>
       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelrescheduleModal<?= $appointmentpending['id']; ?>" style="width: 105px;"> <i class="far fa-calendar-times"></i> Cancel </button> 
       </div>
       <div class="form-group">
       <div class="pull-right">
-     
+      <?php if ($appointmentpending['adminDate'] == "admin") : ?>
       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#rerescheduleModal<?= $appointmentpending['id']; ?>" style="background-color: #b80011;"> <i class="far fa-calendar-alt"></i> Reschedule</button>
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#rescheduleModal<?= $appointmentpending['id']; ?>"> More Details....</button>
+      <?php endif ?>
+      <button type="button" class="btn" style="margin-top: 5px; width: 120px; color:white; background-color:#308ee0;" data-toggle="modal" data-target="#rescheduleModal<?= $appointmentpending['id']; ?>"> More Details</button>
       </div>
       </div>      
       </div>
 
-
-
       <div id="rescheduleModal<?= $appointmentpending['id']; ?>" class="modal fade" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
+
           <div class="modal-content">
             <div class="modal-header" style="background-color: #286090;color: white;">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -393,6 +471,7 @@
       <div id="rerescheduleModal<?= $appointmentpending['id']; ?>" class="modal fade" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
+          <form action="requeststatus.php" method="POST">
           <div class="modal-content">
             <div class="modal-header" style="background-color: #b80011;color: white;">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -400,23 +479,30 @@
             </div>
             <div class="modal-body">
                 <label for="date">Desired date to be Rescheduled:</label>
-                <b><input type="text" style="font-family: 'Poppins', sans-serif;cursor: pointer;" id="datepicker" name="date" class="form-control" readonly></b>
+                <input type="hidden" name="appointmentId" value="<?= $appointmentpending['id']; ?>">
+                <b><input type="text" style="font-family: 'Poppins', sans-serif;cursor: pointer;" id="datepicker" name="date[]" class="form-control" readonly></b><br>
+                <b><input type="text" style="font-family: 'Poppins', sans-serif;cursor: pointer;" id="datepicker2" name="date[]" class="form-control" readonly></b><br>
+                <b><input type="text" style="font-family: 'Poppins', sans-serif;cursor: pointer;" id="datepicker3" name="date[]" class="form-control" readonly></b><br>
+
                 <label for="reasonStated">Reason:</label><br>
-                <input type="text" class="form-control" name="reasonStated">   
+                <textarea class="form-control" name="reasonStated" rows="5" ></textarea>   
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-danger btn-sm" style="background-color: #b80011;"><i class="fas fa-times-circle"></i> Save</button>
+              <button type="submit" name="appointmentrescheduleRescheduled" class="btn btn-danger btn-sm" style="background-color: #b80011;"><i class="fas fa-times-circle"></i> Save</button>
               <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
             </div>
           </div>
+          </form>
         </div>
       </div>
 
       <div id="cancelrescheduleModal<?= $appointmentpending['id']; ?>" class="modal fade" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
+          <form action="requeststatus.php" method="POST">
           <div class="modal-content">
             <div class="modal-header" style="background-color: #D9534F;color: white;">
+               <input type="hidden" name="appointmentId" value="<?= $appointmentpending['id']; ?>">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h5 class="modal-title"><i class="far fa-calendar-minus"></i> Cancel Appointment</h5>
             </div>
@@ -426,12 +512,14 @@
 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-success btn-sm" data-dismiss="modal"><i class="fas fa-check"></i> Yes</button>
-              <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
+              <button type="submit" style="background-color:#4caf50; color:white;" name="appointmentrescheduleCancel" class="btn"><i class="fas fa-check"></i> Yes</button>
+              <button type="button" class="btn" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
             </div>
           </div>
+          </form>
         </div>
       </div>
+
 
 
       <div id="approverescheduleModal<?= $appointmentpending['id']; ?>" class="modal fade" role="dialog">
@@ -443,7 +531,7 @@
               <h5 class="modal-title"><i class="fas fa-check-square"></i> Approve Date</h5>
             </div>
             <div class="modal-body">
-              <form action="process/server.php" method="POST">
+              <form action="requeststatus.php" method="POST">
                 <input type="hidden" name="appointmentId" value="<?= $appointmentpending['id']; ?>">
                 <input type="hidden" name="adminDate" value="<?= $appointmentpending['adminDate']; ?>">
                 <input type="hidden" name="plateNumber" value="<?= $appointmentpending['plateNumber']; ?>">
@@ -451,14 +539,19 @@
                 <input type="hidden" name="series" value="<?= $appointmentpending['series']; ?>">
                 <input type="hidden" name="yearModel" value="<?= $appointmentpending['yearModel']; ?>">
                 <label for="created" style="color: #0066cc;">Date:</label><br>
-                <?= date("F d, Y",strtotime($appointmentpending['desiredDate'])); ?>
                 <hr style="padding: 0px;margin: 0px;">
+                <?php $dates =explode("|", $appointmentpending['rescheduledate']); ?>
+                <?php
+                for($i =0; $i < count($dates); $i++){
+                 echo '<input type="radio" name="date" value='.$dates[$i].'>'.date("F d, Y",strtotime($dates[$i])).'<br>';
+                }
+                ?>
                   <h5>Would you like to choose this date for your appointment?</h5>
                 <br>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-success btn-sm" name="appointmentAccepted" value="<?= $appointmentpending['id']; ?>" ><i class="fas fa-check"></i> Yes</button>
-              <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-ban"></i> Cancel</button>
+              <button type="submit" style="background-color:#4caf50; color:white;" class="btn" name="appointmentAccepted" value="<?= $appointmentpending['id']; ?>" ><i class="fas fa-check"></i> Yes</button>
+              <button type="button" class="btn" data-dismiss="modal"><i class="fas fa-ban"></i> Cancel</button>
              </form>
             </div>
           </div>
@@ -488,7 +581,7 @@
 
 
     <div class="panel panel-default" id="headings">
-      <div class="panel-heading" style="background-color:#4caf50;color: white;"><i class="fas fa-calendar-check"></i> Accepted Vehicles</div>
+      <div class="panel-heading" style="background-color:#4caf50;color: white; font-size:18px"><i class="fas fa-calendar-check"></i> Accepted Vehicles</div>
       <div class="panel-body" id="serviceDisplay" style="overflow-y: auto;height: 230px;">
       <?php
        if ($acceptedRequestsresultCheck > 0) {
@@ -514,12 +607,15 @@
       <div class="col-md-6 col-sm-6">
       <div class="pull-right">
       <div class="form-group">
-      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#cancelrerescheduleModal<?= $appointmentaccepted['id']; ?>" style="width: 105px;"> <i class="far fa-calendar-times"></i> Cancel</button>
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#acceptedcheduleModal<?= $appointmentaccepted['id']; ?>"> More Details....</button>
+         
+      <button type="button" class="btn" style="margin-top: 5px; width: 110px; color:white; background-color:#308ee0" data-toggle="modal" data-target="#acceptedcheduleModal<?= $appointmentaccepted['id']; ?>"> More Details</button>
+          
+      <button type="button" class="btn" data-toggle="modal" style="margin-top: 5px; width: 110px; color:black;" data-target="#cancelrerescheduleModal<?= $appointmentaccepted['id']; ?>" style="width: 105px;"> <i class="far fa-calendar-times"></i> Cancel</button>
+          
       </div>
       <div class="form-group">
       
-      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#acceptedrerescheduleModal<?= $appointmentaccepted['id']; ?>" style="background-color: #b80011;"> <i class="far fa-calendar-alt"></i> Reschedule</button>
+      <button type="button" class="btn" style="margin-top: 5px; width: 120px; color:white; background-color:#ffaf00" data-toggle="modal" data-target="#acceptedrerescheduleModal<?= $appointmentaccepted['id']; ?>" style="background-color: #b80011;"> <i class="far fa-calendar-alt"></i>       Reschedule</button>
       </div>
       </div>
       </div>
@@ -527,6 +623,7 @@
       <div id="cancelrerescheduleModal<?= $appointmentaccepted['id']; ?>" class="modal fade" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
+        <form method="post" action="requeststatus.php">
           <div class="modal-content">
             <div class="modal-header" style="background-color: #D9534F;color: white;">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -538,10 +635,11 @@
             </div>
 
             <div class="modal-footer">
-            <button type="button" name="appointmentcancelAccepted" class="btn btn-success btn-sm"><i class="fas fa-check"></i> Yes</button>
-            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
+            <button type="submit" style="background-color:#4caf50; color:white;" name="appointmentcancelAccepted" class="btn"><i class="fas fa-check"></i> Yes</button>
+            <button type="button" class="btn" data-dismiss="modal"><i class="fas fa-times-circle"></i> No</button>
             </div>
           </div>
+        </form>
         </div>
       
       </div>
@@ -578,6 +676,7 @@
       <div id="acceptedrerescheduleModal<?= $appointmentaccepted['id']; ?>" class="modal fade" role="dialog">
         <div class="modal-dialog">
           <!-- Modal content-->
+          <form method="post" action="requeststatus.php">
           <div class="modal-content">
             <div class="modal-header" style="background-color: #b80011;color: white;">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -585,16 +684,20 @@
             </div>
             <div class="modal-body">
                 <label for="date">Desired date to be Rescheduled:</label>
-                <b><input type="text" style="font-family: 'Poppins', sans-serif;cursor: pointer;" id="datepicker2" name="date" class="form-control" readonly></b>
+                <input type="hidden" name="appointmentId" value="<?= $appointmentaccepted['id']; ?>">
+                <b><input type="text" style="font-family: 'Poppins', sans-serif;cursor: pointer;" id="datepicker4" name="date[]" class="form-control" readonly></b><br>
+                <b><input type="text" style="font-family: 'Poppins', sans-serif;cursor: pointer;" id="datepicker5" name="date[]" class="form-control" readonly></b><br>
+                <b><input type="text" style="font-family: 'Poppins', sans-serif;cursor: pointer;" id="datepicker6" name="date[]" class="form-control" readonly></b><br>
                 <label for="reasonStated">Reason:</label><br>
-                <input type="text" class="form-control" name="reasonStated">   
+                <textarea class="form-control" name="reasonStated" rows="5"></textarea>
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-danger btn-sm" style="background-color: #b80011;"><i class="fas fa-times-circle"></i> Save</button>
+              <button type="submit" name="appointmentrescheduleAccepted" class="btn btn-danger btn-sm" style="background-color: #b80011;"><i class="fas fa-times-circle"></i> Save</button>
               <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
             </div>
           </div>
         </div>
+          </form>
       </div>
       </div>
       </div>
@@ -616,7 +719,7 @@
 
     <div class="col-md-6 col-sm-6">
     <div class="panel panel-default" id="headings">
-      <div class="panel-heading" style="background-color: #b80011;color: white;"><i class="fas fa-times-circle"></i> Declined Requests</div>
+      <div class="panel-heading" style="background-color: #b80011;color: white; font-size:18px"><i class="fas fa-times-circle"></i> Declined Requests</div>
       <div class="panel-body" id="serviceDisplay" style="overflow-y: auto;height: 500px;">   
       <?php
        if ($declinedRequestsresultCheck > 0) {
@@ -650,7 +753,7 @@
       <br>
       <br>
       <div class="pull-right">
-      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#declinedcheduleModal<?= $appointmentdeclined['id']; ?>"> More Details...</button>
+      <button type="button" class="btn" style="margin-top: 5px; width: 120px; color:white; background-color:#308ee0" data-toggle="modal" data-target="#declinedcheduleModal<?= $appointmentdeclined['id']; ?>"> More Details</button>
 
       </div> 
       </div>
@@ -658,7 +761,7 @@
         <div class="modal-dialog">
           <!-- Modal content-->
           <div class="modal-content">
-            <div class="modal-header" style="background-color: #286090;color: white;">
+            <div class="modal-header" style="background-color: #308ee0; color: white;">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h5 class="modal-title"><i class="fas fa-concierge-bell"></i> Service Request</h5>
             </div>

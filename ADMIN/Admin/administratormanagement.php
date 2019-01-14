@@ -44,12 +44,6 @@
             </a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="calendar.php">
-              <i class="menu-icon mdi mdi-calendar"></i>
-              <span class="menu-title" style="font-size:14px;">Calendar</span>
-            </a>
-          </li>
             
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -272,7 +266,7 @@
                       <tbody class="table-primary" style="color:black;">
                       <?php
                             $data = $connection->prepare("SELECT *, concat(firstName, ' ' , middleName,' ' , lastName ) as 'Name' FROM users WHERE
-                             (type = 'admin' OR type = 'manager' or type = 'assistant') AND id != '7';");
+                             (type = 'admin' OR type = 'manager' or type = 'assistant');");
                             if($data->execute()){
                                 $values = $data->get_result();
                                 

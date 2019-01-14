@@ -44,13 +44,6 @@
               <span class="menu-title" style="font-size:14px;">Dashboard</span>
             </a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="calendar.php">
-              <i class="menu-icon mdi mdi-calendar"></i>
-              <span class="menu-title" style="font-size:14px;">Calendar</span>
-            </a>
-          </li>
             
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
@@ -193,8 +186,6 @@
                                         <td style="text-align: right;">'.$row['mobileNumber'].'</td>
                                         <td class="text-center">
                                           <a href="user.php?id='.$row['personalId'].'"><button class="btn btn-primary"><i class="menu-icon mdi mdi-eye-outline"></i> View</button></a>
-                      
-                                          <button type="button" class="btn btn-darkblue" data-toggle="modal" data-target="#exampleModal'.$row['personalId'].'"><i class="menu-icon mdi mdi-email-outline"></i> Send SMS</button>
                                         </td>
                                     </tr>
 

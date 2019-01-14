@@ -75,7 +75,7 @@
 
 
      <!-- MENU -->
-     <section class="navbar navbar-default navbar-static-top" role="navigation" >
+    <section class="navbar navbar-default navbar-static-top" role="navigation" >
           <div class="container">
 
                <div class="navbar-header">
@@ -94,7 +94,7 @@
 
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
-                     <ul class="nav navbar-nav ">
+                <ul class="nav navbar-nav ">
                      <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php  if (isset($_SESSION['username'])) : ?><p> <i class="fas fa-user-circle"></i></span> Welcome <?php echo $_SESSION['username']; ?> <span class="caret"></span></p>
                 </a>
@@ -106,13 +106,23 @@
                   </li>
                   <?php endif ?>
              </ul>
+                   
                     
                     <ul class="nav navbar-nav navbar-right">
                           
                         <li><a href="vehicleshistory.php" class="smoothScroll"><i class="fas fa-history"></i> Vehicle History  <span class="label label-pill label-danger count1" style="border-radius:10px;padding:6px;"></span></a></li>
                         <li><a href="vehiclesinfo.php" class="smoothScroll"><i class="fas fa-car"></i> Your Vehicles</a></li>  
                         <li class="dropdown">
-                        <li><a href="requeststatus.php" class="smoothScroll"><i class="far fa-calendar-check"></i>  Request Status</a></li>  
+                       
+                        
+                        
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="requeststatus.php" ><i class="far fa-calendar-check"></i> Request Status
+                  </a>
+                  </li>
+                
+             
+                        
                         <li class="dropdown">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell" aria-hidden="true" style="font-size: 20px;padding: 0;"></i>  <span class="label label-pill label-danger count" style="border-radius:10px;"></span></a>
                          <ul class="dropdown-menu" id="dropdownnotif" aria-labelledby="dropdownMenuDivider"></ul>
@@ -127,8 +137,8 @@
   <!-- EDIT PERSONAL INFORMATION --> 
   <div class="jumbotron">
  <div class="container">
-   <div class="panel panel-default" id="headings">
-  <div class="panel-heading" style="background-color: #4caf50;color: white;"><i class="fas fa-user-cog"></i> Personal Info</div>
+   <div class="panel panel-default" id="headings" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  <div class="panel-heading" style="background-color: #000099;color: white; font-size: 18px;"><i class="fas fa-user-cog"></i> &nbsp;Personal Info</div>
   <div class="panel-body" id="serviceDisplay" style="overflow-y: auto;height: auto;">
    <?php 
    foreach($personalinfo->personal_info as $personalinfo){
@@ -180,8 +190,10 @@
       </div>
       <br>
      <div class="pull-right">
-      <button type="submit" class="btn btn-success btn-sm" name="account_edit" style="background-color: #4caf50;color: white;"><i class="fas fa-user-edit"></i> Save</button>
-        <a href="accountsettings.php" class="btn btn-default btn-sm"><i class="fas fa-times-circle"></i> Cancel</a>     
+      <button type="submit" class="btn" name="account_edit" style="background-color:  #000099;color: white;"><i class="fas fa-user-edit"></i> Save</button>
+      <button onclick="location.href='accountsettings.php'" type="button" class="btn" data-dismiss="modal"><i class="fas fa-times-circle"></i> Cancel</button>
+         
+         
       </div>
     </form>
       <?php
@@ -196,18 +208,18 @@
     
 
       <!-- FOOTER -->
- <footer data-stellar-background-ratio="5">
+    <footer data-stellar-background-ratio="5">
           <div class="container">
                <div class="row">
 
                     <div class="col-md-4 col-sm-4">
                          <div class="footer-thumb"> 
-                              <h4 class="wow fadeInUp" data-wow-delay="0.4s">Contact Info</h4>
+                              <h2 class="wow fadeInUp" data-wow-delay="0.4s">Contact Info</h2>
 
                               <div class="contact-info">
-                                   <p><i class="fas fa-phone"></i> 09257196568 / 09304992021</p>
-                                   <p><i class="far fa-envelope"></i> <a href="#">eascustoms@yahoo.com</a></p>
-                                   <p><i class="fab fa-facebook-square"></i> <a href="#">EAS Customs / @eascustoms75</a>
+                                   <p><i class="fa fa-phone"></i> 09257196568 / 09304992021</p>
+                                   <p><i class="fa fa-envelope-o"></i> <a href="#">eascustoms@yahoo.com</a></p>
+                                   <p><i class="fa fa-facebook-square" aria-hidden="true"></i> <a href="#">EAS Customs / @eascustoms75</a>
                               </div>
                          </div>
                     </div>
@@ -215,7 +227,7 @@
                     <div class="col-md-4 col-sm-4"> 
                          <div class="footer-thumb"> 
                               <div class="opening-hours">
-                                   <h4 class="wow fadeInUp" data-wow-delay="0.4s">Opening Hours</h4>
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.4s">Opening Hours</h2><br>
                                    <p>Monday - Friday <span>09:00 AM - 05:00 PM</span></p>
                                    <p>Saturday <span>09:00 AM - 05:00 PM</span></p>
                                    <p>Sunday <span>Closed</span></p>

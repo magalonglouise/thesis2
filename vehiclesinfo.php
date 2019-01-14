@@ -34,14 +34,26 @@
      <link rel="stylesheet" href="css/all.css">
      <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
      <script src="js/jquery.js"></script>
-     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>-->
+
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="css/tooplate-style.css">
      <script src="js/script.js"></script>
 
+
 </head>
 <body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
 
+     <!-- PRE LOADER -->
+       <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section>
+    
+
+    <!-- HEADER -->
      <header>
           <div class="container" >
                <div class="row">
@@ -54,26 +66,18 @@
               <div class="col-md-8 col-sm-7 text-align-right">
                          <span class="phone-icon"><i class="fa fa-phone"></i>  09257196568 / 09304992021</span>
                          <span class="date-icon"><i class="fa fa-calendar-plus-o"></i> 6:00 AM - 10:00 PM (Mon-Sat)</span>
-                         <span class="email-icon"><i class="fab fa-facebook"></i> <a href="#">EAS Customs / @eascustoms75</a></span>
+                         <span class="email-icon"><i class="fa fa-facebook-square" aria-hidden="true"></i> <a href="#">EAS Customs / @eascustoms75</a></span>
                     </div>
 
 
                     
         </div>
       </div>
-          
-
      </header>
-          <section class="preloader">
-          <div class="spinner">
 
-               <span class="spinner-rotate"></span>
-               
-          </div>
-     </section>
 
      <!-- MENU -->
-     <section class="navbar navbar-default navbar-static-top" role="navigation" >
+    <section class="navbar navbar-default navbar-static-top" role="navigation" >
           <div class="container">
 
                <div class="navbar-header">
@@ -92,7 +96,7 @@
 
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
-                     <ul class="nav navbar-nav ">
+                <ul class="nav navbar-nav ">
                      <li class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php  if (isset($_SESSION['username'])) : ?><p><i class="fas fa-user-circle"></i></span> Welcome <?php echo $_SESSION['username']; ?> <span class="caret"></span></p>
                 </a>
@@ -107,26 +111,31 @@
                     
                     <ul class="nav navbar-nav navbar-right">
                           
-                        <li><a href="vehicleshistory.php" class="smoothScroll" id="invoicenotification"><i class="fas fa-history"></i> Vehicle History <span class="label label-pill label-danger count1" style="border-radius:10px;padding:6px;"></span></a></li>
-
+                        <li><a href="vehicleshistory.php" class="smoothScroll"><i class="fas fa-history"></i> Vehicle History  <span class="label label-pill label-danger count1" style="border-radius:10px;padding:6px;"></span></a></li>
                         <li><a href="vehiclesinfo.php" class="smoothScroll"><i class="fas fa-car"></i> Your Vehicles</a></li>  
                         <li class="dropdown">
-                        <li><a href="requeststatus.php" class="smoothScroll"><i class="far fa-calendar-check"></i>  Request Status</a></li>  
+                       
+                        
+                        
+                <li class="dropdown">
+                  <a class="smoothScroll" href="requeststatus.php" ><i class="far fa-calendar-check"></i> Request Status
+                  </a>
+                  </li>
+                
+             
+                        
                         <li class="dropdown">
                          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell" aria-hidden="true" style="font-size: 20px;padding: 0;"></i>  <span class="label label-pill label-danger count" style="border-radius:10px;"></span></a>
                          <ul class="dropdown-menu" id="dropdownnotif" aria-labelledby="dropdownMenuDivider"></ul>
                         </li>          
-                        <li class="appointment-btn" ><a href="appointment.php">Make an appointment</a></li>
-
-                          
-                           
+                        <li class="appointment-btn" ><a href="appointment.php">Make an appointment</a></li>       
                     </ul>
                </div>
 
           </div>
      </section>
-     <br>
-    <div class="container">
+    
+     <div class="container">
     <?php if (isset($_SESSION['vehicle_add'])) : ?>
           <?php 
             echo $_SESSION['vehicle_add']; 
@@ -142,18 +151,20 @@
     <?php endif ?>
    </div>
      
-    
-     
-     
-  <div class="row">
-    <div class="container" >  
-    <!-- Fetchmakeseries.js here -->
 
-
-    <button type="button" class="btn btn-sm btn-danger " data-toggle="modal" data-target="#addVehicle" style="background-color: #B80011;color: white"><i class="fa fa-car" aria-hidden="true"></i> Add Vehicle</button>
-  </br>
-  <!--MODAL ADD VEHICLES-->
-  <div class="modal fade" id="addVehicle" role="dialog">
+  <!-- Start of APPOINTMENT SECTION --> 
+    <div id="appointment-section">
+        <div class="container">
+            <div class="row">
+                  
+                    
+           
+         <div class="col-xs-12 col-sm-12" style="width:100%; padding:5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: white; border-radius: 10px;">
+             
+             <button type="button" class="btn" data-toggle="modal" data-target="#addVehicle" style="background-color: #B80011;color: white; margin-top:2%; width:175px; float:right; margin-right:6%;"><i class="fa fa-car" aria-hidden="true"></i> &nbsp;Add Vehicle</button>
+            <!--MODAL ADD VEHICLES-->
+ <div class="modal fade" id="addVehicle" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
@@ -211,26 +222,27 @@
       
     </div>
   </div>
-  <br>
-
-
-    <div class="container">
-    <h3>Vehicle Information</h3><br>  
-    <?php if (isset($_SESSION['success'])) : ?>
+<br>
+             
+             
+             
+             <h3 align="center" style="margin-top:4%;">Vehicle Information</h3>
+            <br>
+              <?php if (isset($_SESSION['success'])) : ?>
           <?php 
             echo $_SESSION['success']; 
             unset($_SESSION['success']);
           ?>
     <?php endif ?>
-    </div>
-    <table class="table table-hover table-bordered " id="doctables" >
+             
+             <table class="table table-hover table-bordered " id="doctables" >
       <thead style="background-color: #212529;color: white;">
         <tr>
-          <th>Plate Number</th>
-          <th>Make</th>
-          <th>Series</th>
-          <th>Color</th>
-          <th>Actions</th>
+          <th style="text-align:center; font-size: 18px;">Plate Number</th>
+          <th style="text-align:center; font-size: 18px;">Make</th>
+          <th style="text-align:center; font-size: 18px;">Series</th>
+          <th style="text-align:center; font-size: 18px;">Color</th>
+          <th style="text-align:center; font-size: 18px;">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -249,8 +261,8 @@
         <?php echo "<td align = 'center'>".ucfirst($row['series'])."</td>"; ?>
         <?php echo "<td align = 'center'>".ucfirst($row['color'])."</td>"; ?>
         <td style="text-align: center;s">
-        <button type="button" class="btn btn-sm btn-primary " data-toggle="modal" data-target="#viewVehicle<?php echo $row['id']; ?>"><i class="fa fa-address-card" aria-hidden="true"></i> View Info</button>
-        <button type="button" class="btn btn-sm btn-success " data-toggle="modal" data-target="#editVehicle<?php echo $row['id']; ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>  Edit</button>
+        <button type="button" class="btn" style="background-color:  #308ee0;color: white;" data-toggle="modal" data-target="#viewVehicle<?php echo $row['id']; ?>"><i class="fa fa-address-card" aria-hidden="true"></i> &nbsp;View Info</button>
+        <button type="button" class="btn" style="background-color: #000099; color: white;" data-toggle="modal" data-target="#editVehicle<?php echo $row['id']; ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp;Edit</button>
       </td>
 
 
@@ -262,7 +274,7 @@
         
           <!-- Modal content-->
           <div class="modal-content">
-            <div class="modal-header" style="background-color:#337AB7; color: #ffffff;">
+            <div class="modal-header" style="background-color:#308ee0; color: #ffffff; font-size: 25px;">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h5 class="modal-title"><?php echo $row['make'].' '.$row['series'].' '.$row['yearModel']; ?></h5>
             </div>
@@ -375,7 +387,7 @@
               </div> 
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" style="color: white;"><i class="fas fa-times-circle"></i> Close</button>
+        <button type="button" class="btn" data-dismiss="modal"><i class="fas fa-times-circle"></i> Close</button>
             </div>
           </div>
           
@@ -389,7 +401,7 @@
         
           <!-- Modal content-->
           <div class="modal-content">
-            <div class="modal-header" style="background-color:#4caf50; color: #ffffff;">
+            <div class="modal-header" style="background-color: #000099; color: white; font-size: 25px;">
               <button type="button" class="close" data-dismiss="modal">&times;</button>
               <h5 class="modal-title"><?php echo $row['make'].' '.$row['series'].' '.$row['yearModel']; ?></h5>
             </div>
@@ -432,8 +444,8 @@
           </div>   
             </div>
             <div class="modal-footer">
-              <button type="submit" class="btn btn-sm btn-success" name="vehiclesinfo_edit" style="background-color: #4caf50;"><i class="fas fa-edit"></i> Edit Vehicle</button>
-              <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal"><i class="fas fa-ban"></i> Cancel</button>
+              <button type="submit" class="btn" name="vehiclesinfo_edit"style="background-color: #000099; color: white;"><i class="fas fa-edit"></i> Edit Vehicle</button>
+              <button type="button" class="btn" data-dismiss="modal"><i class="fas fa-ban"></i> Cancel</button>
             </div>
           </div>
          </form>
@@ -457,14 +469,18 @@
 
     </tbody>
   </table>
-
-        </div>
-      </div>
-    </div>
-
+              
+            
+            
+        </div>      
+    </div> 
+</div>
+</div>
+   
+   <!-- END OF APPOINTMENT SECTION -->
 
      <!-- FOOTER -->
- <footer data-stellar-background-ratio="5">
+    <footer data-stellar-background-ratio="5">
           <div class="container">
                <div class="row">
 
@@ -483,7 +499,7 @@
                     <div class="col-md-4 col-sm-4"> 
                          <div class="footer-thumb"> 
                               <div class="opening-hours">
-                                   <h4 class="wow fadeInUp" data-wow-delay="0.4s">Opening Hours</h4>
+                                   <h2 class="wow fadeInUp" data-wow-delay="0.4s">Opening Hours</h2><br>
                                    <p>Monday - Friday <span>09:00 AM - 05:00 PM</span></p>
                                    <p>Saturday <span>09:00 AM - 05:00 PM</span></p>
                                    <p>Sunday <span>Closed</span></p>
@@ -516,8 +532,8 @@
                </div>
           </div>
      </footer>
-  
-     <!-- SCRIPTS -->
+
+      <!-- SCRIPTS -->
      <script src="js/notifinvoice.js"></script>
      <script src="js/makeseries.js"></script>
      <script src="js/notif.js"></script>
@@ -544,6 +560,7 @@
 
       });
     </script>
+
 
 </body>
 </html>

@@ -184,7 +184,7 @@
 
                                 </tr>
 
-                                <!-- Reschedule Modal -->
+                                 <!-- Reschedule Modal -->
                                 <div class="modal fade" id="exampleModalCenter'.$row['ID'].'" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -253,9 +253,21 @@
                                             </div>
                                           </div>
                                           <div class="form-group row">
-                                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label card-title">Proposed Date</label>
+                                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label card-title">Date 1:</label>
                                             <div class="col-sm-9">
-                                              <input type="date" class="form-control" id="exampleInputPassword2" name="update" placeholder="" required>
+                                              <input type="date" class="form-control" id="exampleInputPassword2" name="date1" placeholder="" required>
+                                            </div>
+                                          </div>
+                                          <div class="form-group row">
+                                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label card-title">Date 2:</label>
+                                            <div class="col-sm-9">
+                                              <input type="date" class="form-control" id="exampleInputPassword2" name="date2" placeholder="">
+                                            </div>
+                                          </div>
+                                          <div class="form-group row">
+                                            <label for="exampleInputPassword2" class="col-sm-3 col-form-label card-title">Date 3:</label>
+                                            <div class="col-sm-9">
+                                              <input type="date" class="form-control" id="exampleInputPassword2" name="date3" placeholder="">
                                             </div>
                                           </div>
                                           <div class="form-group row">
@@ -281,7 +293,6 @@
                                     </div>
                                   </div>
                                 </div>
-
                                 <!-- Decline Modal -->
                                 <div class="modal fade" id="decline'.$row['ID'].'" tabindex="-1" role="dialog" aria-labelledby="appointmentModalCenterTitle" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" role="document">

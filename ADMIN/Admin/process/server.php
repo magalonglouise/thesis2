@@ -1,6 +1,9 @@
 <?php
 require "require/dataconf.php"; //datebase connection
 
+
+
+
 if(isset($_POST['command1'])){
   $action = $connection->real_escape_string($_POST["command1"]);
   $id = $connection->real_escape_string($_POST["id1"]);
@@ -232,18 +235,6 @@ if(isset($_POST["delete-task"])){
 
 }
 
-if(isset($_POST["finishrecord"])){
-  $app_id = $connection->real_escape_string($_POST["app"]);
-  $checkprogress = $connection->prepare("UPDATE `appointments` SET `status` = 'Done' WHERE `appointments`.`id` = $app_id;");
-  if($checkprogress->execute()){
-    header("Location: ../records.php?id=$app_id");
-  }else{
-    header("Location: ../error.php");
-  }
-
-}
-
-
 if(isset($_POST["generate"])){
   $id = $connection->real_escape_string($_POST["personal-id"]);
   $query = $connection->prepare("SELECT * FROM `personalinfo` WHERE `personalId` = $id");
@@ -313,53 +304,6 @@ if(isset($_POST["changePass"])){
   $user = $connection->real_escape_string($_POST["user-id"]);
   $p1 = $connection->real_escape_string($_POST["p1"]);
   $p2 = $connection->real_escape_string($_POST["p2"]);
-
-  if($p1 != $p2){
-    header("Location: ../error.php");
-  }
-
-  echo $per;
-  echo $user;
-  $password = password_hash($p1, PASSWORD_DEFAULT);
-  echo $password;
-
-  $query = $connection->prepare("UPDATE `users` SET `password` = '$password' WHERE `users`.`id` = '$user';");
-  if($query->execute()){
-    header("Location: ../user.php?id=$per");
-    
-  }else{
-    header("Location: ../error.php");
-  }
-
-}
-
-if(isset($_POST["changePassAdm"])){
-  $per = $connection->real_escape_string($_POST["per-id"]);
-  $p1 = $connection->real_escape_string($_POST["p1"]);
-  $p2 = $connection->real_escape_string($_POST["p2"]);
-
-  if($p1 != $p2){
-    header("Location: ../error.php");
-  }
-
-  echo $per;
-  echo $user;
-  $password = password_hash($p1, PASSWORD_DEFAULT);
-  echo $password;
-
-  $query = $connection->prepare("UPDATE `users` SET `password` = '$password' WHERE `users`.`id` = '$per';");
-  if($query->execute()){
-    header("Location: ../administratormanagement.php");
-    
-  }else{
-    header("Location: ../error.php");
-  }
-
-}
-
-if(isset($_POST["update_Admin"])){
-  $per = $connection->real_escape_string($_POST["per-id"]);
-
 
   if($p1 != $p2){
     header("Location: ../error.php");

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$db = mysqli_connect('localhost', 'root', '','thesis');
+$db = mysqli_connect('localhost', 'root', '','eas');
 if(isset($_POST["view"]))
 {
  $personalId = $_SESSION['personalId'];
